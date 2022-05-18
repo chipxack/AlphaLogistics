@@ -18,11 +18,7 @@ body {
 
 .click\:scale {
   cursor: pointer;
-  transition-duration: 0.2s;
-}
-
-.click\:scale:active {
-  transform: scale(0.975);
+  @apply hover:scale-105 active:scale-95 duration-200
 }
 
 button,
@@ -101,3 +97,24 @@ input {
   background: linear-gradient(180deg, #dddddd 0%, rgba(248, 248, 248, 0) 100%);
 }
 
+.bounce {
+  animation: bounce 10s infinite;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateX(0%);
+  }
+
+  45% {
+    transform: translateX(50%);
+  }
+
+  70% {
+    transform: translateY(45%) translateX(25%);
+  }
+
+  100% {
+    transform: translateX(0%) translateY(0%);
+  }
+}

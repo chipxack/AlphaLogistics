@@ -388,7 +388,7 @@ function Index() {
           </ul>
         </div>
 
-        <div className="w-[35rem] h-[30rem] opacity-[72%] absolute -bottom-48 -left-56 | blur-2xl duration-150 rounded-[50%] bg-[#FB7A1A]"></div>
+        <div className="bounce w-[35rem] h-[30rem] opacity-[72%] absolute -bottom-48 -left-56 | blur-2xl duration-150 rounded-[50%] bg-[#FB7A1A]"></div>
       </section>
 
       <section className="py-20 | relative | overflow-y-hidden">
@@ -436,13 +436,13 @@ function Index() {
           </p>
 
           <div className="fcc">
-            <button className="bg-white text-orange-primary px-10 py-4 text-lg font-bold font-poppins | click:scale">
+            <button className="bg-white text-orange-primary px-10 py-4 text-lg font-bold font-poppins click:scale">
               Order now
             </button>
           </div>
         </div>
 
-        <div className="w-[35rem] h-[30rem] opacity-[72%] absolute -top-48 -right-20 | blur-2xl duration-150 rounded-[50%] bg-[#FB7A1A]"></div>
+        <div className="bounce w-[35rem] h-[30rem] opacity-[72%] absolute -top-48 -right-20 | blur-2xl duration-150 rounded-[50%] bg-[#FB7A1A]"></div>
       </section>
 
       <section className="py-20 | relative | overflow-y-hidden">
