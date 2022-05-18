@@ -1,3 +1,103 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.font-gm {
+  font-family: 'Exo 2', monospace;
+}
+
+html,
+body {
+  @apply h-screen w-screen overflow-x-hidden;
+}
+
+.click\:scale {
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.click\:scale:active {
+  transform: scale(0.975);
+}
+
+button,
+form,
+input {
+  @apply outline-none focus:outline-none;
+}
+
+.bg-linear-gray {
+  background: linear-gradient(
+    0deg,
+    rgba(13, 24, 54, 0.53),
+    rgba(13, 24, 54, 0.53)
+  );
+}
+
+.main__section {
+  background: linear-gradient(
+      0deg,
+      rgba(13, 24, 54, 0.53),
+      rgba(13, 24, 54, 0.53)
+    ),
+    url("/traffic.png") no-repeat center;
+  background-size: cover;
+}
+
+.register__btn {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+}
+
+.fcc {
+  @apply flex justify-center items-center;
+}
+
+.fcb {
+  @apply flex justify-between items-center;
+}
+
+.fc {
+  @apply flex justify-center;
+}
+
+.h1 {
+  @apply font-bold text-5xl text-white;
+}
+
+.h2 {
+  @apply font-bold text-4xl text-white;
+}
+
+.h3 {
+  @apply text-white text-2xl font-bold;
+}
+
+.p {
+  @apply text-white;
+}
+
+.border-linear-gray {
+  border-image-source: linear-gradient(
+    106.57deg,
+    #ffffff 12.11%,
+    rgba(255, 255, 255, 0.19) 41.43%,
+    rgba(255, 255, 255, 0.01) 81.22%
+  );
+}
+
+.ci:hover {
+  background-image: url("/b.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bg-gray-to-white {
+  background: linear-gradient(180deg, #dddddd 0%, rgba(248, 248, 248, 0) 100%);
+}
+
