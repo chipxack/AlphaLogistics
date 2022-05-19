@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Logo from "components/Logo";
 import SvgAddUser from "icons/SvgAddUser";
 import SvgSearch from "icons/SvgSearch";
@@ -11,35 +12,41 @@ const style = {
 
 function Header(props) {
   return (
-    <header className="py-4 | container mx-auto | fcb z-[10000]">
-      <div className="fc space-x-32">
-        <Logo className="w-40" />
+    <header
+      className={clsx({
+        "bg-black": props.dark,
+      })}
+    >
+      <div className="py-4 | fcb z-[10000] container mx-auto">
+        <div className="fc space-x-32">
+          <Logo className="w-40" />
 
-        <ul className="fcb space-x-12">
-          <Link href={`/about`}>
-            <li className={style.menuActive}>About us</li>
-          </Link>
+          <ul className="fcb space-x-12">
+            <Link href={`/about`}>
+              <li className={style.menuActive}>About us</li>
+            </Link>
 
-          <Link href={`/products`}>
-            <li className={style.menu}>Products</li>
-          </Link>
+            <Link href={`/products`}>
+              <li className={style.menu}>Products</li>
+            </Link>
 
-          <Link href={`/tracking`}>
-            <li className={style.menu}>Tracking</li>
-          </Link>
-          <Link href={`/products`}>
-            <li className={style.menu}>Support</li>
-          </Link>
-        </ul>
-      </div>
+            <Link href={`/tracking`}>
+              <li className={style.menu}>Tracking</li>
+            </Link>
+            <Link href={`/products`}>
+              <li className={style.menu}>Support</li>
+            </Link>
+          </ul>
+        </div>
 
-      <div className="fcc space-x-7">
-        <SvgSearch className="h-5" />
+        <div className="fcc space-x-7">
+          <SvgSearch className="h-5" />
 
-        <button className={style.registerBtn}>
-          <p>Login to Account</p>
-          <SvgAddUser className="h-5" />
-        </button>
+          <button className={style.registerBtn}>
+            <p>Login to Account</p>
+            <SvgAddUser className="h-5" />
+          </button>
+        </div>
       </div>
     </header>
   );

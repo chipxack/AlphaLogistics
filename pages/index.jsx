@@ -2,19 +2,20 @@ import Footer from "components/Footer";
 import Logo from "components/Logo";
 import useWindowSize from "hooks/useWindowSize";
 import SvgCalendar from "icons/SvgCalendar";
-import SvgArrow from "home/SvgArrow";
-import SvgHowWeWork from "home/SvgHowWeWork";
-import SvgMap from "home/SvgMap";
+import SvgArrow from "pages/home/SvgArrow";
+import SvgHowWeWork from "pages/home/SvgHowWeWork";
+import SvgMap from "pages/home/SvgMap";
 import Header from "components/Header";
 import SvgPointer from "icons/SvgPointer";
+import App from "components/layouts/App";
 
 function Index() {
   const windowSize = useWindowSize();
 
   return (
-    <>
+    <App>
       <section className="lg:h-full 2xl:h-auto overflow-x-hidden main__section | fb_vertically">
-        <Header />
+        <App.Header />
 
         <div className="fcb container mx-auto w-full | overflow-hidden overflow-y-hidden">
           <div className="w-3/5 | flex flex-col | space-y-5">
@@ -739,8 +740,9 @@ function Index() {
           </div>
         </div>
       </section>
-      <Footer />
-    </>
+
+      <App.Footer />
+    </App>
   );
 }
 
