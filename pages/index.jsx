@@ -1,47 +1,20 @@
 import Footer from "components/Footer";
 import Logo from "components/Logo";
 import useWindowSize from "hooks/useWindowSize";
-import SvgAddUser from "icons/SvgAddUser";
 import SvgCalendar from "icons/SvgCalendar";
-import SvgSearch from "icons/SvgSearch";
 import SvgArrow from "home/SvgArrow";
 import SvgHowWeWork from "home/SvgHowWeWork";
 import SvgMap from "home/SvgMap";
-
-const style = {
-  menu: `text-white text-sm font-medium cursor-pointer duration-200 hover:text-orange-primary`,
-  menuActive: `text-orange-primary text-sm font-medium`,
-};
+import Header from "components/Header";
+import SvgPointer from "icons/SvgPointer";
 
 function Index() {
   const windowSize = useWindowSize();
 
-  console.log(windowSize);
-
   return (
     <>
       <section className="lg:h-full 2xl:h-auto overflow-x-hidden main__section | fb_vertically">
-        <header className="py-4 | container mx-auto | fcb z-[10000]">
-          <div className="fc space-x-32">
-            <Logo className="w-40" />
-
-            <ul className="fcb space-x-12">
-              <li className={style.menuActive}>About us</li>
-              <li className={style.menu}>Products</li>
-              <li className={style.menu}>Tracking</li>
-              <li className={style.menu}>Support</li>
-            </ul>
-          </div>
-
-          <div className="fcc space-x-7">
-            <SvgSearch className="h-5" />
-
-            <button className="fcc | font-semibold text-sm space-x-3 | text-white | py-3 px-5 border-[0.25px] border-orange-primary register__btn | rounded | click:scale">
-              <p>Login to Account</p>
-              <SvgAddUser className="h-5" />
-            </button>
-          </div>
-        </header>
+        <Header />
 
         <div className="fcb container mx-auto w-full | overflow-hidden overflow-y-hidden">
           <div className="w-3/5 | flex flex-col | space-y-5">
@@ -63,22 +36,7 @@ function Index() {
             <button className="inline-flex items-center | space-x-4 group">
               <p className="text-[#FF9A00]">Read more</p>
 
-              <svg
-                height="25"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="group-hover:translate-x-1 duration-200"
-              >
-                <path
-                  d="M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z"
-                  stroke="#FF9A00"
-                  strokeWidth="1.5"
-                  strokeMiterlimit="10"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <SvgPointer className="h-6 group-hover:translate-x-1 duration-150 text-orange-primary" />
             </button>
           </div>
 
@@ -117,7 +75,7 @@ function Index() {
 
             <a
               href="#"
-              className="absolute -left-14 bottom-20 z-50 block w-32 h-32 p-5 fcc rounded-full font-exo font-semibold | bg-[#FB7A1A] text-white | click:scale"
+              className="absolute -left-16 bottom-20 z-50 block w-36 h-36 p-5 fcc rounded-full font-exo font-semibold | bg-[#FB7A1A] text-white | click:scale"
             >
               Order now
             </a>
@@ -133,21 +91,7 @@ function Index() {
                 <div className="inline-flex fcc space-x-4 absolute inset-0">
                   <p className="font-bold font-exo text-white">Order Product</p>
 
-                  <svg
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="group-hover:translate-x-1 duration-200 h-6"
-                  >
-                    <path
-                      d="M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z"
-                      stroke="#FFFFFF"
-                      strokeWidth="1.5"
-                      strokeMiterlimit="10"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <SvgPointer className="h-6 group-hover:translate-x-1 text-white duration-150" />
                 </div>
               </li>
               <li className="py-5 w-1/4 fcc | cursor-pointer | relative | group">
@@ -158,21 +102,7 @@ function Index() {
                     Show order location
                   </p>
 
-                  <svg
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="group-hover:translate-x-1 duration-200 h-6"
-                  >
-                    <path
-                      d="M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z"
-                      stroke="#FFFFFF"
-                      strokeWidth="1.5"
-                      strokeMiterlimit="10"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <SvgPointer className="h-6 group-hover:translate-x-1 text-white duration-150" />
                 </div>
               </li>{" "}
               <li className="py-5 w-1/4 fcc | cursor-pointer | relative | group">
@@ -181,21 +111,7 @@ function Index() {
                 <div className="inline-flex fcc space-x-4 absolute inset-0">
                   <p className="font-bold font-exo text-white">How we work</p>
 
-                  <svg
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="group-hover:translate-x-1 duration-200 h-6"
-                  >
-                    <path
-                      d="M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z"
-                      stroke="#FFFFFF"
-                      strokeWidth="1.5"
-                      strokeMiterlimit="10"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <SvgPointer className="h-6 group-hover:translate-x-1 text-white duration-150" />
                 </div>
               </li>
               <li className="py-5 w-1/4 fcc | cursor-pointer | relative | group">
@@ -206,21 +122,7 @@ function Index() {
                     Login to Account
                   </p>
 
-                  <svg
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="group-hover:translate-x-1 duration-200 h-6"
-                  >
-                    <path
-                      d="M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z"
-                      stroke="#FFFFFF"
-                      strokeWidth="1.5"
-                      strokeMiterlimit="10"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <SvgPointer className="h-6 group-hover:translate-x-1 text-white duration-150" />
                 </div>
               </li>
             </ul>
@@ -238,21 +140,7 @@ function Index() {
             <button className="inline-flex items-center | space-x-4 group">
               <p className="text-[#FF9A00]">Read more</p>
 
-              <svg
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="group-hover:translate-x-1 duration-200 h-6"
-              >
-                <path
-                  d="M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z"
-                  stroke="#FF9A00"
-                  strokeWidth="1.5"
-                  strokeMiterlimit="10"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <SvgPointer className="h-6 group-hover:translate-x-1 text-orange-primary duration-150" />
             </button>
           </div>
 
