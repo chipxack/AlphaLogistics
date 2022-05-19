@@ -14,12 +14,12 @@ module.exports = {
 
       // EXO 2   -> Goldman
       // Poppins -> Inter
-      fontFamily: {
-        inter: [`'Inter'`, `sans-serif`],
-        exo: [`'Goldman'`, `cusrive`],
-        gm: [`'Goldman', cursive`],
-        poppins: [`'Inter'`, `sans-serif`],
-      },
+      // fontFamily: {
+      //   inter: [`'Inter'`, `sans-serif`],
+      //   exo: [`'Goldman'`, `cusrive`],
+      //   gm: [`'Goldman', cursive`],
+      //   poppins: [`'Inter'`, `sans-serif`],
+      // },
     },
   },
   plugins: [],

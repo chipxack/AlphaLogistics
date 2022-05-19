@@ -2,13 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+ */
 
-.font-gm {
-  font-family: 'Exo 2', monospace;
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@100;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Space Mono", monospace;
+  @apply select-none;
+  -webkit-font-smoothing: antialiased;
 }
 
 html,
@@ -48,6 +56,10 @@ input {
 .register__btn {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(16px);
+}
+
+.fb_vertically {
+  @apply flex-col flex justify-between;
 }
 
 .fcc {
@@ -117,4 +129,10 @@ input {
   100% {
     transform: translateX(0%) translateY(0%);
   }
+}
+
+
+.shadow-p:hover {
+  box-shadow: 0px 8px 24px rgba(116, 116, 116, 0.16);
+  transition: all 150ms ease-in;
 }

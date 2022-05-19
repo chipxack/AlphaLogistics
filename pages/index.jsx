@@ -1,9 +1,12 @@
+import Footer from "components/Footer";
 import Logo from "components/Logo";
 import useWindowSize from "hooks/useWindowSize";
 import SvgAddUser from "icons/SvgAddUser";
+import SvgCalendar from "icons/SvgCalendar";
 import SvgSearch from "icons/SvgSearch";
-import SvgHowWeWork from "pages/home/SvgHowWeWork";
-import SvgMap from "pages/home/SvgMap";
+import SvgArrow from "home/SvgArrow";
+import SvgHowWeWork from "home/SvgHowWeWork";
+import SvgMap from "home/SvgMap";
 
 const style = {
   menu: `text-white text-sm font-medium cursor-pointer duration-200 hover:text-orange-primary`,
@@ -17,7 +20,7 @@ function Index() {
 
   return (
     <>
-      <section className="xl:h-full overflow-x-hidden main__section | flex-col flex justify-between">
+      <section className="lg:h-full 2xl:h-auto overflow-x-hidden main__section | fb_vertically">
         <header className="py-4 | container mx-auto | fcb z-[10000]">
           <div className="fc space-x-32">
             <Logo className="w-40" />
@@ -114,7 +117,7 @@ function Index() {
 
             <a
               href="#"
-              className="absolute -left-14 bottom-20 z-50 block w-32 h-32 p-5 fcc rounded-full font-exo font-semibold | bg-orange-primary text-white | click:scale"
+              className="absolute -left-14 bottom-20 z-50 block w-32 h-32 p-5 fcc rounded-full font-exo font-semibold | bg-[#FB7A1A] text-white | click:scale"
             >
               Order now
             </a>
@@ -454,6 +457,398 @@ function Index() {
           <SvgMap className="w-full pt-20" />
         </div>
       </section>
+
+      <section className="py-20 | relative | overflow-y-hidden">
+        <div className="relative | container mx-auto z-50">
+          <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
+            What you take from Us:
+          </h3>
+
+          <div className="grid grid-cols-4">
+            <div className="col-span-1 | fb_vertically | p-4 space-y-5 | border border-gray-100 | cursor-pointer | group hover:bg-[#FB7A1A] duration-200">
+              <div>
+                <h3 className="text-[#353437] group-hover:text-white duration-200 text-lg font-bold | font-gm">
+                  Monitor the location
+                </h3>
+
+                <p className="text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
+                  Finding the exact product or a very similar one on the market
+                  from our partner manufacturers Finding the exact product or a
+                  very similar one on the market from our partner manufacturers
+                </p>
+              </div>
+
+              <div>
+                <div className="mb-5">
+                  <SvgArrow className="h-6 group-hover:text-white duration-200" />
+                </div>
+
+                <div className="w-full | rounded-md overflow-hidden">
+                  <img
+                    src="/plane.png"
+                    alt="plane_image"
+                    className="object-cover h-full"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="col-span-2 | flex | p-4 | border border-gray-100 | cursor-pointer | group hover:bg-[#FB7A1A] duration-200">
+              <div className="w-1/2 | px-3">
+                <h3 className="text-[#353437] group-hover:text-white duration-200 text-lg font-bold | font-gm">
+                  Monitor the location
+                </h3>
+
+                <p className="py-5 | text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
+                  Finding the exact product or a very similar one on the market
+                  from our partner manufacturers Finding the exact product or a
+                  very similar one on the market from our partner
+                  manufacturersFinding the exact product or a very similar one
+                  on the market from our partner manufacturers Finding the exact
+                  product or a very similar one on the market from our partner
+                  manufacturersFinding the exact product or a very similar one
+                  on the market from our partner manufacturers
+                </p>
+
+                <div className="pt-7">
+                  <SvgArrow className="h-6 group-hover:text-white duration-200" />
+                </div>
+              </div>
+
+              <div className="w-1/2 h-[35rem] | rounded-md overflow-hidden">
+                <img
+                  src="/man.png"
+                  alt="man_image"
+                  className="object-cover h-full w-full"
+                />
+              </div>
+            </div>
+
+            <div className="col-span-1 | fb_vertically | p-4 space-y-5 | border border-gray-100 | cursor-pointer | group hover:bg-[#FB7A1A] duration-200">
+              <div>
+                <h3 className="text-[#353437] group-hover:text-white duration-200 text-lg font-bold | font-gm">
+                  Use catalog to order
+                </h3>
+
+                <p className="text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
+                  Finding the exact product or a very similar one on the market
+                  from our partner manufacturers Finding the exact product or a
+                  very similar one on the market from our partner manufacturers
+                </p>
+              </div>
+
+              <div>
+                <div className="mb-5">
+                  <SvgArrow className="h-6 group-hover:text-white duration-200" />
+                </div>
+
+                <div className="w-full | rounded-md overflow-hidden">
+                  <img
+                    src="/computer.png"
+                    alt="computer_image"
+                    className="object-cover h-full"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative | overflow-y-hidden">
+        <div className="relative | container mx-auto z-50">
+          <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
+            What you take from Us:
+          </h3>
+
+          <div className="fcb">
+            <p className="text-[#020105] font-inter w-1/3">
+              Finding the exact product or a very similar one on the market from
+              our partner manufacturers
+            </p>
+
+            <button className="inline-flex items-center | space-x-4 group">
+              <p className="text-[#FF9A00]">Show Catalog</p>
+
+              <svg
+                height="25"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="group-hover:translate-x-1 duration-200"
+              >
+                <path
+                  d="M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z"
+                  stroke="#FF9A00"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div className="grid grid-cols-3 gap-5 | pt-10">
+            {[
+              {
+                id: `#forcars`,
+                img: `/p1.png`,
+                title: `Valve cover 23397716`,
+              },
+              {
+                id: `#fortracks`,
+                img: `/p2.png`,
+                title: `Valve cover 23397716`,
+              },
+
+              {
+                id: `#forcars`,
+                img: `/p3.png`,
+                title: `Valve cover 23397716`,
+              },
+              {
+                id: `#forcars`,
+                img: `/p4.png`,
+                title: `Valve cover 23397716`,
+              },
+              {
+                id: `#forcars`,
+                img: `/p5.png`,
+                title: `Valve cover 23397716`,
+              },
+              {
+                id: `#fortracks`,
+                img: `/p6.png`,
+                title: `Valve cover 23397716`,
+              },
+            ].map((product) => (
+              <div className="product | rounded-md overflow-hidden | border border-gray-100 shadow-p | cursor-pointer">
+                <div className="h-64 overflow-hidden | relative">
+                  <img
+                    src={product.img}
+                    alt="prodcut_1"
+                    className="h-full w-full object-cover object-center"
+                  />
+
+                  <div className="p-3 top-0 left-0 ml-3 mt-3 | text-xs | absolute | bg-gray-200 | rounded-md">
+                    {product.id}
+                  </div>
+                </div>
+
+                <div className="product__info | py-5 px-5 space-y-3 | bg-[#F5F5F7]">
+                  <h4 className="font-inter text-[#020105] font-semibold text-lg">
+                    {product.title}
+                  </h4>
+
+                  <button className="inline-flex items-center | space-x-4 group">
+                    <p className="text-[#FF9A00] text-base">Details</p>
+
+                    <svg
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="group-hover:translate-x-1 duration-200 h-7"
+                    >
+                      <path
+                        d="M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z"
+                        stroke="#FF9A00"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 | relative | overflow-y-hidden">
+        <div className="relative | container mx-auto z-50">
+          <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
+            News:
+          </h3>
+
+          <div className="news | flex space-x-3">
+            <div className="flex w-1/2 | space-x-3 | border-r border-gray-100 pr-4">
+              <div className="img flex | h-32 w-56 flex-shrink-0 | rounded-md overflow-hidden">
+                <img
+                  src="/emusk.png"
+                  alt="new_image"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+
+              <div className="fb_vertically">
+                <div className="">
+                  <h4 className="font-semibold font-inter">
+                    Elon Musk buys Twitter: How will he change it?
+                  </h4>
+                  <p className="text-sm pt-3 font-inter text-[#353437]">
+                    Questions have been raised over how the platform will change
+                    after being bought by the Tesla boss.
+                  </p>
+                </div>
+
+                <div className="fcb">
+                  <div className="fcc">
+                    <SvgCalendar className="h-5" />
+
+                    <p className="text-xs text-[#9A999B] pl-2">18.04.2022</p>
+                  </div>
+
+                  <button className="inline-flex items-center | space-x-4 group">
+                    <p className="text-[#FF9A00] text-sm">Read more</p>
+
+                    <svg
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="group-hover:translate-x-1 duration-200 h-6"
+                    >
+                      <path
+                        d="M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z"
+                        stroke="#FF9A00"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="flex w-1/2 | space-x-3 | border-r border-gray-100 pr-4">
+              <div className="img flex | h-32 w-56 flex-shrink-0 | rounded-md overflow-hidden">
+                <img
+                  src="/emusk.png"
+                  alt="new_image"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+
+              <div className="fb_vertically">
+                <div className="">
+                  <h4 className="font-semibold font-inter">
+                    Elon Musk buys Twitter: How will he change it?
+                  </h4>
+                  <p className="text-sm pt-3 font-inter text-[#353437]">
+                    Questions have been raised over how the platform will change
+                    after being bought by the Tesla boss.
+                  </p>
+                </div>
+
+                <div className="fcb">
+                  <div className="fcc">
+                    <SvgCalendar className="h-5" />
+
+                    <p className="text-xs text-[#9A999B] pl-2">18.04.2022</p>
+                  </div>
+
+                  <button className="inline-flex items-center | space-x-4 group">
+                    <p className="text-[#FF9A00] text-sm">Read more</p>
+
+                    <svg
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="group-hover:translate-x-1 duration-200 h-6"
+                    >
+                      <path
+                        d="M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z"
+                        stroke="#FF9A00"
+                        stroke-width="1.5"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-black | py-20 | relative | overflow-hidden">
+        <div className="relative | container mx-auto z-50 | space-y-7">
+          <h3 className="relative | h2 text-white font-gm | text-center">
+            Leave us a message <span className="py-2 block"></span> to recieve a
+            callback
+          </h3>
+
+          <p className="font-exo text-white opacity-60 text-sm text-center">
+            Leave a request <br />
+            and we will contact you shortly
+          </p>
+
+          <div className="fcc space-x-5">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name:"
+              className="w-1/5 | bg-black border border-white text-white py-3 px-3 placeholder:text-white placeholder:opacity-80"
+            />
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="+998 __"
+              className="w-1/5 | bg-black border border-white text-white py-3 px-3 placeholder:text-white placeholder:opacity-80"
+            />
+
+            <button className="w-1/5 | bg-white text-orange-primary px-10 py-3 text-lg font-bold font-poppins click:scale">
+              Send
+            </button>
+          </div>
+        </div>
+
+        <div className="bounce w-[35rem] h-[30rem] opacity-[72%] absolute -top-48 -left-20 | blur-2xl duration-150 rounded-[50%] bg-[#FB7A1A]"></div>
+      </section>
+
+      <section className="py-20 | relative | overflow-y-hidden">
+        <div className="relative | container mx-auto z-50">
+          <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
+            Partners
+          </h3>
+
+          <div className="grid grid-cols-5 gap-10">
+            {[0, 1, 2, 3].map((index) => (
+              <>
+                <div className="partner | fcc | border-2 border-gray-100 p-12 aspect-square">
+                  <img
+                    src={`/partner${index}.png`}
+                    alt="partner"
+                    className="h-full object-contain"
+                  />
+                </div>
+
+                <div className="partner | fcc | border-2 border-gray-100 p-12 aspect-square">
+                  <img
+                    src={`/partner${index}.png`}
+                    alt="partner"
+                    className="h-full object-contain"
+                  />
+                </div>
+              </>
+            ))}
+          </div>
+
+          <div className="fcc | pt-10">
+            <button className="text-white bg-[#FB7A1A] px-16 py-3 text-lg font-bold font-poppins click:scale">
+              See All
+            </button>
+          </div>
+        </div>
+      </section>
+      <Footer />
     </>
   );
 }
