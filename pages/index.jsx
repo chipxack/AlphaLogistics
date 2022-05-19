@@ -622,8 +622,11 @@ function Index() {
                 img: `/p6.png`,
                 title: `Valve cover 23397716`,
               },
-            ].map((product) => (
-              <div className="product | rounded-md overflow-hidden | border border-gray-100 shadow-p | cursor-pointer">
+            ].map((product, index) => (
+              <div
+                className="product | rounded-md overflow-hidden | border border-gray-100 shadow-p | cursor-pointer"
+                key={index}
+              >
                 <div className="h-64 overflow-hidden | relative">
                   <img
                     src={product.img}
@@ -821,7 +824,7 @@ function Index() {
 
           <div className="grid grid-cols-5 gap-10">
             {[0, 1, 2, 3].map((index) => (
-              <>
+              <div key={index}>
                 <div className="partner | fcc | border-2 border-gray-100 p-12 aspect-square">
                   <img
                     src={`/partner${index}.png`}
@@ -837,7 +840,7 @@ function Index() {
                     className="h-full object-contain"
                   />
                 </div>
-              </>
+              </div>
             ))}
           </div>
 

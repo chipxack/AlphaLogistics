@@ -73,8 +73,8 @@ function SvgHowWeWork(props) {
           y2="1.99998"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB421A" />
-          <stop offset="1" stop-color="#FB421A" stop-opacity="0" />
+          <stop stopColor="#FB421A" />
+          <stop offset="1" stopColor="#FB421A" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_388_1475"
@@ -84,8 +84,8 @@ function SvgHowWeWork(props) {
           y2="380"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB421A" />
-          <stop offset="1" stop-color="#FB421A" stop-opacity="0" />
+          <stop stopColor="#FB421A" />
+          <stop offset="1" stopColor="#FB421A" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_388_1475"
@@ -95,8 +95,8 @@ function SvgHowWeWork(props) {
           y2="1.99998"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB421A" />
-          <stop offset="1" stop-color="#FB421A" stop-opacity="0" />
+          <stop stopColor="#FB421A" />
+          <stop offset="1" stopColor="#FB421A" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_388_1475"
@@ -106,8 +106,8 @@ function SvgHowWeWork(props) {
           y2="380"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB421A" />
-          <stop offset="1" stop-color="#FB421A" stop-opacity="0" />
+          <stop stopColor="#FB421A" />
+          <stop offset="1" stopColor="#FB421A" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_388_1475"
@@ -117,8 +117,8 @@ function SvgHowWeWork(props) {
           y2="1.99998"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB421A" />
-          <stop offset="1" stop-color="#FB421A" stop-opacity="0" />
+          <stop stopColor="#FB421A" />
+          <stop offset="1" stopColor="#FB421A" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_388_1475"
@@ -128,8 +128,8 @@ function SvgHowWeWork(props) {
           y2="380"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB421A" />
-          <stop offset="1" stop-color="#FB421A" stop-opacity="0" />
+          <stop stopColor="#FB421A" />
+          <stop offset="1" stopColor="#FB421A" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint6_linear_388_1475"
@@ -139,8 +139,8 @@ function SvgHowWeWork(props) {
           y2="379"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB421A" />
-          <stop offset="1" stop-color="#FB421A" stop-opacity="0" />
+          <stop stopColor="#FB421A" />
+          <stop offset="1" stopColor="#FB421A" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint7_linear_388_1475"
@@ -150,8 +150,8 @@ function SvgHowWeWork(props) {
           y2="1.99998"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FB421A" />
-          <stop offset="1" stop-color="#FB421A" stop-opacity="0" />
+          <stop stopColor="#FB421A" />
+          <stop offset="1" stopColor="#FB421A" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>
