@@ -2,6 +2,7 @@ import clsx from "clsx";
 import App from "components/layouts/App";
 import SvgDropdown from "icons/SvgDropdown";
 import SvgSearch from "icons/SvgSearch";
+import Link from "next/link";
 import RangeInputTest from "pages/products/RangeInputTest";
 
 const style = {
@@ -277,48 +278,47 @@ function Product() {
                     title: `Valve cover 23397716`,
                   },
                 ].map((product, index) => (
-                  <div
-                    className="product | rounded-md overflow-hidden | border border-gray-100 shadow-p | cursor-pointer"
-                    key={index}
-                  >
-                    <div className="h-64 overflow-hidden | relative">
-                      <img
-                        src={product.img}
-                        alt="prodcut_1"
-                        className="h-full w-full object-cover object-center"
-                      />
+                  <Link href={`/products/inshaAllah`} key={index}>
+                    <div className="product | rounded-md overflow-hidden | border border-gray-100 shadow-p | cursor-pointer">
+                      <div className="h-64 overflow-hidden | relative">
+                        <img
+                          src={product.img}
+                          alt="prodcut_1"
+                          className="h-full w-full object-cover object-center"
+                        />
 
-                      <div className="p-3 top-0 left-0 ml-3 mt-3 | text-xs | absolute | bg-gray-200 | rounded-md">
-                        {product.id}
+                        <div className="p-3 top-0 left-0 ml-3 mt-3 | text-xs | absolute | bg-gray-200 | rounded-md">
+                          {product.id}
+                        </div>
+                      </div>
+
+                      <div className="product__info | py-5 px-5 space-y-3 | bg-[#F5F5F7]">
+                        <h4 className="font-inter text-[#020105] font-semibold text-lg">
+                          {product.title}
+                        </h4>
+
+                        <button className="inline-flex items-center | space-x-4 group">
+                          <p className="text-[#FF9A00] text-base">Details</p>
+
+                          <svg
+                            viewBox="0 0 32 32"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="group-hover:translate-x-1 duration-200 h-7"
+                          >
+                            <path
+                              d="M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z"
+                              stroke="#FF9A00"
+                              strokeWidth="1.5"
+                              strokeMiterlimit="10"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </button>
                       </div>
                     </div>
-
-                    <div className="product__info | py-5 px-5 space-y-3 | bg-[#F5F5F7]">
-                      <h4 className="font-inter text-[#020105] font-semibold text-lg">
-                        {product.title}
-                      </h4>
-
-                      <button className="inline-flex items-center | space-x-4 group">
-                        <p className="text-[#FF9A00] text-base">Details</p>
-
-                        <svg
-                          viewBox="0 0 32 32"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="group-hover:translate-x-1 duration-200 h-7"
-                        >
-                          <path
-                            d="M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z"
-                            stroke="#FF9A00"
-                            strokeWidth="1.5"
-                            strokeMiterlimit="10"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

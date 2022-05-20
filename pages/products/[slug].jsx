@@ -61,7 +61,7 @@ function Product(props) {
               </p>
             </div>
 
-            <div className="product__details | space-y-3 | pt-3">
+            <div className="product__details | space-y-5 | pt-3">
               <h3 className="font-bold border-b border-black pb-3 mb-7">
                 Details
               </h3>
@@ -86,7 +86,7 @@ function Product(props) {
                 <div className="flex justify-between items-center" key={index}>
                   <div className="title text-sm">{detail.title}</div>
 
-                  <div className="border-b border-dashed border-gray-300 flex-grow text-white mx-3">
+                  <div className="border-b border-dashed border-gray-300 flex-grow text-white mx-3 -mt-4">
                     12
                   </div>
 

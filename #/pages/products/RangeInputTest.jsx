@@ -69,7 +69,6 @@ const RangeInputTest = (props) => {
             }}
             className="h-5 w-5 rounded-full | relative"
           >
-            {console.log(props, `some props =====`)}
             {props.key === 0 && (
               <div className="block w-[4rem] font-bold text-orange-primary bg-[#F6FBFC] text-xs absolute bottom-5 -left-5">
                 {humanReadable(values[0].toFixed(0))}
