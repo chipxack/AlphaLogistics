@@ -82,8 +82,8 @@ function Product(props) {
                   title: `Brand`,
                   value: `Volvo`,
                 },
-              ].map((detail) => (
-                <div className="flex justify-between items-center">
+              ].map((detail, index) => (
+                <div className="flex justify-between items-center" key={index}>
                   <div className="title text-sm">{detail.title}</div>
 
                   <div className="border-b border-dashed border-gray-300 flex-grow text-white mx-3">
