@@ -10,6 +10,7 @@ module.exports = {
         orange: {
           primary: `#FF8B00`,
         },
+        black: `#16171E`,
       },
 
       // EXO 2   -> Goldman
@@ -22,5 +23,10 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/forms")({
+      // strategy: "base", // only generate global styles
+      strategy: "class", // only generate classes
+    }),
+  ],
 };

@@ -14,12 +14,16 @@ function Header(props) {
   return (
     <header
       className={clsx({
-        "bg-black": props.dark,
+        "bg-[#020105]": props.dark,
       })}
     >
       <div className="py-4 | fcb z-[10000] container mx-auto">
         <div className="fc space-x-32">
-          <Logo className="w-40" />
+          <Link href={`/`}>
+            <div>
+              <Logo className="w-40 cursor-pointer" />
+            </div>
+          </Link>
 
           <ul className="fcb space-x-12">
             <Link href={`/about`}>

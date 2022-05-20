@@ -1,9 +1,15 @@
+import clsx from "clsx";
 import App from "components/layouts/App";
+import SvgDropdown from "icons/SvgDropdown";
 import SvgSearch from "icons/SvgSearch";
+import RangeInput from "pages/products/RangeInput";
+import RangeInputTest from "pages/products/RangeInputTest";
 
 const style = {
   inActiveMenu: `opacity-80 text-sm`,
   activeMenu: `text-sm`,
+  activeFilterCategoryMenu: `text-xs text-[#FB421A] duration-100`,
+  inActiveFilterCategoryMenu: `text-xs text-[#16171E] hover:text-[#FB421A] opacity-60 cursor-pointer duration-100`,
 };
 
 function Product() {
@@ -34,8 +40,174 @@ function Product() {
       <section>
         <div className="container mx-auto | py-10">
           <div className="flex">
-            <div className="w-1/4"></div>
-            <div className="w-3/4 | space-y-2">
+            {/* FILTER */}
+            <div className="w-1/4">
+              <div className="bg-[#F6FBFC] px-4 py-4">
+                <h3 className="text-xl font-gm font-bold">Filter</h3>
+
+                <div className="filter">
+                  {/* --- FILTER CATEGORIES --- */}
+                  <div className="filter__categories | py-5">
+                    {/* --- FILTER CATEGORIES BTN  --- */}
+                    <div className="filter__categories__btn | fcb cursor-pointer">
+                      <p className="font-bold text-base text-black">Cars</p>
+                      <SvgDropdown className="h-2 text-[#FB421A]" />
+                    </div>
+
+                    {/* FILTER CATEGORIES BODY */}
+                    <div className="filter__categories__content | pt-5">
+                      <ul className="space-y-4">
+                        {[
+                          {
+                            title: `Washing machines`,
+                            active: true,
+                          },
+                          {
+                            title: `Vacuum cleaners`,
+                            active: false,
+                          },
+                          {
+                            title: `Irons`,
+                            active: false,
+                          },
+                          {
+                            title: `Steam cleaners and steamers`,
+                            active: false,
+                          },
+                          {
+                            title: `Filters and softeners for water`,
+                            active: false,
+                          },
+                          {
+                            title: `High pressure washers`,
+                            active: false,
+                          },
+                          {
+                            title: `Ironing boards`,
+                            active: false,
+                          },
+                          {
+                            title: `Smart Home Systems`,
+                            active: false,
+                          },
+                          {
+                            title: `Electric brooms`,
+                            active: false,
+                          },
+                          {
+                            title: `Sewing machines`,
+                            active: false,
+                          },
+                          {
+                            title: `Robot vacuum cleaners`,
+                            active: false,
+                          },
+                        ].map((category, index) => (
+                          <li
+                            className={clsx({
+                              [style.activeFilterCategoryMenu]: category.active,
+                              [style.inActiveFilterCategoryMenu]:
+                                !category.active,
+                            })}
+                            key={index}
+                          >
+                            {category.title}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* --- FILTER BRANDS --- */}
+                  <div className="filter__brands | py-5">
+                    {/* --- FILTER BRANDS BTN  --- */}
+                    <div className="filter__brands__btn | fcb">
+                      <p className="font-bold">Brands</p>
+                      <SvgDropdown className="h-2 text-[#FB421A]" />
+                    </div>
+                    {/* FILTER BRANDS BODY */}
+                    <div className="filter__brands__content | pt-5">
+                      <ul className="space-y-5">
+                        {[
+                          {
+                            title: `Sony`,
+                            active: false,
+                          },
+                          {
+                            title: `Samsung`,
+                            active: true,
+                          },
+                          {
+                            title: `Artel`,
+                            active: false,
+                          },
+
+                          {
+                            title: `LG`,
+                            active: false,
+                          },
+                          {
+                            title: `Shivaki`,
+                            active: false,
+                          },
+                          {
+                            title: `Premier`,
+                            active: false,
+                          },
+                          {
+                            title: `Moonx`,
+                            active: false,
+                          },
+                        ].map((brand) => (
+                          <label
+                            htmlFor={brand.title}
+                            className="flex items-center | space-x-2"
+                          >
+                            <input
+                              type="checkbox"
+                              name={brand.title}
+                              id={brand.title}
+                              className={`form-checkbox rounded text-orange-primary border-gray-200 p-2 | shadow-sm focus:border-orange-300 focus:ring focus:ring-offset-0 focus:ring-orange-200 focus:ring-opacity-50`}
+                              checked={brand.active}
+                            />
+
+                            <li
+                              className={clsx({
+                                [style.activeFilterCategoryMenu]: brand.active,
+                                [style.inActiveFilterCategoryMenu]:
+                                  !brand.active,
+                              })}
+                            >
+                              {brand.title}
+                            </li>
+                          </label>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* --- FILTER PRICE --- */}
+                  <div className="filter__price">
+                    <RangeInputTest
+                      max={450000}
+                      min={120000}
+                      move={1000}
+                      onChange={(e) => console.log(e)}
+                    />
+                  </div>
+
+                  {/* --- FILTER APPLY --- */}
+                  <div className="filter__apply">
+                    <button className="w-full | text-white bg-[#FB7A1A] mt-3 py-2 text-lg font-bold font-poppins click:scale">
+                      Apply
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* PRODUCTS */}
+            <div className="w-3/4 | space-y-2 pl-4">
               <div className="fcb">
                 <div>
                   <div className="relative">
