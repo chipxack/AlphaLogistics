@@ -2,7 +2,6 @@ import clsx from "clsx";
 import App from "components/layouts/App";
 import SvgDropdown from "icons/SvgDropdown";
 import SvgSearch from "icons/SvgSearch";
-import RangeInput from "pages/products/RangeInput";
 import RangeInputTest from "pages/products/RangeInputTest";
 
 const style = {
@@ -162,13 +161,14 @@ function Product() {
                           <label
                             htmlFor={brand.title}
                             className="flex items-center | space-x-2"
+                            key={brand.title}
                           >
                             <input
                               type="checkbox"
                               name={brand.title}
                               id={brand.title}
                               className={`form-checkbox rounded text-orange-primary border-gray-200 p-2 | shadow-sm focus:border-orange-300 focus:ring focus:ring-offset-0 focus:ring-orange-200 focus:ring-opacity-50`}
-                              checked={brand.active}
+                              defaultChecked={brand.active}
                             />
 
                             <li
