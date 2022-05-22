@@ -7,7 +7,7 @@ import SvgHowWeWork from "pages/home/SvgHowWeWork";
 import SvgMap from "pages/home/SvgMap";
 import Header from "components/Header";
 import SvgPointer from "icons/SvgPointer";
-import App from "components/layouts/App";
+import App from "layouts/App";
 
 function Index() {
   const windowSize = useWindowSize();

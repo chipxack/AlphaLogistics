@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import App from "components/layouts/App";
+import App from "layouts/App";
 import SvgDropdown from "icons/SvgDropdown";
 import SvgSearch from "icons/SvgSearch";
 import Link from "next/link";

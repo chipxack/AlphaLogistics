@@ -1,4 +1,4 @@
-import App from "components/layouts/App";
+import App from "layouts/App";
 
 const style = {
   inActiveMenu: `opacity-80 text-sm`,
