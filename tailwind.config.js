@@ -21,7 +21,7 @@ module.exports = {
       // Poppins -> Inter
       fontFamily: {
         inter: [`'Inter'`, `sans-serif`],
-        // exo: [`'Goldman'`, `cusrive`],
+        exo: [`'Goldman'`, `cusrive`],
         gm: [`'Goldman', cursive`],
         // poppins: [`'Inter'`, `sans-serif`],
       },

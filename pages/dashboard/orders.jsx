@@ -1,7 +1,7 @@
 import App from "layouts/App";
 import Dashboard from "layouts/Dashboard";
 import DashboardMenu from "pages/dashboard/DashboardMenu";
-import ProfileCRUD from "pages/dashboard/ProfileCRUD";
+import UserOrders from "pages/dashboard/UserOrders";
 
 function Orders(params) {
   return (
@@ -13,7 +13,7 @@ function Orders(params) {
         </Dashboard.Aside>
 
         <Dashboard.Content>
-          <ProfileCRUD />
+          <UserOrders />
         </Dashboard.Content>
       </Dashboard>
       <App.Footer />

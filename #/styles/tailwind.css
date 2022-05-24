@@ -16,6 +16,11 @@
   @apply xl:px-20;
 }
 
+
+.oddds:nth-child(odd) {
+  @apply bg-[#F7F6FE];
+}
+
 html {
   scroll-behavior: smooth;
   font-family: 'Nunito', monospace;
