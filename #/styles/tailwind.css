@@ -40,7 +40,7 @@ body {
 
 button,
 form,
-input {
+input,textarea {
   @apply outline-none focus:outline-none;
 }
 

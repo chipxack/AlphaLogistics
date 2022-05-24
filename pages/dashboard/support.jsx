@@ -1,7 +1,7 @@
 import App from "layouts/App";
 import Dashboard from "layouts/Dashboard";
 import DashboardMenu from "pages/dashboard/DashboardMenu";
-import ProfileCRUD from "pages/dashboard/ProfileCRUD";
+import ClientSupport from "pages/dashboard/Support";
 
 function Support(params) {
   return (
@@ -13,7 +13,7 @@ function Support(params) {
         </Dashboard.Aside>
 
         <Dashboard.Content>
-          <ProfileCRUD />
+          <ClientSupport />
         </Dashboard.Content>
       </Dashboard>
       <App.Footer />
