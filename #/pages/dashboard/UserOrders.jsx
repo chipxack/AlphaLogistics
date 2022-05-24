@@ -1,5 +1,7 @@
 import clsx from "clsx";
+import SvgFilter from "icons/SvgFilter";
 import SvgSearch from "icons/SvgSearch";
+import Link from "next/link";
 
 function UserOrders(props) {
   const columns = [
@@ -8,9 +10,11 @@ function UserOrders(props) {
     },
     {
       title: `Product`,
+      filter_by: `products`,
     },
     {
       title: `Date`,
+      filter_by: `date`,
     },
     {
       title: `Amount`,
@@ -20,12 +24,13 @@ function UserOrders(props) {
     },
     {
       title: `Status`,
+      filter_by: `status`,
     },
   ];
 
   const rows = [
     {
-      id: `#20462`,
+      id: `20462`,
       product: `Hat`,
       date: `13/05/2022`,
       amount: `$4.95`,
@@ -36,7 +41,7 @@ function UserOrders(props) {
       },
     },
     {
-      id: `#20462`,
+      id: `20462`,
       product: `Keyboard`,
       date: `13/05/2022`,
       amount: `$4.95`,
@@ -47,7 +52,7 @@ function UserOrders(props) {
       },
     },
     {
-      id: `#20462`,
+      id: `20462`,
       product: `Monitor`,
       date: `13/05/2022`,
       amount: `$41.95`,
@@ -58,7 +63,7 @@ function UserOrders(props) {
       },
     },
     {
-      id: `#20462`,
+      id: `20462`,
       product: `Mouse`,
       date: `13/05/2022`,
       amount: `$14.95`,
@@ -68,9 +73,8 @@ function UserOrders(props) {
         code: `warn`,
       },
     },
-
     {
-      id: `#20462`,
+      id: `20462`,
       product: `Hat`,
       date: `13/05/2022`,
       amount: `$4.95`,
@@ -80,9 +84,41 @@ function UserOrders(props) {
         code: `success`,
       },
     },
-
     {
-      id: `#20462`,
+      id: `20462`,
+      product: `Hat`,
+      date: `13/05/2022`,
+      amount: `$4.95`,
+      payment_mode: `Transfer Bank`,
+      status: {
+        title: `Process`,
+        code: `warn`,
+      },
+    },
+    {
+      id: `20462`,
+      product: `Hat`,
+      date: `13/05/2022`,
+      amount: `$4.95`,
+      payment_mode: `Transfer Bank`,
+      status: {
+        title: `Process`,
+        code: `warn`,
+      },
+    },
+    {
+      id: `20462`,
+      product: `Hat`,
+      date: `13/05/2022`,
+      amount: `$4.95`,
+      payment_mode: `Transfer Bank`,
+      status: {
+        title: `Process`,
+        code: `warn`,
+      },
+    },
+    {
+      id: `20462`,
       product: `Hat`,
       date: `13/05/2022`,
       amount: `$4.95`,
@@ -94,43 +130,7 @@ function UserOrders(props) {
     },
 
     {
-      id: `#20462`,
-      product: `Hat`,
-      date: `13/05/2022`,
-      amount: `$4.95`,
-      payment_mode: `Transfer Bank`,
-      status: {
-        title: `Process`,
-        code: `warn`,
-      },
-    },
-
-    {
-      id: `#20462`,
-      product: `Hat`,
-      date: `13/05/2022`,
-      amount: `$4.95`,
-      payment_mode: `Transfer Bank`,
-      status: {
-        title: `Process`,
-        code: `warn`,
-      },
-    },
-
-    {
-      id: `#20462`,
-      product: `Hat`,
-      date: `13/05/2022`,
-      amount: `$4.95`,
-      payment_mode: `Transfer Bank`,
-      status: {
-        title: `Process`,
-        code: `warn`,
-      },
-    },
-
-    {
-      id: `#20462`,
+      id: `20462`,
       product: `Hat`,
       date: `13/05/2022`,
       amount: `$4.95`,
@@ -141,6 +141,7 @@ function UserOrders(props) {
       },
     },
   ];
+
   return (
     <div className="py-10 px-7 | bg-[#F6F8FC]">
       <div className="fcb">
@@ -168,9 +169,15 @@ function UserOrders(props) {
                     {columns.map((d) => (
                       <th
                         scope="col"
-                        className="w-32 pl-5 font-bold py-3 text-xs text-left text-black"
+                        className="w-32 pl-5 font-bold py-3 text-sm text-left text-[#16171E]"
                       >
-                        {d.title}
+                        <div className="flex items-center">
+                          {d.title}
+
+                          {d.filter_by && (
+                            <SvgFilter className="text-[#E0E0E0] h-4 ml-2 | click:scale" />
+                          )}
+                        </div>
                       </th>
                     ))}
                   </tr>
@@ -178,36 +185,38 @@ function UserOrders(props) {
 
                 <tbody className="bg-white">
                   {rows.map((r, index) => (
-                    <tr
-                      key={index}
-                      className="oddds rounded-xl hover:bg-gray-200 border-l border-r border-transparent hover:border-indigo-500"
-                    >
-                      <td className="px-5 text-sm font-medium font-inter text-[##16171E]">
-                        <div className="flex items-center">{r.id}</div>
-                      </td>
-                      <td className="px-5 py-5 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {r.product}
-                      </td>
-                      <td className="px-5 py-5 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                        {r.date}
-                      </td>
-                      <td className="px-5 py-5 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {r.amount}
-                      </td>
-                      <td className="px-5 py-5 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {r.payment_mode}
-                      </td>
-                      <td
-                        className={clsx({
-                          "px-5 py-5 text-sm font-medium text-left whitespace-nowrap": true,
-                          "text-[#1F9254]": r.status.code === `success`,
-                          "text-[#9D0208]": r.status.code === `error`,
-                          "text-[#FAA307]": r.status.code === `warn`,
-                        })}
+                    <Link href={`/dashboard/orders/${r.id}`}>
+                      <tr
+                        key={index}
+                        className="oddds rounded-xl hover:bg-gray-200 border-l border-r border-transparent hover:border-indigo-500"
                       >
-                        {r.status.title}
-                      </td>
-                    </tr>
+                        <td className="px-5 text-sm font-medium font-inter text-[#16171E]">
+                          #{r.id}
+                        </td>
+                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap dark:text-white">
+                          {r.product}
+                        </td>
+                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap dark:text-white">
+                          {r.date}
+                        </td>
+                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap dark:text-white">
+                          {r.amount}
+                        </td>
+                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap dark:text-white">
+                          {r.payment_mode}
+                        </td>
+                        <td
+                          className={clsx({
+                            "px-5 py-5 text-sm font-medium text-left whitespace-nowrap": true,
+                            "text-[#1F9254]": r.status.code === `success`,
+                            "text-[#9D0208]": r.status.code === `error`,
+                            "text-[#FAA307]": r.status.code === `warn`,
+                          })}
+                        >
+                          {r.status.title}
+                        </td>
+                      </tr>
+                    </Link>
                   ))}
                 </tbody>
               </table>
