@@ -188,7 +188,7 @@ function UserOrders(props) {
                     <Link href={`/dashboard/orders/${r.id}`}>
                       <tr
                         key={index}
-                        className="oddds rounded-xl hover:bg-gray-200 border-l border-r border-transparent hover:border-indigo-500"
+                        className="oddds rounded-xl hover:bg-orange-primary/20 border-l border-r border-transparent hover:border-orange-500 cursor-pointer duration-200"
                       >
                         <td className="px-5 text-sm font-medium font-inter text-[#16171E]">
                           #{r.id}

@@ -1,3 +1,3 @@
-- /support        --- Tracking
-- /orders/details --- Client Support
+- /support ✅ ✅ ✅
+- /orders/details --- DETAILS
 - Exit Popup
