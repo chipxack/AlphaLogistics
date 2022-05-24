@@ -13,6 +13,10 @@ module.exports = {
         black: `#16171E`,
       },
 
+      boxShadow: {
+        100: `0px 0px 8px rgba(2, 75, 128, 0.16)`,
+      },
+
       // EXO 2   -> Goldman
       // Poppins -> Inter
       fontFamily: {

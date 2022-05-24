@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 const style = {
   menu: `w-full pl-7 py-3.5 | text-[#5D5D5F] font-inter rounded-md active:scale-95 duration-150 | flex items-center space-x-5`,
-  activeMenu: `w-full pl-7 py-3 | text-white bg-orange-primary bg-gradient-to-r from-orange-500 to-orange-primary | rounded-lg font-poppins active:scale-95 duration-150 | flex items-center space-x-5`,
+  activeMenu: `w-full pl-7 py-3 | text-white bg-orange-primary bg-gradient-to-r from-orange-primary to-[#FAA307] | rounded-lg font-poppins active:scale-95 duration-150 | flex items-center space-x-5`,
   svgActiveMenu: `text-white h-5`,
   svgMenu: `text-[#5D5D5F] h-5`,
 };
@@ -115,8 +115,8 @@ const menu = [
 
 function DashboardMenu(props) {
   return (
-    <div className="py-7 pr-20 space-y-7">
-      <div className="sidebar__user__info | flex-col fcc | space-y-3 | font-inter">
+    <div className="py-12 pr-10 space-y-7">
+      <div className="sidebar__user__info | flex-col fcc | space-y-3">
         <div className="user__info__img | h-32 w-32 overflow-hidden">
           <img
             src="/mans.png"
@@ -125,10 +125,8 @@ function DashboardMenu(props) {
           />
         </div>
 
-        <h4 className="font-exo text-[#353437] font-semibold">
-          George Adamson Jackson
-        </h4>
-        <p className="text-[#020105]">+44 20 7423 000</p>
+        <h4 className="font-exo text-[#353437]">George Adamson Jackson</h4>
+        <p className="text-[#020105] font-inter">+44 20 7423 000</p>
       </div>
 
       <div className="sidebar__menu | font-inter | space-y-3">
