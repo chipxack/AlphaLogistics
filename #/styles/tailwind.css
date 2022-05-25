@@ -16,6 +16,9 @@
   @apply xl:px-20;
 }
 
+.ReactCollapse--collapse {
+  transition: height 300ms;
+}
 
 .oddds:nth-child(odd) {
   @apply bg-[#F7F6FE];
