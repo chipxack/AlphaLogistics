@@ -140,7 +140,7 @@ function OrderInfo() {
               <OrderProgress step={2} />
 
               <div className="w-full flex justify-between">
-                <div className="ordere | space-y-1 pt-3 pl-1">
+                <div className="ordere | space-y-2 pt-3 pl-1">
                   <h3 className="font-bold text-[#16171E]">Ordered</h3>
                   <p className="text-sm text-[#353437] opacity-70">Thursday</p>
                   <h3 className="font-bold text-[#16171E]">27.01.2022</h3>
@@ -149,7 +149,7 @@ function OrderInfo() {
                   </p>
                 </div>
 
-                <div className="shipped | space-y-1 pt-3 pl-1">
+                <div className="shipped | space-y-2 pt-3 pl-1">
                   <h3 className="font-bold text-[#16171E]">Shipped</h3>
                   <p className="text-sm text-[#353437] opacity-70">Thursday</p>
                   <h3 className="font-bold text-[#16171E]">28.01.2022</h3>
@@ -161,7 +161,7 @@ function OrderInfo() {
                   </p>
                 </div>
 
-                <div className="shipped | space-y-1 pt-3 pl-1">
+                <div className="shipped | space-y-2 pt-3 pl-1">
                   <h3 className="font-bold text-[#16171E] w-10">
                     Estimated Delivery
                   </h3>
@@ -172,6 +172,52 @@ function OrderInfo() {
                   </p>
                 </div>
               </div>
+            </div>
+
+            <div className="updates px-1 pt-10 | space-y-5">
+              <h3 className="font-bold text-[#16171E] text-2xl">Updates</h3>
+
+              <div className="fcb | border-b border-[#E0E0E0] border-opacity-60 pb-2">
+                <h3 className="font-bold text-[#16171E] text-lg w-1/2">Data</h3>
+                <h3 className="font-bold text-[#16171E] text-lg w-1/2">
+                  Places
+                </h3>
+              </div>
+              {[
+                {
+                  title: `IN/AT MAILBOX`,
+                },
+                {
+                  title: `OUT FOR DELIVERY`,
+                },
+                {
+                  title: `IN/AT ARRIVED USPS SORT FACILITY`,
+                },
+                {
+                  title: `DEPARTURED ORIGIN ECOMMERCE FACILITY`,
+                },
+              ].map((d, index) => (
+                <div className="flex justify-between | border-b border-[#E0E0E0] border-opacity-60 py-5">
+                  <div className="ordere | space-y-2 w-1/2">
+                    <p className="text-sm text-[#353437] opacity-70">
+                      Thursday
+                    </p>
+                    <h3 className="font-bold text-[#16171E]">27.01.2022</h3>
+                    <p className="text-sm text-[#353437] opacity-70">
+                      22:00 Local Time
+                    </p>
+                  </div>
+
+                  <div className="ordere | space-y-2 w-1/2">
+                    <h3 className="font-bold text-[#16171E] hover:text-orange-primary duration-150 text-left w-full">
+                      {d.title}
+                    </h3>
+                    <p className="text-sm text-[#353437] opacity-70">
+                      Paris, France
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </Collapse>
         </div>
