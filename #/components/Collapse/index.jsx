@@ -7,7 +7,7 @@ const CollapseContext = React.createContext({
 });
 
 function CollapseCustom(props) {
-  const [collapse, toggleCollapse] = useState(false);
+  const [collapse, toggleCollapse] = useState(props.openByDefault || false);
 
   return (
     <CollapseContext.Provider value={{ collapse, toggleCollapse }}>
@@ -18,6 +18,14 @@ function CollapseCustom(props) {
 
 function Button(props) {
   const { collapse, toggleCollapse } = React.useContext(CollapseContext);
+
+  const toggle = () => {
+    toggleCollapse(!collapse);
+  };
+
+  if (typeof props.children === `function`) {
+    return props.children({ isActive: collapse, toggle });
+  }
 
   return (
     <div onClick={() => toggleCollapse(!collapse)} className="cursor-pointer">

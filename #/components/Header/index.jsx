@@ -44,7 +44,7 @@ function Header(props) {
         </div>
 
         <div className="fcc space-x-7">
-          <SvgSearch className="h-5" />
+          <SvgSearch className="h-5 text-white cursor-pointer" />
 
           <button className={style.registerBtn}>
             <p>Login to Account</p>

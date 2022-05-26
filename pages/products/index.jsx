@@ -4,6 +4,7 @@ import SvgDropdown from "icons/SvgDropdown";
 import SvgSearch from "icons/SvgSearch";
 import Link from "next/link";
 import RangeInputTest from "pages/products/RangeInputTest";
+import CollapseCustom from "components/Collapse";
 
 const style = {
   inActiveMenu: `opacity-80 text-sm`,
@@ -47,144 +48,185 @@ function Product() {
 
                 <div className="filter">
                   {/* --- FILTER CATEGORIES --- */}
-                  <div className="filter__categories | py-5">
-                    {/* --- FILTER CATEGORIES BTN  --- */}
-                    <div className="filter__categories__btn | fcb cursor-pointer">
-                      <p className="font-bold text-base text-black">Cars</p>
-                      <SvgDropdown className="h-2 text-[#FB421A]" />
-                    </div>
-
-                    {/* FILTER CATEGORIES BODY */}
-                    <div className="filter__categories__content | pt-5">
-                      <ul className="space-y-4">
-                        {[
-                          {
-                            title: `Washing machines`,
-                            active: true,
-                          },
-                          {
-                            title: `Vacuum cleaners`,
-                            active: false,
-                          },
-                          {
-                            title: `Irons`,
-                            active: false,
-                          },
-                          {
-                            title: `Steam cleaners and steamers`,
-                            active: false,
-                          },
-                          {
-                            title: `Filters and softeners for water`,
-                            active: false,
-                          },
-                          {
-                            title: `High pressure washers`,
-                            active: false,
-                          },
-                          {
-                            title: `Ironing boards`,
-                            active: false,
-                          },
-                          {
-                            title: `Smart Home Systems`,
-                            active: false,
-                          },
-                          {
-                            title: `Electric brooms`,
-                            active: false,
-                          },
-                          {
-                            title: `Sewing machines`,
-                            active: false,
-                          },
-                          {
-                            title: `Robot vacuum cleaners`,
-                            active: false,
-                          },
-                        ].map((category, index) => (
-                          <li
-                            className={clsx({
-                              [style.activeFilterCategoryMenu]: category.active,
-                              [style.inActiveFilterCategoryMenu]:
-                                !category.active,
-                            })}
-                            key={index}
+                  <CollapseCustom openByDefault={true}>
+                    <div className="filter__categories | py-5">
+                      {/* --- FILTER CATEGORIES BTN  --- */}
+                      <CollapseCustom.Button>
+                        {({ isActive, toggle }) => (
+                          <div
+                            className="filter__categories__btn | fcb cursor-pointer"
+                            onClick={() => toggle()}
                           >
-                            {category.title}
-                          </li>
-                        ))}
-                      </ul>
+                            <p className="font-bold text-base text-black">
+                              Cars
+                            </p>
+                            <SvgDropdown
+                              className={clsx({
+                                "h-2 text-[#FB421A] duration-200": true,
+                                "-rotate-90": !isActive,
+                                "-rotate-0": isActive,
+                              })}
+                            />
+                          </div>
+                        )}
+                      </CollapseCustom.Button>
+
+                      {/* FILTER CATEGORIES BODY */}
+                      <CollapseCustom.Content>
+                        <div className="filter__categories__content | pt-5">
+                          <ul className="space-y-4">
+                            {[
+                              {
+                                title: `Washing machines`,
+                                active: true,
+                              },
+                              {
+                                title: `Vacuum cleaners`,
+                                active: false,
+                              },
+                              {
+                                title: `Irons`,
+                                active: false,
+                              },
+                              {
+                                title: `Steam cleaners and steamers`,
+                                active: false,
+                              },
+                              {
+                                title: `Filters and softeners for water`,
+                                active: false,
+                              },
+                              {
+                                title: `High pressure washers`,
+                                active: false,
+                              },
+                              {
+                                title: `Ironing boards`,
+                                active: false,
+                              },
+                              {
+                                title: `Smart Home Systems`,
+                                active: false,
+                              },
+                              {
+                                title: `Electric brooms`,
+                                active: false,
+                              },
+                              {
+                                title: `Sewing machines`,
+                                active: false,
+                              },
+                              {
+                                title: `Robot vacuum cleaners`,
+                                active: false,
+                              },
+                            ].map((category, index) => (
+                              <li
+                                className={clsx({
+                                  [style.activeFilterCategoryMenu]:
+                                    category.active,
+                                  [style.inActiveFilterCategoryMenu]:
+                                    !category.active,
+                                })}
+                                key={index}
+                              >
+                                {category.title}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </CollapseCustom.Content>
                     </div>
-                  </div>
+                  </CollapseCustom>
 
                   {/* --- FILTER BRANDS --- */}
-                  <div className="filter__brands | py-5">
-                    {/* --- FILTER BRANDS BTN  --- */}
-                    <div className="filter__brands__btn | fcb">
-                      <p className="font-bold">Brands</p>
-                      <SvgDropdown className="h-2 text-[#FB421A]" />
-                    </div>
-                    {/* FILTER BRANDS BODY */}
-                    <div className="filter__brands__content | pt-5">
-                      <ul className="space-y-5">
-                        {[
-                          {
-                            title: `Sony`,
-                            active: false,
-                          },
-                          {
-                            title: `Samsung`,
-                            active: true,
-                          },
-                          {
-                            title: `Artel`,
-                            active: false,
-                          },
-
-                          {
-                            title: `LG`,
-                            active: false,
-                          },
-                          {
-                            title: `Shivaki`,
-                            active: false,
-                          },
-                          {
-                            title: `Premier`,
-                            active: false,
-                          },
-                          {
-                            title: `Moonx`,
-                            active: false,
-                          },
-                        ].map((brand) => (
-                          <label
-                            htmlFor={brand.title}
-                            className="flex items-center | space-x-2"
-                            key={brand.title}
+                  <div className="filter__brands | py-5 pb-12">
+                    <CollapseCustom openByDefault={true}>
+                      {/* --- FILTER BRANDS BTN  --- */}
+                      <CollapseCustom.Button>
+                        {({ isActive, toggle }) => (
+                          <div
+                            className="filter__categories__btn | fcb cursor-pointer"
+                            onClick={() => toggle()}
                           >
-                            <input
-                              type="checkbox"
-                              name={brand.title}
-                              id={brand.title}
-                              className={`form-checkbox rounded text-orange-primary border-gray-200 p-2 | shadow-sm focus:border-orange-300 focus:ring focus:ring-offset-0 focus:ring-orange-200 focus:ring-opacity-50`}
-                              defaultChecked={brand.active}
-                            />
-
-                            <li
+                            <p className="font-bold text-base text-black">
+                              Brans
+                            </p>
+                            <SvgDropdown
                               className={clsx({
-                                [style.activeFilterCategoryMenu]: brand.active,
-                                [style.inActiveFilterCategoryMenu]:
-                                  !brand.active,
+                                "h-2 text-[#FB421A] duration-200": true,
+                                "-rotate-90": !isActive,
+                                "-rotate-0": isActive,
                               })}
-                            >
-                              {brand.title}
-                            </li>
-                          </label>
-                        ))}
-                      </ul>
-                    </div>
+                            />
+                          </div>
+                        )}
+                      </CollapseCustom.Button>
+
+                      {/* FILTER BRANDS BODY */}
+                      <CollapseCustom.Content>
+                        <div className="filter__brands__content | pt-5">
+                          <ul className="space-y-5">
+                            {[
+                              {
+                                title: `Sony`,
+                                active: false,
+                              },
+                              {
+                                title: `Samsung`,
+                                active: true,
+                              },
+                              {
+                                title: `Artel`,
+                                active: false,
+                              },
+
+                              {
+                                title: `LG`,
+                                active: false,
+                              },
+                              {
+                                title: `Shivaki`,
+                                active: false,
+                              },
+                              {
+                                title: `Premier`,
+                                active: false,
+                              },
+                              {
+                                title: `Moonx`,
+                                active: false,
+                              },
+                            ].map((brand) => (
+                              <label
+                                htmlFor={brand.title}
+                                className="flex items-center | space-x-2"
+                                key={brand.title}
+                              >
+                                <input
+                                  type="checkbox"
+                                  name={brand.title}
+                                  id={brand.title}
+                                  className={`form-checkbox rounded text-orange-primary border-gray-200 p-2 | shadow-sm focus:border-orange-300 focus:ring focus:ring-offset-0 focus:ring-orange-200 focus:ring-opacity-50`}
+                                  defaultChecked={brand.active}
+                                />
+
+                                <li
+                                  className={clsx({
+                                    [style.activeFilterCategoryMenu]:
+                                      brand.active,
+                                    [style.inActiveFilterCategoryMenu]:
+                                      !brand.active,
+                                  })}
+                                >
+                                  {brand.title}
+                                </li>
+                              </label>
+                            ))}
+                          </ul>
+                        </div>
+                      </CollapseCustom.Content>
+                    </CollapseCustom>
                   </div>
 
                   {/* --- FILTER PRICE --- */}
