@@ -137,7 +137,7 @@ function OrderInfo() {
 
           <Collapse isOpened={detailsMenu}>
             <div className="order__progress__indicactor duration-200">
-              <OrderProgress step={2} />
+              <OrderProgress step={3} />
 
               <div className="w-full flex justify-between">
                 <div className="ordere | space-y-2 pt-3 pl-1">

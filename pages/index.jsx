@@ -286,7 +286,7 @@ function Index() {
         <div className="bounce w-[35rem] h-[30rem] opacity-[72%] absolute -bottom-48 -left-56 | blur-2xl duration-150 rounded-[50%] bg-[#FB7A1A]"></div>
       </section>
 
-      <section className="py-20 | relative | overflow-y-hidden">
+      <section className="relative | overflow-y-hidden pt-20">
         <div className="relative | container mx-auto z-50">
           <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
             How we work
@@ -316,9 +316,15 @@ function Index() {
 
           <SvgHowWeWork className="w-full pt-20" />
         </div>
+
+        <div className="container ml-auto 2xl:mx-auto h-[500px] overflow-hidden relative mt-16 rounded-l-md">
+          <div className="img__tracu w-full absolute right-0 top-0">
+            <img src="/trucks.png" alt="trucks" className="h-full w-full" />
+          </div>
+        </div>
       </section>
 
-      <section className="bg-black | py-20 | relative | overflow-hidden">
+      {/* <section className="bg-black | py-20 | relative | overflow-hidden">
         <div className="relative | container mx-auto z-50 | space-y-7">
           <h3 className="relative | h2 text-white font-gm | text-center">
             Leave a request for a <span className="py-2 block"></span>{" "}
@@ -338,7 +344,7 @@ function Index() {
         </div>
 
         <div className="bounce w-[35rem] h-[30rem] opacity-[72%] absolute -top-48 -right-20 | blur-2xl duration-150 rounded-[50%] bg-[#FB7A1A]"></div>
-      </section>
+      </section> */}
 
       <section className="py-20 | relative | overflow-y-hidden">
         <div className="relative | container mx-auto z-50">
@@ -486,37 +492,37 @@ function Index() {
               {
                 id: `#forcars`,
                 img: `/p1.png`,
-                title: `Valve cover 23397716`,
+                title: `Трубка системы рециркуляции (EGR) Hyundai-Kia 28417-2A690`,
               },
               {
                 id: `#fortracks`,
                 img: `/p2.png`,
-                title: `Valve cover 23397716`,
+                title: `Трубка системы рециркуляции (EGR) Hyundai-Kia 28417-2A690`,
               },
 
               {
                 id: `#forcars`,
                 img: `/p3.png`,
-                title: `Valve cover 23397716`,
+                title: `Трубка системы рециркуляции (EGR) Hyundai-Kia 28417-2A690`,
               },
               {
                 id: `#forcars`,
                 img: `/p4.png`,
-                title: `Valve cover 23397716`,
+                title: `Трубка системы рециркуляции (EGR) Hyundai-Kia 28417-2A690`,
               },
               {
                 id: `#forcars`,
                 img: `/p5.png`,
-                title: `Valve cover 23397716`,
+                title: `Трубка системы рециркуляции (EGR) Hyundai-Kia 28417-2A690`,
               },
               {
                 id: `#fortracks`,
                 img: `/p6.png`,
-                title: `Valve cover 23397716`,
+                title: `Трубка системы рециркуляции (EGR) Hyundai-Kia 28417-2A690`,
               },
             ].map((product, index) => (
               <div
-                className="product | rounded-md overflow-hidden | border border-gray-100 shadow-p | cursor-pointer"
+                className="product | rounded-md overflow-hidden | shadow-p | cursor-pointer"
                 key={index}
               >
                 <div className="h-64 overflow-hidden | relative">
@@ -531,10 +537,14 @@ function Index() {
                   </div>
                 </div>
 
-                <div className="product__info | py-5 px-5 space-y-3 | bg-[#F5F5F7]">
-                  <h4 className="font-inter text-[#020105] font-semibold text-lg">
+                <div className="product__info | py-5 px-5 space-y-3">
+                  <h4 className="font-inter text-[#020105]/90 font-[600]">
                     {product.title}
                   </h4>
+
+                  <p className="text-[#5D5D5F] text-sm">
+                    По запросу покажем состояние запчасти по видео 284172a690
+                  </p>
 
                   <button className="inline-flex items-center | space-x-4 group">
                     <p className="text-[#FF9A00] text-base">Details</p>
