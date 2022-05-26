@@ -148,3 +148,24 @@ input,textarea {
   box-shadow: 0px 8px 24px rgba(116, 116, 116, 0.16);
   transition: all 150ms ease-in;
 }
+
+#menu__link__1:hover ~ #bgbg {
+  transform: translateX(0%);
+}
+
+#menu__link__2:hover ~ #bgbg {
+  transform: translateX(150%);
+}
+
+#menu__link__3:hover ~ #bgbg {
+  transform: translateX(250%);
+}
+
+#menu__link__4:hover ~ #bgbg {
+  transform: translateX(375%);
+}
+
+
+
+
+

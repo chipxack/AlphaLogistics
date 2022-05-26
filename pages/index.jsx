@@ -8,135 +8,106 @@ import SvgMap from "pages/home/SvgMap";
 import Header from "components/Header";
 import SvgPointer from "icons/SvgPointer";
 import App from "layouts/App";
+import VerticalLine from "pages/home/VerticalLine";
 
 function Index() {
   const windowSize = useWindowSize();
 
   return (
     <App>
-      <section className="lg:h-full 2xl:h-auto overflow-x-hidden main__section | fb_vertically">
-        <App.Header />
+      <section className="2xl:h-auto overflow-x-hidden bg-[#000000] | relative">
+        <App.Header dark={true} />
 
-        <div className="fcb container mx-auto w-full | overflow-hidden overflow-y-hidden">
-          <div className="w-3/5 | flex flex-col | space-y-5">
-            <h1 className="h2 uppercase | pb-5 font-inter">
+        <VerticalLine opacity={60} />
+
+        <div className="relative container mx-auto w-full | overflow-hidden overflow-y-hidden">
+          <div className="w-full | py-10 flex flex-col | space-y-5">
+            <h1 className="font-gm font-bold text-white text-3xl uppercase">
               Need <span className="text-orange-primary">to ship</span> a
               package?
             </h1>
 
-            <h1 className="h2 uppercase font-inter">
-              Alpha Logistics has a <br />
-              solution for you
+            <h1 className="font-gm font-bold text-3xl text-white uppercase">
+              Alpha Logistics has a solution for you
             </h1>
-
-            <p className="p text-sm font-exo">
-              Finding the exact product or a very similar one <br /> on the
-              market from our partner manufacturers.
-            </p>
-
-            <button className="inline-flex items-center | space-x-4 group">
-              <p className="text-[#FF9A00]">Read more</p>
-
-              <SvgPointer className="h-6 group-hover:translate-x-1 duration-150 text-orange-primary" />
-            </button>
           </div>
+        </div>
 
-          <div className="w-2/5 | relative">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 882 877"
-              height={500}
-            >
-              <circle
-                cx="521"
-                cy="521"
-                r="520.5"
-                stroke="url(#paint0_linear_406_2552)"
-              ></circle>
-              <defs>
-                <linearGradient
-                  id="paint0_linear_406_2552"
-                  x1="0"
-                  x2="858.5"
-                  y1="550"
-                  y2="805.5"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#fff"></stop>
-                  <stop
-                    offset="0.424"
-                    stopColor="#fff"
-                    stopOpacity="0.19"
-                  ></stop>
-                  <stop offset="1" stopColor="#fff" stopOpacity="0.01"></stop>
-                </linearGradient>
-              </defs>
-            </svg>
-
-            <a
-              href="#"
-              className="absolute -left-16 bottom-20 z-50 block w-36 h-36 p-5 fcc rounded-full font-exo font-semibold | bg-[#FB7A1A] text-white | click:scale"
-            >
-              Order now
-            </a>
+        <div className="fcc box-border px-5 pr-10">
+          <div className="| w-full lg:max-w-[1600px] mx-auto fcc h-[500px] overflow-hidden relative">
+            <img src="/traffic.png" alt="alpha__logistics" className="w-full" />
+            <div className="w-2/5 | absolute left-32 bottom-16">
+              <a className="z-50 block w-32 h-32 fcc rounded-full font-exo font-semibold | bg-[#FB7A1A] text-white | click:scale">
+                Order now
+              </a>
+            </div>
           </div>
         </div>
 
         <div className="bg-[#020105] overflow-y-hidden">
           <div className="container mx-auto">
-            <ul className="fcb | h-24">
-              <li className="py-5 w-1/4 fcc | cursor-pointer | relative | group">
-                <div className="w-[14rem] h-[10rem] blur-2xl opacity-0 duration-150 rounded-[50%] group-hover:opacity-75 bg-[#FB7A1A]"></div>
-
+            <ul className="flex items-center justify-evenly | menu__list relative group">
+              <li
+                id="menu__link__1"
+                className="py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative |"
+              >
                 <div className="inline-flex fcc space-x-4 absolute inset-0">
                   <p className="font-bold font-exo text-white">Order Product</p>
 
-                  <SvgPointer className="h-6 group-hover:translate-x-1 text-white duration-150" />
+                  <SvgPointer className="h-6 text-white duration-150" />
                 </div>
               </li>
-              <li className="py-5 w-1/4 fcc | cursor-pointer | relative | group">
-                <div className="w-[14rem] h-[10rem] blur-2xl opacity-0 duration-200 rounded-[50%] group-hover:opacity-75 bg-[#FB7A1A]"></div>
-
+              <li
+                id="menu__link__2"
+                className="py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative | group"
+              >
                 <div className="inline-flex fcc space-x-4 absolute inset-0">
                   <p className="font-bold font-exo text-white">
                     Show order location
                   </p>
 
-                  <SvgPointer className="h-6 group-hover:translate-x-1 text-white duration-150" />
+                  <SvgPointer className="h-6 text-white duration-150" />
                 </div>
               </li>{" "}
-              <li className="py-5 w-1/4 fcc | cursor-pointer | relative | group">
-                <div className="w-[14rem] h-[10rem] blur-2xl opacity-0 duration-200 rounded-[50%] group-hover:opacity-95 bg-[#FB7A1A]"></div>
-
+              <li
+                id="menu__link__3"
+                className="menu__link py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative | group"
+              >
                 <div className="inline-flex fcc space-x-4 absolute inset-0">
                   <p className="font-bold font-exo text-white">How we work</p>
 
-                  <SvgPointer className="h-6 group-hover:translate-x-1 text-white duration-150" />
+                  <SvgPointer className="h-6 text-white duration-150" />
                 </div>
               </li>
-              <li className="py-5 w-1/4 fcc | cursor-pointer | relative | group">
-                <div className="w-[14rem] h-[10rem] blur-2xl opacity-0 duration-200 rounded-[50%] group-hover:opacity-75 bg-[#FB7A1A]"></div>
-
+              <li
+                id="menu__link__4"
+                className="menu__link py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative | group"
+              >
                 <div className="inline-flex fcc space-x-4 absolute inset-0">
                   <p className="font-bold font-exo text-white">
                     Login to Account
                   </p>
 
-                  <SvgPointer className="h-6 group-hover:translate-x-1 text-white duration-150" />
+                  <SvgPointer className="h-6 text-white duration-150" />
                 </div>
               </li>
+              <div
+                id="bgbg"
+                className="absolute left-0 opacity-0 group-hover:opacity-70 w-[14rem] h-[10rem] blur-2xl duration-500 rounded-[50%] bg-[#FB7A1A]"
+              ></div>
             </ul>
           </div>
         </div>
       </section>
 
-      <section className="bg-gray-to-white | overflow-x-hidden">
+      <section className="bg-[#000000] text-white | overflow-x-hidden | relative">
+        <VerticalLine opacity={60} />
+
         <div className="container mx-auto | py-12 | fc | font-exo">
           <div className="w-1/5 | space-y-3">
             <p className="opacity-50 text-base">About company</p>
 
-            <Logo className="h-8" dark={true} />
+            <Logo className="h-8" />
 
             <button className="inline-flex items-center | space-x-4 group">
               <p className="text-[#FF9A00]">Read more</p>
@@ -145,7 +116,7 @@ function Index() {
             </button>
           </div>
 
-          <div className="w-4/5 text-[#020105] | space-y-7">
+          <div className="w-4/5 text-white text-opacity-70 | space-y-7">
             <p className="font-inter">
               Phoenix Global Trading is an international operating global
               company. After having almost a decade of experience in sales,
@@ -232,7 +203,9 @@ function Index() {
         </div>
       </section>
 
-      <section className="bg-black | py-20 | relative | overflow-y-hidden">
+      <section className="bg-[#000000] | py-20 | relative | overflow-y-hidden">
+        <VerticalLine opacity={60} />
+
         <div className="relative | container mx-auto z-50">
           <h3 className="relative | text-white font-gm text-2xl font-extrabold | border-b border-gray-400/25 pb-7">
             Our services
