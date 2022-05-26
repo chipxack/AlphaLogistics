@@ -9,6 +9,8 @@ import Header from "components/Header";
 import SvgPointer from "icons/SvgPointer";
 import App from "layouts/App";
 import VerticalLine from "pages/home/VerticalLine";
+import HorizontalLine from "pages/home/HorizontalLine";
+import CollapseCustom from "components/Collapse";
 
 function Index() {
   const windowSize = useWindowSize();
@@ -22,12 +24,12 @@ function Index() {
 
         <div className="relative container mx-auto w-full | overflow-hidden overflow-y-hidden">
           <div className="w-full | py-10 flex flex-col | space-y-5">
-            <h1 className="font-gm font-bold text-white text-3xl uppercase">
+            <h1 className="font-gm font-bold text-white text-4xl uppercase">
               Need <span className="text-orange-primary">to ship</span> a
               package?
             </h1>
 
-            <h1 className="font-gm font-bold text-3xl text-white uppercase">
+            <h1 className="font-gm font-bold text-4xl text-white uppercase">
               Alpha Logistics has a solution for you
             </h1>
           </div>
@@ -46,10 +48,10 @@ function Index() {
 
         <div className="bg-[#020105] overflow-y-hidden">
           <div className="container mx-auto">
-            <ul className="flex items-center justify-evenly | menu__list relative group">
+            <ul className="flex items-center | menu__list relative group">
               <li
                 id="menu__link__1"
-                className="py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative |"
+                className="flex-1 py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative |"
               >
                 <div className="inline-flex fcc space-x-4 absolute inset-0">
                   <p className="font-bold font-exo text-white">Order Product</p>
@@ -59,7 +61,7 @@ function Index() {
               </li>
               <li
                 id="menu__link__2"
-                className="py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative | group"
+                className="flex-1 py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative | group"
               >
                 <div className="inline-flex fcc space-x-4 absolute inset-0">
                   <p className="font-bold font-exo text-white">
@@ -71,7 +73,7 @@ function Index() {
               </li>{" "}
               <li
                 id="menu__link__3"
-                className="menu__link py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative | group"
+                className="menu__link flex-1 py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative | group"
               >
                 <div className="inline-flex fcc space-x-4 absolute inset-0">
                   <p className="font-bold font-exo text-white">How we work</p>
@@ -81,7 +83,7 @@ function Index() {
               </li>
               <li
                 id="menu__link__4"
-                className="menu__link py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative | group"
+                className="menu__link flex-1 py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative | group"
               >
                 <div className="inline-flex fcc space-x-4 absolute inset-0">
                   <p className="font-bold font-exo text-white">
@@ -93,7 +95,7 @@ function Index() {
               </li>
               <div
                 id="bgbg"
-                className="absolute left-0 opacity-0 group-hover:opacity-70 w-[14rem] h-[10rem] blur-2xl duration-500 rounded-[50%] bg-[#FB7A1A]"
+                className="absolute left-0 opacity-0 group-hover:opacity-70 w-1/4 h-[10rem] blur-2xl duration-500 rounded-[50%] bg-[#FB7A1A]"
               ></div>
             </ul>
           </div>
@@ -101,6 +103,7 @@ function Index() {
       </section>
 
       <section className="bg-[#000000] text-white | overflow-x-hidden | relative">
+        <HorizontalLine opacity={60} />
         <VerticalLine opacity={60} />
 
         <div className="container mx-auto | py-12 | fc | font-exo">
@@ -207,50 +210,77 @@ function Index() {
         <VerticalLine opacity={60} />
 
         <div className="relative | container mx-auto z-50">
-          <h3 className="relative | text-white font-gm text-2xl font-extrabold | border-b border-gray-400/25 pb-7">
+          <h3 className="relative | text-white font-gm text-2xl font-extrabold | pb-7">
             Our services
           </h3>
+          <div className="flex">
+            <div className="service__img__wrapper | w-1/2 h-80">
+              <img
+                src="/service1.png"
+                alt="service__img"
+                className="service__img h-full object-cover"
+              />
+            </div>
 
-          <ul className="relative | w-full">
-            <li className="flex items-center | py-4 px-12 | text-white | border-b border-gray-400/25">
-              <div className="flex items-center | w-1/2 | space-x-10">
-                <span className="text-[#C2C2C3] font-gm">01</span>
+            <ul className="relative | w-1/2">
+              <CollapseCustom>
+                <li className="flex-col | py-7 ml-7 | text-white | border-y border-gray-400/25">
+                  <CollapseCustom.Button>
+                    <div className="font-exo text-lg | flex items-center | w-full space-x-3">
+                      <span className="text-[#C2C2C3]">01</span>
 
-                <h4 className="font-bold">Easy researching</h4>
-              </div>
+                      <h4 className="font-bold">Easy researching</h4>
+                    </div>
+                  </CollapseCustom.Button>
 
-              <p className="w-1/2 | font-inter opacity-60 text-sm leading-6">
-                Finding the exact product or a very similar one <br />
-                on the market from our partner manufacturers
-              </p>
-            </li>
+                  <CollapseCustom.Content>
+                    <p className="w-full | font-inter opacity-60 text-sm leading-6 pt-5">
+                      Finding the exact product or a very similar one on the
+                      market from our partner manufacturers
+                    </p>
+                  </CollapseCustom.Content>
+                </li>
+              </CollapseCustom>
 
-            <li className="flex items-center | py-4 px-12 | text-white | border-b  border-gray-400/25">
-              <div className="flex items-center | w-1/2 | space-x-10">
-                <span className="text-[#C2C2C3] font-gm">02</span>
+              <CollapseCustom>
+                <li className="flex-col | py-7 ml-7 | text-white | border-y border-gray-400/25">
+                  <CollapseCustom.Button>
+                    <div className="font-exo text-lg | flex items-center | w-full space-x-3">
+                      <span className="text-[#C2C2C3]">02</span>
 
-                <h4 className="font-bold">More other products</h4>
-              </div>
+                      <h4 className="font-bold">More other products</h4>
+                    </div>
+                  </CollapseCustom.Button>
 
-              <p className="w-1/2 | font-inter opacity-60 text-sm leading-6">
-                Finding the exact product or a very similar one <br />
-                on the market from our partner manufacturers
-              </p>
-            </li>
+                  <CollapseCustom.Content>
+                    <p className="w-full | font-inter opacity-60 text-sm leading-6 pt-5">
+                      Finding the exact product or a very similar one on the
+                      market from our partner manufacturers
+                    </p>
+                  </CollapseCustom.Content>
+                </li>
+              </CollapseCustom>
 
-            <li className="flex items-center | py-4 px-12 | text-white | border-b border-gray-400/25">
-              <div className="flex items-center | w-1/2 | space-x-10">
-                <span className="text-[#C2C2C3] font-gm">03</span>
+              <CollapseCustom>
+                <li className="flex-col | py-7 ml-7 | text-white | border-y border-gray-400/25">
+                  <CollapseCustom.Button>
+                    <div className="font-exo text-lg | flex items-center | w-full space-x-3">
+                      <span className="text-[#C2C2C3]">03</span>
 
-                <h4 className="font-bold">Deliver on 24 countries</h4>
-              </div>
+                      <h4 className="font-bold">Deliver on 24 countries</h4>
+                    </div>
+                  </CollapseCustom.Button>
 
-              <p className="w-1/2 | font-inter opacity-60 text-sm leading-6">
-                Finding the exact product or a very similar one <br />
-                on the market from our partner manufacturers
-              </p>
-            </li>
-          </ul>
+                  <CollapseCustom.Content>
+                    <p className="w-full | font-inter opacity-60 text-sm leading-6 pt-5">
+                      Finding the exact product or a very similar one on the
+                      market from our partner manufacturers
+                    </p>
+                  </CollapseCustom.Content>
+                </li>
+              </CollapseCustom>
+            </ul>
+          </div>
         </div>
 
         <div className="bounce w-[35rem] h-[30rem] opacity-[72%] absolute -bottom-48 -left-56 | blur-2xl duration-150 rounded-[50%] bg-[#FB7A1A]"></div>

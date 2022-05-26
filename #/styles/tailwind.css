@@ -154,15 +154,15 @@ input,textarea {
 }
 
 #menu__link__2:hover ~ #bgbg {
-  transform: translateX(150%);
+  transform: translateX(100%);
 }
 
 #menu__link__3:hover ~ #bgbg {
-  transform: translateX(250%);
+  transform: translateX(200%);
 }
 
 #menu__link__4:hover ~ #bgbg {
-  transform: translateX(375%);
+  transform: translateX(300%);
 }
 
 
