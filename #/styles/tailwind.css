@@ -27,7 +27,7 @@
 html {
   scroll-behavior: smooth;
   font-family: 'Nunito', monospace;
-  /* @apply select-none; */
+  @apply select-none;
   -webkit-font-smoothing: antialiased;
 }
 
