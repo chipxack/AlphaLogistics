@@ -289,6 +289,7 @@ function Index() {
       </section>
 
       <section className="relative | overflow-y-hidden pt-20">
+        <VerticalLine opacity={10} />
         <div className="relative | container mx-auto z-50">
           <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
             How we work
@@ -349,6 +350,8 @@ function Index() {
       </section> */}
 
       <section className="py-20 | relative | overflow-y-hidden">
+        <VerticalLine opacity={10} />
+
         <div className="relative | container mx-auto z-50">
           <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
             Landmark of branches
@@ -359,6 +362,8 @@ function Index() {
       </section>
 
       <section className="py-20 | relative | overflow-y-hidden">
+        <VerticalLine opacity={10} />
+
         <div className="relative | container mx-auto z-50">
           <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
             What you take from Us:
@@ -456,6 +461,8 @@ function Index() {
       </section>
 
       <section className="relative | overflow-y-hidden">
+        <VerticalLine opacity={10} />
+
         <div className="relative | container mx-auto z-50">
           <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
             What you take from Us:
@@ -575,6 +582,8 @@ function Index() {
       </section>
 
       <section className="py-20 | relative | overflow-y-hidden bg-[#000000]">
+        <VerticalLine opacity={60} />
+
         <div className="relative | container mx-auto z-50">
           <div className="fcb pb-12">
             <h3 className="relative | text-white font-gm text-2xl font-extrabold">
@@ -727,6 +736,7 @@ function Index() {
       </section> */}
 
       <section className="py-20 | relative | overflow-y-hidden">
+        <VerticalLine opacity={10} />
         <div className="relative | container mx-auto z-50">
           <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
             Partners
