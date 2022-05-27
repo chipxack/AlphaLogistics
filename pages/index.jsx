@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState } from "react";
 import Footer from "components/Footer";
 import Logo from "components/Logo";
 import useWindowSize from "hooks/useWindowSize";
@@ -16,6 +17,14 @@ import clsx from "clsx";
 
 function Index() {
   const windowSize = useWindowSize();
+  const container = useRef(false);
+  const [containerWidth, setContainerWidth] = useState(0);
+
+  useEffect(() => {
+    setContainerWidth(container.current.clientWidth);
+  }, [container, windowSize]);
+
+  console.log((+windowSize.width - +containerWidth) / 2);
 
   return (
     <App>
@@ -24,7 +33,10 @@ function Index() {
 
         <VerticalLine opacity={60} />
 
-        <div className="relative container mx-auto w-full | overflow-hidden overflow-y-hidden">
+        <div
+          ref={container}
+          className="relative container mx-auto w-full | overflow-hidden overflow-y-hidden"
+        >
           <div className="w-full | py-10 flex flex-col | space-y-5">
             <h1 className="font-gm font-bold text-white text-4xl uppercase">
               Need <span className="text-orange-primary">to ship</span> a
@@ -320,9 +332,18 @@ function Index() {
           <SvgHowWeWork className="w-full pt-20" />
         </div>
 
-        <div className="container ml-auto 2xl:mx-auto h-[500px] overflow-hidden relative mt-16 rounded-l-md">
-          <div className="img__tracu w-full absolute right-0 top-0">
-            <img src="/trucks.png" alt="trucks" className="h-full w-full" />
+        <div
+          className="relative w-full overflow-hidden h-[500px] mt-16 rounded-l-md"
+          style={{
+            paddingLeft: (+windowSize.width - +containerWidth) / 2 + 80,
+          }}
+        >
+          <div className="absolute h-full w-full overflow-hidden">
+            <img
+              src="/trucks.png"
+              alt="trucks"
+              className="w-full overflow-hidden"
+            />
           </div>
         </div>
       </section>
