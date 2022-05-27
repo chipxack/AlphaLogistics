@@ -166,8 +166,9 @@ function UserOrders(props) {
               <table className="min-w-full table-fixed">
                 <thead className="bg-white">
                   <tr>
-                    {columns.map((d) => (
+                    {columns.map((d, index) => (
                       <th
+                        key={index}
                         scope="col"
                         className="w-32 pl-5 font-bold py-3 text-sm text-left text-[#16171E]"
                       >
@@ -185,7 +186,7 @@ function UserOrders(props) {
 
                 <tbody className="bg-white">
                   {rows.map((r, index) => (
-                    <Link href={`/dashboard/orders/${r.id}`}>
+                    <Link href={`/dashboard/orders/${r.id}`} key={index}>
                       <tr
                         key={index}
                         className="oddds rounded-xl hover:bg-orange-primary/20 border-l border-r border-transparent hover:border-orange-500 cursor-pointer duration-200"

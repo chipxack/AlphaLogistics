@@ -142,8 +142,8 @@ function DashboardMenu(props) {
       </div>
 
       <div className="sidebar__menu | font-inter | space-y-3">
-        {menu.map((m) => (
-          <Link href={m.href || ""}>
+        {menu.map((m, index) => (
+          <Link href={m.href || ""} key={index}>
             <button
               className={clsx({
                 [style.activeMenu]: m.active,

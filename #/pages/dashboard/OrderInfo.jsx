@@ -197,7 +197,10 @@ function OrderInfo() {
                   title: `DEPARTURED ORIGIN ECOMMERCE FACILITY`,
                 },
               ].map((d, index) => (
-                <div className="flex justify-between | border-b border-[#E0E0E0] border-opacity-60 py-5">
+                <div
+                  key={index}
+                  className="flex justify-between | border-b border-[#E0E0E0] border-opacity-60 py-5"
+                >
                   <div className="ordere | space-y-2 w-1/2">
                     <p className="text-sm text-[#353437] opacity-70">
                       Thursday

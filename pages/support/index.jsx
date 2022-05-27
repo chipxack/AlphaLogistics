@@ -107,7 +107,7 @@ function Support(props) {
           height="600"
           loading="lazy"
           allowFullScreen={true}
-          referrerpolicy="no-referrer-when-downgrade"
+          referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </section>
       <App.Footer />

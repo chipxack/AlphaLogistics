@@ -631,6 +631,7 @@ function Index() {
                   "flex w-1/3 | border-t border-[#353437] py-7 px-3 group cursor-pointer": true,
                   "border-x": index === 1,
                 })}
+                key={index}
               >
                 <div className="space-y-2">
                   <div className="flex justify-between">
@@ -744,7 +745,7 @@ function Index() {
 
           <div className="grid grid-cols-4 gap-7">
             {[0, 1, 2, 3].map((index) => (
-              <>
+              <div key={index}>
                 <div className="partner shadow-p | fcc | p-12 aspect-square duration-300">
                   <img
                     src={`/partner${index}.png`}
@@ -760,7 +761,7 @@ function Index() {
                     className="h-full object-contain"
                   />
                 </div>
-              </>
+              </div>
             ))}
           </div>
 
