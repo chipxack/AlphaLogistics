@@ -3,6 +3,7 @@ import Logo from "components/Logo";
 import SvgAddUser from "icons/SvgAddUser";
 import SvgSearch from "icons/SvgSearch";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const style = {
   menu: `text-white text-sm font-medium cursor-pointer duration-200 hover:text-orange-primary`,
@@ -11,6 +12,7 @@ const style = {
 };
 
 function Header(props) {
+  const router = useRouter();
   return (
     <header
       className={clsx({
@@ -26,19 +28,47 @@ function Header(props) {
           </Link>
 
           <ul className="fcb space-x-12">
-            <Link href={`/about`}>
-              <li className={style.menuActive}>About us</li>
+            <Link href={`/`}>
+              <li
+                className={clsx({
+                  [style.menuActive]: router.pathname === `/`,
+                  [style.menu]: router.pathname !== `/`,
+                })}
+              >
+                About us
+              </li>
             </Link>
 
             <Link href={`/products`}>
-              <li className={style.menu}>Products</li>
+              <li
+                className={clsx({
+                  [style.menuActive]: router.pathname === `/products`,
+                  [style.menu]: router.pathname !== `/products`,
+                })}
+              >
+                Products
+              </li>
             </Link>
 
             <Link href={`/tracking`}>
-              <li className={style.menu}>Tracking</li>
+              <li
+                className={clsx({
+                  [style.menuActive]: router.pathname === `/tracking`,
+                  [style.menu]: router.pathname !== `/tracking`,
+                })}
+              >
+                Tracking
+              </li>
             </Link>
-            <Link href={`/products`}>
-              <li className={style.menu}>Support</li>
+            <Link href={`/support`}>
+              <li
+                className={clsx({
+                  [style.menuActive]: router.pathname === `/support`,
+                  [style.menu]: router.pathname !== `/support`,
+                })}
+              >
+                Support
+              </li>
             </Link>
           </ul>
         </div>
