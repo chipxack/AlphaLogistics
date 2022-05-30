@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <div className="h-screen w-screen">
+      <div className="h-screen w-screen | relative">
         <Component {...pageProps} />
       </div>
     </>
