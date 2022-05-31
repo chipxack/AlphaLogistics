@@ -1151,7 +1151,7 @@ function Index() {
             Partners
           </h3>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-0 md:gap-7">
+          <div className="grid grid-cols-3 md:grid-cols-4 gap-0 md:gap-7">
             {[0, 1, 2, 3].map((index) => (
               <div key={index}>
                 <div className="partner shadow-p | fcc | p-10 md:p-12 aspect-square duration-300">
@@ -1176,7 +1176,7 @@ function Index() {
           </div>
 
           <div className="fcc | pt-5 md:pt-10">
-            <button className="text-white bg-[#FB7A1A] px-16 py-3 text-lg font-bold font-poppins click:scale">
+            <button className="text-white bg-[#FB7A1A] px-12 py-3 text-sm md:text-lg md:px-16 md:py-3 font-bold font-poppins click:scale">
               See All
             </button>
           </div>
