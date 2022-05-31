@@ -149,6 +149,25 @@ input,textarea {
   transition: all 150ms ease-in;
 }
 
+#menu__link__mobile__1:hover ~ #bgbg {
+  transform: translate(0%, -30%);
+}
+
+#menu__link__mobile__2:hover ~ #bgbg {
+  transform: translate(150%, -30%);
+}
+
+#menu__link__mobile__3:hover ~ #bgbg {
+  transform: translate(0%, 80%);
+}
+
+#menu__link__mobile__4:hover ~ #bgbg {
+  transform: translate(150%, 80%);
+}
+
+
+/* ====== */
+
 #menu__link__1:hover ~ #bgbg {
   transform: translateX(0%);
 }

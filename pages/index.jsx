@@ -24,6 +24,12 @@ function Index() {
   const [loginOrRegister, setLoginOrRegister] = useState(``);
   const router = useRouter();
   const loginOrRegisterRef = useRef(``);
+  const hoverableLinks = useRef(false);
+  const hoverableLinksBg = useRef(false);
+  const [linksBgPosition, setLinksBgPosition] = useState({
+    offsetX: 0,
+    offsetY: 0,
+  });
 
   useEffect(() => {
     setContainerWidth(container.current.clientWidth);
@@ -38,6 +44,7 @@ function Index() {
       return;
     }
   };
+
   return (
     <App className="relative">
       <Transition
@@ -444,59 +451,50 @@ function Index() {
         </div>
 
         <div className="bg-[#020105] overflow-y-hidden">
-          <div className="container mx-auto">
-            <ul className="flex items-center flex-wrap | menu__list relative group px-5 md:px-0">
-              <li
-                id="menu__link__1"
-                className="md:flex-1 py-5 w-1/2 md:w-1/4 fcc h-14 md:h-24 z-10 | cursor-pointer | relative |"
-              >
-                <div className="md:inline-flex flex items-center justify-between md:justify-center px-2 md:space-x-4 absolute inset-0">
-                  <p className="font-bold font-exo text-white text-xs md:text-base">
-                    Order Product
-                  </p>
+          <div className="container mx-auto | relative">
+            <ul
+              ref={hoverableLinks}
+              className="flex items-center flex-wrap | menu__list relative group px-5 md:px-0"
+            >
+              {[
+                {
+                  title: `Order Product`,
+                  href: ``,
+                },
+                {
+                  title: `Show order location`,
+                  href: ``,
+                },
+                {
+                  title: `How we work`,
+                  href: ``,
+                },
+                {
+                  title: `Login to Account`,
+                  href: ``,
+                },
+              ].map((link, index) => (
+                <li
+                  key={`menu__link__${index}`}
+                  id={
+                    windowSize.width < 640
+                      ? `menu__link__mobile__${++index}`
+                      : `menu__link__${++index}`
+                  }
+                  className="md:flex-1 py-5 w-1/2 md:w-1/4 fcc h-14 md:h-24 z-10 | cursor-pointer | relative |"
+                >
+                  <div className="md:inline-flex flex items-center justify-between md:justify-center px-2 md:space-x-4 absolute inset-0">
+                    <p className="font-bold font-exo text-white text-xs md:text-base">
+                      {link.title}
+                    </p>
 
-                  <SvgPointer className="h-5  md:h-6 text-white duration-150" />
-                </div>
-              </li>
-              <li
-                id="menu__link__2"
-                className="md:flex-1 py-5 w-1/2 md:w-1/4 fcc h-14 md:h-24 z-10 | cursor-pointer | relative | group"
-              >
-                <div className="md:inline-flex flex items-center justify-between md:justify-center px-2 md:space-x-4 absolute inset-0">
-                  <p className="font-bold font-exo text-white text-xs md:text-base">
-                    Show order location
-                  </p>
-
-                  <SvgPointer className="h-5  md:h-6 text-white duration-150" />
-                </div>
-              </li>{" "}
-              <li
-                id="menu__link__3"
-                className="menu__link md:flex-1 py-5 w-1/2 md:w-1/4 fcc h-14 md:h-24 z-10 | cursor-pointer | relative | group"
-              >
-                <div className="md:inline-flex flex items-center justify-between md:justify-center px-2 md:space-x-4 absolute inset-0">
-                  <p className="font-bold font-exo text-white text-xs md:text-base">
-                    How we work
-                  </p>
-
-                  <SvgPointer className="h-5  md:h-6 text-white duration-150" />
-                </div>
-              </li>
-              <li
-                id="menu__link__4"
-                className="menu__link md:flex-1 py-5 w-1/2 md:w-1/4 fcc h-14 md:h-24 z-10 | cursor-pointer | relative | group"
-              >
-                <div className="md:inline-flex flex items-center justify-between md:justify-center px-2 md:space-x-4 absolute inset-0">
-                  <p className="font-bold font-exo text-white text-xs md:text-base">
-                    Login to Account
-                  </p>
-
-                  <SvgPointer className="h-5  md:h-6 text-white duration-150" />
-                </div>
-              </li>
+                    <SvgPointer className="h-5  md:h-6 text-white duration-150" />
+                  </div>
+                </li>
+              ))}
               <div
                 id="bgbg"
-                className="absolute left-0 opacity-0 group-hover:opacity-70 w-1/4 h-[10rem] blur-2xl duration-500 rounded-[50%] bg-[#FB7A1A]"
+                className="absolute opacity-0 group-hover:opacity-70 left-0 -mt-5 h-[3rem] blur-lg w-1/3 md:w-1/4 md:h-[10rem] md:blur-2xl duration-500 md:rounded-[50%] bg-[#FB7A1A]"
               ></div>
             </ul>
           </div>
