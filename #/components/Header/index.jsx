@@ -102,7 +102,7 @@ function Header(props) {
             {({ open }) => (
               <>
                 <Popover.Button as="button" className={style.registerBtn}>
-                  <p>{windowSize.width < 640 ? `Login` : `Login to Account`}</p>
+                  <p>{windowSize.width > 640 ? `Login to Account` : `Login`}</p>
                   <SvgAddUser className="h-4 md:h-5" />
                 </Popover.Button>
 

@@ -43,7 +43,7 @@ function Index() {
     <App>
       <Transition
         as={Fragment}
-        show={loginOrRegister === `register` || false}
+        show={loginOrRegister === `login` || false}
         enter="transition ease-out duration-200"
         enterFrom="opacity-0 scale-95"
         enterTo="opacity-100 scale-100"
@@ -52,36 +52,39 @@ function Index() {
         leaveTo="opacity-0 translate-y-1"
       >
         <section
-          className="bg-[#16171e71] fixed inset-0 z-50 w-full h-full pt-28"
+          className="bg-[#16171e71] fixed inset-0 z-50 w-full h-full my-16 md:pt-28"
           onClick={(e) => closeLoginOrRegister(e)}
         >
           <div
             ref={loginOrRegisterRef}
-            className="flex | w-2/3 max-w-4xl mx-auto h-[28rem]"
+            className="flex flex-col md:flex-row | w-4/5 md:w-2/3 max-w-4xl mx-auto md:h-[28rem]"
           >
-            <div className="w-1/2 | pl-5 py-5 bg-white relative overflow-hidden">
-              <div className="h-full py-10 px-5 border-r-0 fb_vertically border border-black border-opacity-20 | space-y-7 | | relative overflow-hidden">
+            <div className="md:w-1/2 | md:pl-5 md:py-5 bg-white relative overflow-hidden">
+              <div className="h-full px-7 py-5 md:py-10 md:px-5 border-r-0 fb_vertically border border-black border-opacity-20 | space-y-7 | | relative overflow-hidden">
                 <div className="fb_vertically h-full | relative">
-                  <h3 className="text-3xl font-gm">
+                  <h3 className="text-xl md:text-3xl font-gm pb-7 md:pb-0">
                     Login or create a personal account
                   </h3>
 
-                  <div className="form fb_vertically space-y-5">
+                  <div className="form fb_vertically space-y-5 md:space-y-5">
                     <input
                       type="text"
                       name="email"
                       placeholder="Email:"
-                      className="placeholder:opacity-30 placeholder:text-black | px-3 py-4 | border border-indigo-500 border-opacity-0 focus:border-opacity-100 duration-200 bg-[#F5F5F7]"
+                      className="placeholder:opacity-30 placeholder:text-black | px-2 py-2 md:px-3 md:py-4 | border border-indigo-500 border-opacity-0 focus:border-opacity-100 duration-200 bg-[#F5F5F7]"
                     />
 
                     <input
                       type="text"
                       name="email"
                       placeholder="Email:"
-                      className="placeholder:opacity-30 placeholder:text-black | px-3 py-4 | border border-indigo-500 border-opacity-0 focus:border-opacity-100 duration-200 bg-[#F5F5F7]"
+                      className="placeholder:opacity-30 placeholder:text-black | px-2 py-2 md:px-3 md:py-4 | border border-indigo-500 border-opacity-0 focus:border-opacity-100 duration-200 bg-[#F5F5F7]"
                     />
 
-                    <button className="border border-orange-primary bg-white text-black px-10 py-2.5 text-lg font-bold font-poppins active:scale-95 duration-200">
+                    <button
+                      onClick={() => router.push(`/dashboard/profile`)}
+                      className="border text-sm border-orange-primary bg-white text-black px-10 py-2 md:px-10 md:py-2.5 md:text-lg font-bold font-poppins active:scale-95 duration-200"
+                    >
                       Login
                     </button>
                   </div>
@@ -89,7 +92,7 @@ function Index() {
               </div>
             </div>
 
-            <div className="w-1/2 | pr-5 py-5 bg-[#000000] relative overflow-hidden">
+            <div className="hidden md:block md:w-1/2 | pr-5 py-5 bg-[#000000] relative overflow-hidden">
               <div className="absolute -bottom-20 -left-20 opacity-50 w-3/4 h-full blur-2xl duration-500 rounded-[50%] bg-[#FB7A1A]"></div>
               <div className="absolute -top-20 -right-16 opacity-50 w-3/4 h-full blur-2xl duration-500 rounded-[50%] bg-[#FB7A1A]"></div>
               <div className="h-full  fb_vertically py-10 px-5 border-l-0 border border-white border-opacity-20 | relative overflow-hidden">
@@ -214,7 +217,7 @@ function Index() {
 
       <Transition
         as={Fragment}
-        show={loginOrRegister === `login` || false}
+        show={loginOrRegister === `register` || false}
         enter="transition ease-out duration-200"
         enterFrom="opacity-0 scale-95"
         enterTo="opacity-100 scale-100"
@@ -224,31 +227,31 @@ function Index() {
       >
         <section
           onClick={(e) => closeLoginOrRegister(e)}
-          className="bg-[#16171e71] fixed inset-0 z-50 w-full h-full pt-28"
+          className="bg-[#16171e71] fixed inset-0 z-50 w-full h-full my-16 md:pt-28"
         >
           <div
             ref={loginOrRegisterRef}
-            className="flex | w-2/3 max-w-4xl mx-auto h-[28rem]"
+            className="flex flex-col md:flex-row | w-4/5 md:w-2/3 max-w-4xl mx-auto md:h-[28rem]"
           >
-            <div className="w-1/2 | pl-5 py-5 bg-white relative overflow-hidden">
+            <div className="md:w-1/2 | md:pl-5 md:py-5 bg-white relative overflow-hidden">
               <div className="h-full py-10 px-5 border-r-0 fb_vertically border border-black border-opacity-20 | space-y-7 | | relative overflow-hidden">
                 {step === 1 && (
-                  <div className="flex flex-col space-y-10 h-full | relative">
-                    <h3 className="text-3xl font-gm">
+                  <div className="flex flex-col space-y-5 md:space-y-10 h-full | relative">
+                    <h3 className="text-xl md:text-3xl font-gm pb-3 md:pb-0">
                       Login or create a personal account
                     </h3>
 
                     <div className="form fb_vertically space-y-5">
                       <input
                         type="text"
-                        name="phone"
-                        placeholder="Phone:"
-                        className="placeholder:opacity-30 placeholder:text-black | px-3 py-4 | border border-indigo-500 border-opacity-0 focus:border-opacity-100 duration-200 bg-[#F5F5F7]"
+                        name="email"
+                        placeholder="Email:"
+                        className="placeholder:opacity-30 placeholder:text-black | px-2 py-2 md:px-3 md:py-4 | border border-indigo-500 border-opacity-0 focus:border-opacity-100 duration-200 bg-[#F5F5F7]"
                       />
 
                       <button
                         onClick={() => setStep(2)}
-                        className="border border-orange-primary bg-white text-black px-10 py-3 text-lg font-bold font-poppins active:scale-95 duration-200"
+                        className="border text-sm border-orange-primary bg-white text-black px-10 py-2 md:px-10 md:py-2.5 md:text-lg font-bold font-poppins active:scale-95 duration-200"
                       >
                         Get Activation Code
                       </button>
@@ -257,20 +260,22 @@ function Index() {
                 )}
 
                 {step === 2 && (
-                  <div className="flex flex-col space-y-10 h-full | relative">
-                    <h3 className="text-3xl font-gm">Enter activation code</h3>
+                  <div className="flex flex-col space-y-5 md:space-y-10 h-full | relative">
+                    <h3 className="text-xl md:text-3xl font-gm pb-3 md:pb-0">
+                      Enter activation code
+                    </h3>
 
                     <div className="form fb_vertically space-y-5">
                       <input
                         type="text"
-                        name="activation_code"
+                        name="verification__code"
                         placeholder="___ ___"
-                        className="placeholder:opacity-30 placeholder:text-black | px-3 py-4 | border border-indigo-500 border-opacity-0 focus:border-opacity-100 duration-200 bg-[#F5F5F7]"
+                        className="placeholder:opacity-30 placeholder:text-black | px-2 py-2 md:px-3 md:py-4 | border border-indigo-500 border-opacity-0 focus:border-opacity-100 duration-200 bg-[#F5F5F7]"
                       />
 
                       <button
                         onClick={() => router.push(`/dashboard/profile`)}
-                        className="border border-orange-primary bg-white text-black px-10 py-3 text-lg font-bold font-poppins active:scale-95 duration-200"
+                        className="border text-sm border-orange-primary bg-white text-black px-10 py-2 md:px-10 md:py-2.5 md:text-lg font-bold font-poppins active:scale-95 duration-200"
                       >
                         Enter
                       </button>
@@ -280,7 +285,7 @@ function Index() {
               </div>
             </div>
 
-            <div className="w-1/2 | pr-5 py-5 bg-[#000000] relative overflow-hidden">
+            <div className="hidden md:block w-1/2 | pr-5 py-5 bg-[#000000] relative overflow-hidden">
               <div className="absolute -bottom-20 -left-20 opacity-50 w-3/4 h-full blur-2xl duration-500 rounded-[50%] bg-[#FB7A1A]"></div>
               <div className="absolute -top-20 -right-16 opacity-50 w-3/4 h-full blur-2xl duration-500 rounded-[50%] bg-[#FB7A1A]"></div>
               <div className="h-full  fb_vertically py-10 px-5 border-l-0 border border-white border-opacity-20 | relative overflow-hidden">
