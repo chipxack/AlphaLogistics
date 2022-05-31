@@ -1,8 +1,13 @@
+import React from "react";
 import Footer from "components/Footer";
 import Header from "components/Header";
 
 function App(props) {
-  return <>{props.children}</>;
+  return (
+    <div className={["relative", props.className].join(" ")}>
+      {props.children}
+    </div>
+  );
 }
 
 App.Header = Header;

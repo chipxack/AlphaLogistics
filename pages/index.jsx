@@ -31,16 +31,15 @@ function Index() {
 
   const closeLoginOrRegister = (e) => {
     if (
-      loginOrRegisterRef.current &&
+      !loginOrRegisterRef.current ||
       !loginOrRegisterRef.current.contains(event.target)
     ) {
       setLoginOrRegister(``);
+      return;
     }
-
-    console.log(loginOrRegisterRef.current, "loginOrRegisterRef");
   };
   return (
-    <App>
+    <App className="relative">
       <Transition
         as={Fragment}
         show={loginOrRegister === `login` || false}
@@ -227,7 +226,7 @@ function Index() {
       >
         <section
           onClick={(e) => closeLoginOrRegister(e)}
-          className="bg-[#16171e71] fixed inset-0 z-50 w-full h-full my-16 md:pt-28"
+          className="bg-[#16171e71] fixed inset-0 z-50  my-16 md:pt-28"
         >
           <div
             ref={loginOrRegisterRef}
