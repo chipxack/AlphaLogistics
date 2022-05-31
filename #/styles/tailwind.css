@@ -165,7 +165,9 @@ input,textarea {
   transform: translateX(300%);
 }
 
-
+.hamburger-react * {
+  height: 1px !important;
+}
 
 
 

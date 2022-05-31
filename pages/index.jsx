@@ -404,29 +404,29 @@ function Index() {
           onLoginClick={() => setLoginOrRegister(`login`)}
         />
 
-        <VerticalLine opacity={60} />
+        <VerticalLine opacity={windowSize.width < 640 ? 30 : 60} />
 
         <div
           ref={container}
-          className="relative container mx-auto w-full | overflow-hidden overflow-y-hidden"
+          className="px-5 | bg-[#000000] relative container mx-auto w-full | overflow-hidden overflow-y-hidden"
         >
-          <div className="w-full | py-10 flex flex-col | space-y-5">
-            <h1 className="font-gm font-bold text-white text-4xl uppercase">
+          <div className="w-full | py-5 md:py-10 flex flex-col | space-y-3 md:space-y-5">
+            <h1 className="font-gm font-bold text-white text-xl md:text-4xl uppercase">
               Need <span className="text-orange-primary">to ship</span> a
               package?
             </h1>
 
-            <h1 className="font-gm font-bold text-4xl text-white uppercase">
+            <h1 className="font-gm font-bold text-xl md:text-4xl text-white uppercase">
               Alpha Logistics has a solution for you
             </h1>
           </div>
         </div>
 
-        <div className="fcc box-border px-5 pr-10">
-          <div className="| w-full lg:max-w-[1600px] mx-auto fcc h-[500px] overflow-hidden relative">
+        <div className="fcc box-border md:px-5 md:pr-10">
+          <div className="w-full lg:max-w-[1600px] mx-auto fcc h-44 md:h-[500px] overflow-hidden relative">
             <img src="/traffic.png" alt="alpha__logistics" className="w-full" />
-            <div className="w-2/5 | absolute left-32 bottom-16">
-              <a className="z-50 block w-32 h-32 fcc rounded-full font-exo font-semibold | bg-[#FB7A1A] text-white | click:scale">
+            <div className="w-2/5 | absolute left-5 bottom-5 md:left-32 md:bottom-16">
+              <a className="z-50 block text-[8px] md:text-base w-16 h-16 md:w-32 md:h-32 fcc rounded-full font-exo font-semibold | bg-[#FB7A1A] text-white | click:scale">
                 Order now
               </a>
             </div>
@@ -435,49 +435,53 @@ function Index() {
 
         <div className="bg-[#020105] overflow-y-hidden">
           <div className="container mx-auto">
-            <ul className="flex items-center | menu__list relative group">
+            <ul className="flex items-center flex-wrap | menu__list relative group px-5 md:px-0">
               <li
                 id="menu__link__1"
-                className="flex-1 py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative |"
+                className="md:flex-1 py-5 w-1/2 md:w-1/4 fcc h-14 md:h-24 z-10 | cursor-pointer | relative |"
               >
-                <div className="inline-flex fcc space-x-4 absolute inset-0">
-                  <p className="font-bold font-exo text-white">Order Product</p>
+                <div className="md:inline-flex flex items-center justify-between md:justify-center px-2 md:space-x-4 absolute inset-0">
+                  <p className="font-bold font-exo text-white text-xs md:text-base">
+                    Order Product
+                  </p>
 
-                  <SvgPointer className="h-6 text-white duration-150" />
+                  <SvgPointer className="h-5  md:h-6 text-white duration-150" />
                 </div>
               </li>
               <li
                 id="menu__link__2"
-                className="flex-1 py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative | group"
+                className="md:flex-1 py-5 w-1/2 md:w-1/4 fcc h-14 md:h-24 z-10 | cursor-pointer | relative | group"
               >
-                <div className="inline-flex fcc space-x-4 absolute inset-0">
-                  <p className="font-bold font-exo text-white">
+                <div className="md:inline-flex flex items-center justify-between md:justify-center px-2 md:space-x-4 absolute inset-0">
+                  <p className="font-bold font-exo text-white text-xs md:text-base">
                     Show order location
                   </p>
 
-                  <SvgPointer className="h-6 text-white duration-150" />
+                  <SvgPointer className="h-5  md:h-6 text-white duration-150" />
                 </div>
               </li>{" "}
               <li
                 id="menu__link__3"
-                className="menu__link flex-1 py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative | group"
+                className="menu__link md:flex-1 py-5 w-1/2 md:w-1/4 fcc h-14 md:h-24 z-10 | cursor-pointer | relative | group"
               >
-                <div className="inline-flex fcc space-x-4 absolute inset-0">
-                  <p className="font-bold font-exo text-white">How we work</p>
+                <div className="md:inline-flex flex items-center justify-between md:justify-center px-2 md:space-x-4 absolute inset-0">
+                  <p className="font-bold font-exo text-white text-xs md:text-base">
+                    How we work
+                  </p>
 
-                  <SvgPointer className="h-6 text-white duration-150" />
+                  <SvgPointer className="h-5  md:h-6 text-white duration-150" />
                 </div>
               </li>
               <li
                 id="menu__link__4"
-                className="menu__link flex-1 py-5 w-1/4 fcc h-24 z-10 | cursor-pointer | relative | group"
+                className="menu__link md:flex-1 py-5 w-1/2 md:w-1/4 fcc h-14 md:h-24 z-10 | cursor-pointer | relative | group"
               >
-                <div className="inline-flex fcc space-x-4 absolute inset-0">
-                  <p className="font-bold font-exo text-white">
+                <div className="md:inline-flex flex items-center justify-between md:justify-center px-2 md:space-x-4 absolute inset-0">
+                  <p className="font-bold font-exo text-white text-xs md:text-base">
                     Login to Account
                   </p>
 
-                  <SvgPointer className="h-6 text-white duration-150" />
+                  <SvgPointer className="h-5  md:h-6 text-white duration-150" />
                 </div>
               </li>
               <div
@@ -490,24 +494,26 @@ function Index() {
       </section>
 
       <section className="bg-[#000000] text-white | overflow-x-hidden | relative">
-        <HorizontalLine opacity={60} />
-        <VerticalLine opacity={60} />
+        <HorizontalLine opacity={windowSize.width < 640 ? 30 : 60} />
+        <VerticalLine opacity={windowSize.width < 640 ? 30 : 60} />
 
-        <div className="container mx-auto | py-12 | fc | font-exo">
-          <div className="w-1/5 | space-y-3">
-            <p className="opacity-50 text-base">About company</p>
+        <div className="container mx-auto | px-5 py-10 md:py-12 | fc flex-col md:flex-row  | font-exo">
+          <div className="w-full md:w-1/5 | md:space-y-3  md:flex-col flex justify-between items-">
+            <div className="space-y-3">
+              <p className="opacity-50 text-base">About company</p>
 
-            <Logo className="h-8" />
+              <Logo className="h-8" />
+            </div>
 
             <button className="inline-flex items-center | space-x-4 group">
-              <p className="text-[#FF9A00]">Read more</p>
+              <p className="text-[#FF9A00] md:text-base text-sm">Read more</p>
 
               <SvgPointer className="h-6 group-hover:translate-x-1 text-orange-primary duration-150" />
             </button>
           </div>
 
-          <div className="w-4/5 text-white text-opacity-70 | space-y-7">
-            <p className="font-inter">
+          <div className="w-full md:w-4/5 text-white text-opacity-70 | space-y-7">
+            <p className="font-inter text-xs md:text-base pt-8">
               Phoenix Global Trading is an international operating global
               company. After having almost a decade of experience in sales,
               import and export spheres, our company proudly becomes a part of
@@ -515,11 +521,11 @@ function Index() {
               prospective development plan.
             </p>
 
-            <ul className="flex space-x-44">
+            <ul className="flex justify-between md:space-x-44">
               <li>
-                <div className="fcb space-x-5">
+                <div className="flex items-center justify-between flex-col md:flex-row md:space-x-5 space-y-2 md:space-y-0">
                   <svg
-                    height="22"
+                    className="h-4 md:h-7"
                     viewBox="0 0 94 28"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -543,9 +549,9 @@ function Index() {
               </li>
 
               <li>
-                <div className="fcb space-x-5">
+                <div className="flex items-center justify-between flex-col md:flex-row md:space-x-5 space-y-2 md:space-y-0">
                   <svg
-                    height="22"
+                    className="h-4 md:h-7"
                     viewBox="0 0 67 25"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -564,9 +570,9 @@ function Index() {
               </li>
 
               <li>
-                <div className="fcb space-x-5">
+                <div className="flex items-center justify-between flex-col md:flex-row md:space-x-5 space-y-2 md:space-y-0">
                   <svg
-                    height="22"
+                    className="h-4 md:h-7"
                     viewBox="0 0 90 25"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -593,27 +599,27 @@ function Index() {
         </div>
       </section>
 
-      <section className="bg-[#000000] | py-20 | relative | overflow-y-hidden">
-        <VerticalLine opacity={60} />
+      <section className="bg-[#000000] | px-5 md:py-20 | relative | overflow-y-hidden">
+        <VerticalLine opacity={windowSize.width < 640 ? 30 : 60} />
 
         <div className="relative | container mx-auto z-50">
           <h3 className="relative | text-white font-gm text-2xl font-extrabold | pb-7">
             Our services
           </h3>
-          <div className="flex">
-            <div className="service__img__wrapper | w-1/2 h-80">
+          <div className="flex flex-col md:flex-row">
+            <div className="service__img__wrapper | w-full md:w-1/2 h-40 md:h-80">
               <img
                 src="/service1.png"
                 alt="service__img"
-                className="service__img h-full object-cover"
+                className="service__img w-full h-full object-cover"
               />
             </div>
 
-            <ul className="relative | w-1/2">
+            <ul className="relative | w-full md:w-1/2">
               <CollapseCustom>
-                <li className="flex-col | py-7 ml-7 | text-white | border-y border-gray-400/25">
+                <li className="flex-col | py-7 ml-1 md:ml-7 | text-white | border-y border-gray-400/25">
                   <CollapseCustom.Button>
-                    <div className="font-exo text-lg | flex items-center | w-full space-x-3">
+                    <div className="font-exo md:text-lg | flex items-center | w-full space-x-3">
                       <span className="text-[#C2C2C3]">01</span>
 
                       <h4 className="font-bold">Easy researching</h4>
@@ -630,9 +636,9 @@ function Index() {
               </CollapseCustom>
 
               <CollapseCustom>
-                <li className="flex-col | py-7 ml-7 | text-white | border-y border-gray-400/25">
+                <li className="flex-col | py-7 ml-1 md:ml-7 | text-white | border-y border-gray-400/25">
                   <CollapseCustom.Button>
-                    <div className="font-exo text-lg | flex items-center | w-full space-x-3">
+                    <div className="font-exo md:text-lg | flex items-center | w-full space-x-3">
                       <span className="text-[#C2C2C3]">02</span>
 
                       <h4 className="font-bold">More other products</h4>
@@ -649,9 +655,9 @@ function Index() {
               </CollapseCustom>
 
               <CollapseCustom>
-                <li className="flex-col | py-7 ml-7 | text-white | border-y border-gray-400/25">
+                <li className="flex-col | py-7 ml-1 md:ml-7 | text-white | border-y border-gray-400/25">
                   <CollapseCustom.Button>
-                    <div className="font-exo text-lg | flex items-center | w-full space-x-3">
+                    <div className="font-exo md:text-lg | flex items-center | w-full space-x-3">
                       <span className="text-[#C2C2C3]">03</span>
 
                       <h4 className="font-bold">Deliver on 24 countries</h4>
@@ -670,45 +676,47 @@ function Index() {
           </div>
         </div>
 
-        <div className="bounce w-[35rem] h-[30rem] opacity-[72%] absolute -bottom-48 -left-56 | blur-2xl duration-150 rounded-[50%] bg-[#FB7A1A]"></div>
+        <div className="bounce md:w-[35rem] md:h-[30rem] w-[25rem] h-[25rem] opacity-50 md:opacity-[72%] absolute -bottom-48 -left-56 | blur-2xl duration-150 rounded-[50%] bg-[#FB7A1A]"></div>
       </section>
 
-      <section className="relative | overflow-y-hidden pt-20">
+      <section className="relative | overflow-y-hidden py-5 md:pt-20">
         <VerticalLine opacity={10} />
         <div className="relative | container mx-auto z-50">
-          <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
+          <h3 className="relative | text-[#020105] px-5 md:px-0 font-gm text-2xl font-extrabold pb-7">
             How we work
           </h3>
 
-          <div className="grid grid-cols-2 gap-3">
-            <p className="text-[#353437] font-inter text-sm">
+          <div className="grid grid-cols-1 px-5 md:px-0 md:grid-cols-2 gap-3">
+            <p className="text-[#353437] font-inter text-xs">
               We know how difficult it can be to organize cargo transportation
               on your own and invest in time. Therefore, our specialists take on
               these responsibilities and all responsibility for the entire
               process.
             </p>
 
-            <p className="text-[#353437] font-inter text-sm">
+            <p className="text-[#353437] font-inter text-xs">
               Over the current year, we have already completed 834 flights and
               transported 15,846 tons of cargo. All cargoes of our clients are
               insured, in case the customer's cargo costs more, we will insure
               it up to the required amount.
             </p>
 
-            <p className="text-[#353437] font-inter text-sm">
+            <p className="text-[#353437] font-inter text-xs">
               We will develop the optimal route, select the necessary transport,
               insure the cargo and provide services for careful loading and
               unloading.
             </p>
           </div>
 
-          <SvgHowWeWork className="w-full pt-20" />
+          <SvgHowWeWork className="w-full px-5 md:px-0 pt-10 md:pt-20" />
         </div>
 
         <div
-          className="relative w-full overflow-hidden h-[500px] mt-16 rounded-l-md"
+          className="relative w-full overflow-hidden h-[150px] md:h-[500px] mt-10 md:mt-16 rounded-l-md"
           style={{
-            paddingLeft: (+windowSize.width - +containerWidth) / 2 + 80,
+            paddingLeft:
+              (+windowSize.width - +containerWidth) / 2 +
+              (windowSize.width < 640 ? 20 : 80),
           }}
         >
           <div className="absolute h-full w-full overflow-hidden">
@@ -743,34 +751,34 @@ function Index() {
 				<div className="bounce w-[35rem] h-[30rem] opacity-[72%] absolute -top-48 -right-20 | blur-2xl duration-150 rounded-[50%] bg-[#FB7A1A]"></div>
 			</section> */}
 
-      <section className="py-20 | relative | overflow-y-hidden">
+      <section className="py-5 md:py-20 | relative | overflow-y-hidden">
         <VerticalLine opacity={10} />
 
         <div className="relative | container mx-auto z-50">
-          <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
+          <h3 className="relative| px-5 md:pb-7 md:px-0 | text-[#020105] font-gm text-2xl font-extrabold">
             Landmark of branches
           </h3>
 
-          <SvgMap className="w-full pt-20" />
+          <SvgMap className="w-full pt-8 md:pt-20" />
         </div>
       </section>
 
-      <section className="py-20 | relative | overflow-y-hidden">
+      <section className="md:py-20 | relative | overflow-y-hidden">
         <VerticalLine opacity={10} />
 
-        <div className="relative | container mx-auto z-50">
+        <div className="relative | px-5 md:pb-7 container mx-auto z-50">
           <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
             What you take from Us:
           </h3>
 
-          <div className="grid grid-cols-4">
-            <div className="col-span-1 | fb_vertically | p-4 space-y-5 | border border-gray-100 | cursor-pointer | group hover:bg-[#FB7A1A] duration-200">
+          <div className="grid grod-cols-1 md:grid-cols-4 space-y-3 md:space-y-0">
+            <div className="md:col-span-1 | fb_vertically | p-4 space-y-5 | border border-gray-100 | cursor-pointer | group hover:bg-[#FB7A1A] duration-200">
               <div>
                 <h3 className="text-[#353437] group-hover:text-white duration-200 text-lg font-bold | font-gm">
                   Monitor the location
                 </h3>
 
-                <p className="text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
+                <p className="py-5 md:py-0 text-sm md:text-base text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
                   Finding the exact product or a very similar one on the market
                   from our partner manufacturers Finding the exact product or a
                   very similar one on the market from our partner manufacturers
@@ -786,19 +794,19 @@ function Index() {
                   <img
                     src="/plane.png"
                     alt="plane_image"
-                    className="object-cover h-full"
+                    className="object-cover h-full w-full"
                   />
                 </div>
               </div>
             </div>
 
-            <div className="col-span-2 | flex | p-4 | border border-gray-100 | cursor-pointer | group hover:bg-[#FB7A1A] duration-200">
-              <div className="w-1/2 | px-3">
+            <div className="md:col-span-2 | flex md:flex-row flex-col | p-4 | border border-gray-100 | cursor-pointer | group hover:bg-[#FB7A1A] duration-200">
+              <div className="md:w-1/2 | md:px-3">
                 <h3 className="text-[#353437] group-hover:text-white duration-200 text-lg font-bold | font-gm">
                   Monitor the location
                 </h3>
 
-                <p className="py-5 | text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
+                <p className="py-5 | text-sm md:text-base text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
                   Finding the exact product or a very similar one on the market
                   from our partner manufacturers Finding the exact product or a
                   very similar one on the market from our partner
@@ -809,12 +817,12 @@ function Index() {
                   on the market from our partner manufacturers
                 </p>
 
-                <div className="pt-7">
+                <div className="py-3 md:pt-7">
                   <SvgArrow className="h-6 group-hover:text-white duration-200" />
                 </div>
               </div>
 
-              <div className="w-1/2 h-[35rem] | rounded-md overflow-hidden">
+              <div className="w-full aspect-square object-center md:w-1/2 md:h-[35rem] | rounded-md overflow-hidden">
                 <img
                   src="/man.png"
                   alt="man_image"
@@ -823,13 +831,13 @@ function Index() {
               </div>
             </div>
 
-            <div className="col-span-1 | fb_vertically | p-4 space-y-5 | border border-gray-100 | cursor-pointer | group hover:bg-[#FB7A1A] duration-200">
+            <div className="md:col-span-1 | fb_vertically | p-4 space-y-5 | border border-gray-100 | cursor-pointer | group hover:bg-[#FB7A1A] duration-200">
               <div>
                 <h3 className="text-[#353437] group-hover:text-white duration-200 text-lg font-bold | font-gm">
                   Use catalog to order
                 </h3>
 
-                <p className="text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
+                <p className="py-5 md:py-0 text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
                   Finding the exact product or a very similar one on the market
                   from our partner manufacturers Finding the exact product or a
                   very similar one on the market from our partner manufacturers
@@ -845,7 +853,7 @@ function Index() {
                   <img
                     src="/computer.png"
                     alt="computer_image"
-                    className="object-cover h-full"
+                    className="object-cover h-full w-full"
                   />
                 </div>
               </div>
@@ -854,16 +862,14 @@ function Index() {
         </div>
       </section>
 
-      <section className="relative | overflow-y-hidden">
-        <VerticalLine opacity={10} />
-
-        <div className="relative | container mx-auto z-50">
-          <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
-            What you take from Us:
+      <section className="relative py-5 md:py-0 md:pb-20 | overflow-y-hidden">
+        <div className="relative | px-5 container mx-auto z-50">
+          <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-5 md:pb-7">
+            Products
           </h3>
 
-          <div className="fcb">
-            <p className="text-[#020105] font-inter w-1/3">
+          <div className="flex md:items-center md:justify-between flex-col md:flex-row">
+            <p className="text-[#020105] font-inter md:w-1/3 pb-5 md:pb-0">
               Finding the exact product or a very similar one on the market from
               our partner manufacturers
             </p>
@@ -890,7 +896,7 @@ function Index() {
             </button>
           </div>
 
-          <div className="grid grid-cols-3 gap-5 | pt-10">
+          <div className="grid md:grid-cols-3 gap-5 | pt-10 | relative">
             {[
               {
                 id: `#forcars`,
@@ -925,7 +931,7 @@ function Index() {
               },
             ].map((product, index) => (
               <div
-                className="product | rounded-md overflow-hidden | shadow-p | cursor-pointer"
+                className="relative product | rounded-md overflow-hidden | shadow-p | cursor-pointer"
                 key={index}
               >
                 <div className="h-64 overflow-hidden | relative">
@@ -973,12 +979,14 @@ function Index() {
             ))}
           </div>
         </div>
+
+        <VerticalLine opacity={10} />
       </section>
 
-      <section className="py-20 | relative | overflow-y-hidden bg-[#000000]">
+      <section className="py-5 md:py-20 | relative | overflow-y-hidden bg-[#000000]">
         <VerticalLine opacity={60} />
 
-        <div className="relative | container mx-auto z-50">
+        <div className="relative | px-5 container mx-auto z-50">
           <div className="fcb pb-12">
             <h3 className="relative | text-white font-gm text-2xl font-extrabold">
               News:
@@ -1005,7 +1013,7 @@ function Index() {
             </button>
           </div>
 
-          <div className="news | flex">
+          <div className="news | flex flex-col md:flex-row">
             {[
               {
                 title: `Elon Musk buys Twitter: How will he change it?`,
@@ -1022,7 +1030,7 @@ function Index() {
             ].map((news, index) => (
               <div
                 className={clsx({
-                  "flex w-1/3 | border-t border-[#353437] py-7 px-3 group cursor-pointer": true,
+                  "flex w-full md:w-1/3 | border-t border-[#353437] py-7 px-3 group cursor-pointer": true,
                   "border-x": index === 1,
                 })}
                 key={index}
@@ -1063,14 +1071,14 @@ function Index() {
           </div>
         </div>
 
-        <div className="title | pt-20 | relative group">
+        <div className="title | py-7 md:pt-20 | relative group">
           <div className="absolute inset-0 fcc cursor-pointer">
-            <button className="bg-[#F37D26] group-hover:-rotate-[30deg] group-hover:bg-white duration-500 group-hover:scale-110 w-32 h-32 fcc rounded-full mb-10">
+            <button className="bg-[#F37D26] group-hover:-rotate-[30deg] group-hover:bg-white duration-500 group-hover:scale-110 w-20 h-20 md:w-32 md:h-32 fcc rounded-full mb-10">
               <svg
                 viewBox="0 0 96 75"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-12 text-white group-hover:text-[#F37D26] duration-500"
+                className="h-8 md:h-12 text-white group-hover:text-[#F37D26] duration-500"
               >
                 <path
                   d="M60.2422 0.366068C59.8575 -0.0302643 59.2244 -0.0397514 58.8281 0.344877C58.4318 0.729506 58.4223 1.3626 58.8069 1.75893L60.2422 0.366068ZM94.401 37.0002L95.1261 37.6889C95.4955 37.2999 95.4923 36.6887 95.1187 36.3037L94.401 37.0002ZM58.7995 73.0301C58.4191 73.4305 58.4354 74.0635 58.8359 74.4438C59.2363 74.8242 59.8693 74.8079 60.2496 74.4074L58.7995 73.0301ZM1.95312 36.0002C1.40084 36.0002 0.953125 36.4479 0.953125 37.0002C0.953125 37.5525 1.40084 38.0002 1.95312 38.0002V36.0002ZM94.38 38.0002C94.9323 38.0002 95.38 37.5525 95.38 37.0002C95.38 36.4479 94.9323 36.0002 94.38 36.0002V38.0002ZM58.8069 1.75893L93.6834 37.6966L95.1187 36.3037L60.2422 0.366068L58.8069 1.75893ZM93.676 36.3115L58.7995 73.0301L60.2496 74.4074L95.1261 37.6889L93.676 36.3115ZM1.95312 38.0002H94.38V36.0002H1.95312V38.0002Z"
@@ -1130,17 +1138,17 @@ function Index() {
 				<div className="bounce w-[35rem] h-[30rem] opacity-[72%] absolute -top-48 -left-20 | blur-2xl duration-150 rounded-[50%] bg-[#FB7A1A]"></div>
 			</section> */}
 
-      <section className="py-20 | relative | overflow-y-hidden">
+      <section className="py-5 md:py-20 | relative | overflow-y-hidden">
         <VerticalLine opacity={10} />
-        <div className="relative | container mx-auto z-50">
+        <div className="relative | px-5 container mx-auto z-50">
           <h3 className="relative | text-[#020105] font-gm text-2xl font-extrabold pb-7">
             Partners
           </h3>
 
-          <div className="grid grid-cols-4 gap-7">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-0 md:gap-7">
             {[0, 1, 2, 3].map((index) => (
               <div key={index}>
-                <div className="partner shadow-p | fcc | p-12 aspect-square duration-300">
+                <div className="partner shadow-p | fcc | p-10 md:p-12 aspect-square duration-300">
                   <img
                     src={`/partner${index}.png`}
                     alt="partner"
@@ -1148,18 +1156,20 @@ function Index() {
                   />
                 </div>
 
-                <div className="partner shadow-p | fcc | p-12 aspect-square duration-300">
-                  <img
-                    src={`/partner${index}.png`}
-                    alt="partner"
-                    className="h-full object-contain"
-                  />
-                </div>
+                {windowSize.width > 640 && (
+                  <div className="partner shadow-p | fcc | p-10 md:p-12 aspect-square duration-300">
+                    <img
+                      src={`/partner${index}.png`}
+                      alt="partner"
+                      className="h-full object-contain"
+                    />
+                  </div>
+                )}
               </div>
             ))}
           </div>
 
-          <div className="fcc | pt-10">
+          <div className="fcc | pt-5 md:pt-10">
             <button className="text-white bg-[#FB7A1A] px-16 py-3 text-lg font-bold font-poppins click:scale">
               See All
             </button>
