@@ -192,8 +192,11 @@ function Index() {
                       </svg>
                     ),
                   },
-                ].map((list) => (
-                  <div className="flex items-center space-x-5 | relative">
+                ].map((list, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center space-x-5 | relative"
+                  >
                     <div className="icon__wrapper shrink-0 | bg-white h-12 w-12 rounded-full | fcc">
                       {list.icon}
                     </div>
@@ -380,8 +383,11 @@ function Index() {
                       </svg>
                     ),
                   },
-                ].map((list) => (
-                  <div className="flex items-center space-x-5 | relative">
+                ].map((list, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center space-x-5 | relative"
+                  >
                     <div className="icon__wrapper shrink-0 | bg-white h-12 w-12 rounded-full | fcc">
                       {list.icon}
                     </div>
@@ -853,7 +859,7 @@ function Index() {
                   <img
                     src="/computer.png"
                     alt="computer_image"
-                    className="object-cover h-full w-full"
+                    className="object-cover h-full w-full "
                   />
                 </div>
               </div>
