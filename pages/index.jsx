@@ -1154,7 +1154,7 @@ function Index() {
           <div className="grid grid-cols-3 md:grid-cols-4 gap-0 md:gap-7">
             {[0, 1, 2, 3].map((index) => (
               <div key={index}>
-                <div className="partner shadow-p | fcc | p-10 md:p-12 aspect-square duration-300">
+                <div className="partner shadow-p | fcc | p-3 md:p-12 aspect-square duration-300">
                   <img
                     src={`/partner${index}.png`}
                     alt="partner"
@@ -1163,7 +1163,7 @@ function Index() {
                 </div>
 
                 {windowSize.width > 640 && (
-                  <div className="partner shadow-p | fcc | p-10 md:p-12 aspect-square duration-300">
+                  <div className="partner shadow-p | fcc | p-3 md:p-12 aspect-square duration-300">
                     <img
                       src={`/partner${index}.png`}
                       alt="partner"
