@@ -28,13 +28,13 @@ function Footer(props) {
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    class="h-4 w-4 | md:h-5 md:w-5 text-[#000000] group-hover:text-white duration-200"
+                    className="h-4 w-4 | md:h-5 md:w-5 text-[#000000] group-hover:text-white duration-200"
                   >
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M12 7a5 5 0 100 10 5 5 0 000-10zm-3 5a3 3 0 106 0 3 3 0 00-6 0z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                     <path
                       fill="currentColor"
@@ -42,9 +42,9 @@ function Footer(props) {
                     ></path>
                     <path
                       fill="currentColor"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M5 1a4 4 0 00-4 4v14a4 4 0 004 4h14a4 4 0 004-4V5a4 4 0 00-4-4H5zm14 2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                 </a>

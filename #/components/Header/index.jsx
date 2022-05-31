@@ -21,8 +21,6 @@ function Header(props) {
   const windowSize = useWindowSize();
   const [isOpen, setOpen] = useState(false);
 
-  console.log(windowSize);
-
   return (
     <header
       className={clsx({
