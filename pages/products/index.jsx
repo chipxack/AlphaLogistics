@@ -289,19 +289,87 @@ function Product() {
                   </div>
                 </div>
 
-                <div className="mt-5 md:mt-0 | w-full md:w-1/3 | relative">
-                  <input
-                    type="text"
-                    name="search"
-                    placeholder="Search.."
-                    className="w-full | py-2 px-2 md:py-2 md:px-4 | text-xs md:text-sm | placeholder:text-[#5D5D5F] border border-[#E0E0E0] rounded-full"
-                  />
+                <div className="mt-5 md:mt-0 | w-full md:w-1/2 | relative">
+                  <div className="relative w-full">
+                    <input
+                      type="text"
+                      name="search"
+                      placeholder="Search.."
+                      className="w-full | py-2 px-2 md:py-2 md:px-4 | text-xs md:text-sm | placeholder:text-[#5D5D5F] border border-[#E0E0E0] rounded-full"
+                    />
 
-                  <SvgSearch className="absolute right-2 top-[20%] h-4 md:h-5 | text-orange-primary" />
+                    <SvgSearch className="absolute right-2 top-[20%] h-4 md:h-5 | text-orange-primary" />
+                  </div>
+
+                  <div className="hidden md:flex justify-end">
+                    <Popover className="relative w-1/2 text-end">
+                      {({ open }) => (
+                        <>
+                          <Popover.Button
+                            as="button"
+                            className={`flex py-1.5 items-center justify-end w-full | font-semibold text-xs md:text-sm | text-[#000000] | md:py-3 md:px-5 | rounded |`}
+                          >
+                            {({ open }) => (
+                              <>
+                                Sort by
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className={clsx({
+                                    "h-3.5 ml-4 duration-200": true,
+                                    "rotate-0": !open,
+                                    "rotate-180": open,
+                                  })}
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth={2}
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M5 15l7-7 7 7"
+                                  />
+                                </svg>
+                              </>
+                            )}
+                          </Popover.Button>
+
+                          <Transition
+                            as={Fragment}
+                            enter="transition ease-out duration-200"
+                            enterFrom="opacity-0 translate-y-1"
+                            enterTo="opacity-100 translate-y-0"
+                            leave="transition ease-in duration-150"
+                            leaveFrom="opacity-100 translate-y-0"
+                            leaveTo="opacity-0 translate-y-1"
+                          >
+                            <Popover.Panel className="md:w-40 | absolute z-10 right-0  mt-0.5 sm:px-0">
+                              {({ close }) => (
+                                <div className="overflow-hidden shadow-xl py-2">
+                                  <div className="bg-gray-50 p-4 md:p-5 space-y-5">
+                                    <h3 className="text-sm md:text-sm md:font-inter text-[#16171E]">
+                                      Newest
+                                    </h3>
+
+                                    <h3 className="text-sm md:text-sm md:font-inter text-[#16171E]">
+                                      Oldest
+                                    </h3>
+                                    <h3 className="text-sm md:text-sm md:font-inter text-[#16171E]">
+                                      Famous
+                                    </h3>
+                                  </div>
+                                </div>
+                              )}
+                            </Popover.Panel>
+                          </Transition>
+                        </>
+                      )}
+                    </Popover>
+                  </div>
                 </div>
 
-                <div className="flex justify-between w-full pt-5 space-x-5">
-                  <Popover className="relative w-1/2">
+                <div className="flex justify-between w-full pt-5 md:pt-0 space-x-5 md:hidden">
+                  <Popover className="relative w-1/2 md:hidden">
                     {({ open }) => (
                       <>
                         <Popover.Button
