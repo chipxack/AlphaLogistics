@@ -7,8 +7,8 @@ import RangeInputTest from "pages/products/RangeInputTest";
 import CollapseCustom from "components/Collapse";
 
 const style = {
-  inActiveMenu: `opacity-80 text-sm`,
-  activeMenu: `text-sm`,
+  inActiveMenu: `text-xs opacity-80 md:text-sm`,
+  activeMenu: `text-xs md:text-sm`,
   activeFilterCategoryMenu: `text-xs text-[#FB421A] duration-100`,
   inActiveFilterCategoryMenu: `text-xs text-[#16171E] hover:text-[#FB421A] opacity-60 cursor-pointer duration-100`,
 };
@@ -17,32 +17,34 @@ function Product() {
   return (
     <App>
       <App.Header dark={true} />
-      <section className="bg-[#16171E] py-3 relative overflow-hidden">
-        <div className="flex items-center text-white | container mx-auto">
+      <section className="bg-[#16171E] py-2 md:py-3 relative overflow-hidden">
+        <div className="flex items-center text-white | px-5 container mx-auto">
           <div className="relative">
             <a href="#" className={style.inActiveMenu}>
               Home
             </a>
 
-            <span className="px-2">/</span>
+            <span className="text-xs md:text-sm px-2">/</span>
 
             <a href="#" className={style.activeMenu}>
               Products
             </a>
 
-            <h2 className="text-2xl font-bold pt-3">Products</h2>
+            <h2 className="text-lg md:text-2xl font-bold pt-1 md:pt-3">
+              Products
+            </h2>
           </div>
 
-          <div className="bounce w-[25rem] h-[25rem] opacity-[40%] absolute right-0 | blur-3xl duration-150 rounded-[50%] bg-[#40BFF4]"></div>
+          <div className="bounce w-[25rem] h-[25rem] md:w-[25rem] md:h-[25rem] opacity-[40%] absolute right-0 | blur-3xl duration-150 rounded-[50%] bg-[#40BFF4]"></div>
           <div className="bounce w-[25rem] h-[25rem] opacity-[40%] absolute right-[20rem] | blur-3xl duration-150 rounded-[50%] bg-[#FF0000]"></div>
         </div>
       </section>
 
       <section>
-        <div className="container mx-auto | py-10">
+        <div className="px-5 py-5 md:py-10 | container mx-auto">
           <div className="flex">
             {/* FILTER */}
-            <div className="w-1/4">
+            <div className="hidden md:block w-full md:w-1/4">
               <div className="bg-[#F6FBFC] px-4 py-4">
                 <h3 className="text-xl font-gm font-bold">Filter</h3>
 
@@ -250,15 +252,15 @@ function Product() {
             </div>
 
             {/* PRODUCTS */}
-            <div className="w-3/4 | space-y-2 pl-4">
-              <div className="fcb">
-                <div>
+            <div className="w-full md:w-3/4 | md:pl-4 space-y-2">
+              <div className="flex items-center justify-between md:flex-row flex-col">
+                <div className="w-full">
                   <div className="relative">
                     <a href="#" className={style.inActiveMenu}>
                       Home
                     </a>
 
-                    <span className="px-2">/</span>
+                    <span className="text-xs md:text-sm px-2">/</span>
 
                     <a href="#" className={style.activeMenu}>
                       Products
@@ -266,27 +268,27 @@ function Product() {
                   </div>
 
                   <div className="space-y-2">
-                    <h3 className="text-3xl font-bold font-gm">
+                    <h3 className="text-lg md:text-3xl font-bold font-gm">
                       Laundry Washer
                     </h3>
 
-                    <p className="text-sm">15 products</p>
+                    <p className="text-xs md:text-sm">15 products</p>
                   </div>
                 </div>
 
-                <div className="w-1/3 | relative">
+                <div className="mt-5 md:mt-0 | w-full md:w-1/3 | relative">
                   <input
                     type="text"
                     name="search"
                     placeholder="Search.."
-                    className="w-full | py-2 px-4 | text-sm | placeholder:text-[#5D5D5F] border border-[#E0E0E0] rounded-full"
+                    className="w-full | py-1 px-2 md:py-2 md:px-4 | text-xs md:text-sm | placeholder:text-[#5D5D5F] border border-[#E0E0E0] rounded-full"
                   />
 
-                  <SvgSearch className="absolute right-2 top-[20%] h-5 | text-orange-primary" />
+                  <SvgSearch className="absolute right-2 top-[20%] h-4 md:h-5 | text-orange-primary" />
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-5 | pt-10">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 | pt-10">
                 {[
                   {
                     id: `#forcars`,
@@ -322,31 +324,33 @@ function Product() {
                 ].map((product, index) => (
                   <Link href={`/products/inshaAllah`} key={index}>
                     <div className="product | rounded-md overflow-hidden | border border-gray-100 shadow-p | cursor-pointer">
-                      <div className="h-64 overflow-hidden | relative">
+                      <div className="w-full h-56 md:h-64 overflow-hidden | relative">
                         <img
                           src={product.img}
                           alt="prodcut_1"
-                          className="h-full w-full object-cover object-center"
+                          className="h-full w-full object-contain object-center"
                         />
 
-                        <div className="p-3 top-0 left-0 ml-3 mt-3 | text-xs | absolute | bg-gray-200 | rounded-md">
+                        <div className="p-1.5 md:p-3 top-0 left-0 ml-3 mt-3 | text-xs | absolute | bg-gray-200 | rounded-md">
                           {product.id}
                         </div>
                       </div>
 
                       <div className="product__info | py-5 px-5 space-y-3 | bg-[#F5F5F7]">
-                        <h4 className="font-inter text-[#020105] font-semibold text-lg">
+                        <h4 className="font-inter text-[#020105] font-semibold md:text-lg">
                           {product.title}
                         </h4>
 
                         <button className="inline-flex items-center | space-x-4 group">
-                          <p className="text-[#FF9A00] text-base">Details</p>
+                          <p className="text-[#FF9A00] text-xs md:text-base">
+                            Details
+                          </p>
 
                           <svg
                             viewBox="0 0 32 32"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
-                            className="group-hover:translate-x-1 duration-200 h-7"
+                            className="group-hover:translate-x-1 duration-200 h-4 md:h-7"
                           >
                             <path
                               d="M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z"
@@ -368,35 +372,35 @@ function Product() {
         </div>
       </section>
 
-      <section className="bg-black | py-14 | relative | overflow-hidden">
-        <div className="relative | container mx-auto z-50 | space-y-7">
-          <h3 className="relative | h1 text-white font-gm | text-center">
+      <section className="bg-black | py-10 md:py-14 | relative | overflow-hidden">
+        <div className="relative | container mx-auto z-50 | space-y-5 md:space-y-7">
+          <h3 className="relative | text-3xl md:text-5xl font-bold text-white font-gm | text-center">
             Leave us a message <span className="py-2 block"></span> to recieve a
             callback
           </h3>
 
-          <p className="font-exo text-white opacity-60 text-sm text-center">
+          <p className="font-exo text-white opacity-60 text-xs md:text-sm text-center">
             Leave a request <br />
             and we will contact you shortly
           </p>
 
-          <div className="fcc space-x-5">
+          <div className="fcc flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-5">
             <input
               type="text"
               name="name"
               id="name"
               placeholder="Name:"
-              className="w-1/5 | bg-black border border-white text-white py-3 px-3 placeholder:text-white placeholder:opacity-80"
+              className="w-4/5 md:w-1/5 text-sm md:text-base | bg-black border border-white text-white py-2 md:py-3 px-3 placeholder:text-white placeholder:opacity-80"
             />
             <input
               type="text"
               name="name"
               id="name"
               placeholder="+998 __"
-              className="w-1/5 | bg-black border border-white text-white py-3 px-3 placeholder:text-white placeholder:opacity-80"
+              className="w-4/5 md:w-1/5 text-sm md:text-base | bg-black border border-white text-white py-2 md:py-3 px-3 placeholder:text-white placeholder:opacity-80"
             />
 
-            <button className="w-1/5 | bg-white text-orange-primary px-10 py-3 text-lg font-bold font-poppins click:scale">
+            <button className="w-4/5 md:w-1/5 | bg-white text-orange-primary px-10 py-2 md:py-3 text-base md:text-lg font-bold font-poppins click:scale">
               Send
             </button>
           </div>
