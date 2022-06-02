@@ -9,6 +9,8 @@ import { Popover, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import useWindowSize from "hooks/useWindowSize";
 import { Cross as Hamburger } from "hamburger-react";
+import { Menu } from "@headlessui/react";
+import { useEffect } from "react";
 
 const style = {
   menu: `text-white text-sm font-medium cursor-pointer duration-200 hover:text-orange-primary`,
@@ -109,18 +111,104 @@ function Header(props) {
         </div>
 
         <div className="fcc space-x-5 md:space-x-10">
-          <div className="h-[40px] w-[40px] fcc md:hidden">
-            <Hamburger
-              color={`#ffffff`}
-              size={20}
-              distance={`md`}
-              hideOutline={true}
-              rounded={true}
-              toggled={isOpen}
-              toggle={setOpen}
-              style={{ height: `1px` }}
-            />
+          <div className="h-[40px] w-[40px] fcc md:hidden relative">
+            <Menu className="relative" key={`hamburger`}>
+              {({ open }) => (
+                <>
+                  <Menu.Button>
+                    <Hamburger
+                      color={`#ffffff`}
+                      size={20}
+                      distance={`md`}
+                      hideOutline={true}
+                      rounded={true}
+                      toggled={open}
+                      style={{ height: `1px` }}
+                    />
+                  </Menu.Button>
+
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-200"
+                    enterFrom="opacity-0 translate-y-1"
+                    enterTo="opacity-100 translate-y-0"
+                    leave="transition ease-in duration-150"
+                    leaveFrom="opacity-100 translate-y-0"
+                    leaveTo="opacity-0 translate-y-1"
+                  >
+                    <Menu.Items className="w-56 mx-auto md:w-72 | absolute z-10 top-0  mt-12 sm:px-0">
+                      {({ close }) => (
+                        <div className="rounded-xl overflow-hidden shadow-xl shadow-white/10 bg-[#000000] text-white">
+                          <ul className="flex-col flex items-center space-y-5 py-7">
+                            <Link href={`/`}>
+                              <li
+                                className={clsx({
+                                  [style.menuActive]: router.pathname === `/`,
+                                  [style.menu]: router.pathname !== `/`,
+                                })}
+                              >
+                                About us
+                              </li>
+                            </Link>
+
+                            <Link href={`/products`}>
+                              <li
+                                className={clsx({
+                                  [style.menuActive]:
+                                    router.pathname === `/products`,
+                                  [style.menu]: router.pathname !== `/products`,
+                                })}
+                              >
+                                Products
+                              </li>
+                            </Link>
+
+                            {auth ? (
+                              <Link href={`/tracking`}>
+                                <li
+                                  className={clsx({
+                                    [style.menuActive]:
+                                      router.pathname === `/tracking`,
+                                    [style.menu]:
+                                      router.pathname !== `/tracking`,
+                                  })}
+                                >
+                                  Tracking
+                                </li>
+                              </Link>
+                            ) : (
+                              <li
+                                onClick={() => setLoginOrRegister(`register`)}
+                                className={clsx({
+                                  [style.menuActive]:
+                                    router.pathname === `/tracking`,
+                                  [style.menu]: router.pathname !== `/tracking`,
+                                })}
+                              >
+                                Tracking
+                              </li>
+                            )}
+                            <Link href={`/support`}>
+                              <li
+                                className={clsx({
+                                  [style.menuActive]:
+                                    router.pathname === `/support`,
+                                  [style.menu]: router.pathname !== `/support`,
+                                })}
+                              >
+                                Support
+                              </li>
+                            </Link>
+                          </ul>
+                        </div>
+                      )}
+                    </Menu.Items>
+                  </Transition>
+                </>
+              )}
+            </Menu>
           </div>
+
           <SvgSearch className="h-4 md:h-5 text-white cursor-pointer" />
 
           <Popover className="relative">
