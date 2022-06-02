@@ -43,7 +43,7 @@ function Support(props) {
             </h3>
 
             <div className="md:mr-20 my-7 md:my-0 p-3 md:p-5 | bg-[#020105] | relative md:absolute | overflow-hidden">
-              <div className="relative p-4 md:py-16 md:px-14 border border-gray-100/20 | z-50 | space-y-7">
+              <div className="relative p-4 md:py-16 md:px-14 border border-gray-100/20 | z-[7] | space-y-7">
                 <h3 className="relative | text-2xl md:text-3xl text-white font-gm | ">
                   Leave us to recieve a callback
                 </h3>

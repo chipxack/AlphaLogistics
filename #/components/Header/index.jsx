@@ -24,6 +24,8 @@ function Header(props) {
   const [loginOrRegister, setLoginOrRegister] = useState(``);
   const loginOrRegisterRef = useRef(``);
 
+  const auth = false;
+
   const closeLoginOrRegister = (e) => {
     if (
       !loginOrRegisterRef.current ||
@@ -71,8 +73,20 @@ function Header(props) {
               </li>
             </Link>
 
-            <Link href={`/tracking`}>
+            {auth ? (
+              <Link href={`/tracking`}>
+                <li
+                  className={clsx({
+                    [style.menuActive]: router.pathname === `/tracking`,
+                    [style.menu]: router.pathname !== `/tracking`,
+                  })}
+                >
+                  Tracking
+                </li>
+              </Link>
+            ) : (
               <li
+                onClick={() => setLoginOrRegister(`register`)}
                 className={clsx({
                   [style.menuActive]: router.pathname === `/tracking`,
                   [style.menu]: router.pathname !== `/tracking`,
@@ -80,7 +94,7 @@ function Header(props) {
               >
                 Tracking
               </li>
-            </Link>
+            )}
             <Link href={`/support`}>
               <li
                 className={clsx({
@@ -189,7 +203,7 @@ function Header(props) {
         leaveTo="opacity-0 translate-y-1"
       >
         <section
-          className="bg-[#16171e71] fixed inset-0 z-50 w-full h-full my-16 md:pt-28"
+          className="bg-[#16171e71] fixed inset-0 z-[5000] w-full h-full my-16 md:pt-28"
           onClick={(e) => closeLoginOrRegister(e)}
         >
           <div
@@ -364,7 +378,7 @@ function Header(props) {
       >
         <section
           onClick={(e) => closeLoginOrRegister(e)}
-          className="bg-[#16171e71] fixed inset-0 z-50  my-16 md:pt-28"
+          className="bg-[#16171e71] fixed inset-0 z-[5000] h-screen my-16 md:pt-28"
         >
           <div
             ref={loginOrRegisterRef}
