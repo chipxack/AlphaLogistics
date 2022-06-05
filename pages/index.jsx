@@ -27,7 +27,6 @@ function Index() {
     <App className="relative">
       <section className="2xl:h-auto overflow-x-hidden bg-[#000000] | relative">
         <App.Header
-          dark={true}
           onRegiserClick={() => setLoginOrRegister(`register`)}
           onLoginClick={() => setLoginOrRegister(`login`)}
         />
@@ -51,7 +50,7 @@ function Index() {
         </div>
 
         <div className="fcc box-border md:px-5 md:pr-10">
-          <div className="w-full lg:max-w-[1600px] mx-auto fcc h-44 md:h-[500px] overflow-hidden relative">
+          <div className="w-full lg:max-w-[1600px] mx-auto fcc h-44 md:h-[500px] overflow-hidden relative z-10">
             <img src="/traffic.png" alt="alpha__logistics" className="w-full" />
             <div className="w-2/5 | absolute left-5 bottom-5 md:left-32 md:bottom-16">
               <a className="z-50 block text-[8px] md:text-base w-16 h-16 md:w-32 md:h-32 fcc rounded-full font-exo font-semibold | bg-[#FB7A1A] text-white | click:scale">

@@ -41,7 +41,8 @@ function Header(props) {
   return (
     <header
       className={clsx({
-        "relative z-50 md:z-10 px-5 bg-[#020105]": props.dark,
+        "relative z-50 px-5": true,
+        "bg-[#020105]": props.dark,
       })}
     >
       <div className="py-2 md:py-4 | fcb z-[10000] container mx-auto">

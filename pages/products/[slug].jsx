@@ -1,6 +1,10 @@
 import ReuqestForm from "components/RequestForm";
 import App from "layouts/App";
 import Link from "next/link";
+import SvgPen from "icons/SvgPen";
+import { useState } from "react";
+import { Transition } from "@headlessui/react";
+import { Fragment, useRef } from "react";
 
 const style = {
   inActiveMenu: `text-xs opacity-80 md:text-sm`,
@@ -10,9 +14,44 @@ const style = {
 };
 
 function Product(props) {
+  const [order, setOrder] = useState(false);
+  const loginOrRegisterRef = useRef();
+
+  const closeLoginOrRegister = (e) => {
+    console.log(loginOrRegisterRef.current);
+
+    if (
+      loginOrRegisterRef.current &&
+      !loginOrRegisterRef.current.contains(e.target)
+    ) {
+      setOrder(false);
+      return;
+    }
+  };
+
   return (
     <App>
       <App.Header dark={true} />
+
+      <Transition
+        as={Fragment}
+        show={order}
+        enter="transition ease-out duration-200"
+        enterFrom="opacity-0 scale-95"
+        enterTo="opacity-100 scale-100"
+        leave="transition ease-in duration-200"
+        leaveFrom="opacity-100 translate-y-0"
+        leaveTo="opacity-0 translate-y-1"
+      >
+        <section
+          className="bg-[#16171e71] fixed inset-0 z-[5000] w-full flex items-center justify-center"
+          onClick={(e) => closeLoginOrRegister(e)}
+        >
+          <div className="container mx-auto w-5/6 md:w-2/3">
+            <ProductOrder refs={loginOrRegisterRef} />
+          </div>
+        </section>
+      </Transition>
 
       <section className="bg-[#16171E] py-5 md:py-10 relative overflow-hidden">
         <div className="flex items-center text-white | px-5 container mx-auto">
@@ -100,7 +139,10 @@ function Product(props) {
             </div>
 
             <div className="product__order__btn">
-              <button className="w-full | text-white bg-[#FB7A1A] py-2 text-lg font-bold font-poppins click:scale">
+              <button
+                onClick={() => setOrder(true)}
+                className="w-full | text-white bg-[#FB7A1A] py-2 text-lg font-bold font-poppins click:scale"
+              >
                 Order now
               </button>
             </div>
@@ -196,6 +238,108 @@ function Product(props) {
       <ReuqestForm />
       <App.Footer />
     </App>
+  );
+}
+
+function ProductOrder(props) {
+  return (
+    <div
+      className="space-y-3 md:space-y-10 h-full overflow-auto"
+      ref={props.refs}
+    >
+      <div className="user__info__forms">
+        <div className="user__info | px-7 py-8 | rounded-xl | bg-white">
+          <form className="space-y-5 md:space-y-10">
+            <div className="grid md:grid-cols-2 gap-2 md:gap-7">
+              <label htmlFor="full_name" className="flex flex-col | space-y-2">
+                <p className="text-[#002856] text-xs font-inter pb-0.5">
+                  Full Name <sup className="text-[#EB5757] text-xs">*</sup>
+                </p>
+
+                <input
+                  type="text"
+                  name="full_name"
+                  id="full_name"
+                  placeholder="Full Name"
+                  className="px-4 py-2.5 text-sm placeholder:text-sm | font-inter | border focus:border-[#024B80] duration-100 rounded-md focus:shadow-100"
+                />
+              </label>
+
+              <label htmlFor="phone" className="flex flex-col | space-y-2">
+                <p className="text-[#002856] text-xs font-inter pb-0.5">
+                  Phone Number <sup className="text-[#EB5757] text-xs">*</sup>
+                </p>
+
+                <input
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  placeholder="Phone Number"
+                  className="px-4 py-2.5 text-sm placeholder:text-sm | font-inter | border focus:border-[#024B80] duration-100 rounded-md focus:shadow-100"
+                />
+              </label>
+
+              <label htmlFor="email" className="flex flex-col | space-y-2">
+                <p className="text-[#002856] text-xs font-inter pb-0.5">
+                  Email Address <sup className="text-[#EB5757] text-xs">*</sup>
+                </p>
+
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  placeholder="Email Address"
+                  className="px-4 py-2.5 text-sm placeholder:text-sm | font-inter | border focus:border-[#024B80] duration-100 rounded-md focus:shadow-100"
+                />
+              </label>
+
+              <label htmlFor="country" className="flex flex-col | space-y-2">
+                <p className="text-[#002856] text-xs font-inter pb-0.5">
+                  Country <sup className="text-[#EB5757] text-xs">*</sup>
+                </p>
+
+                <select
+                  name="country"
+                  id="country"
+                  className="form-select block w-full rounded-md border-gray-300 focus:shadow-100 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                >
+                  <option>United Kingdom</option>
+                  <option>Germany</option>
+                  <option>Italy</option>
+                  <option>Uzbekistan</option>
+                </select>
+              </label>
+            </div>
+
+            <label htmlFor="message" className="flex flex-col | space-y-2">
+              <p className="text-[#002856] text-xs font-inter pb-0.5">
+                Message <sup className="text-[#EB5757] text-xs">*</sup>
+              </p>
+
+              <textarea
+                name="message"
+                id="message"
+                rows="5"
+                placeholder="Type your message.."
+                className="w-full px-4 py-2.5 text-sm placeholder:text-sm | font-inter | border focus:border-[#024B80] duration-100 rounded-md focus:shadow-100"
+              ></textarea>
+            </label>
+
+            <div className="grid md:grid-cols-2 md:gap-7">
+              <div></div>
+              <div className="grid grid-cols-2 gap-2">
+                <button className="form-button border border-orange-primary text-orange-primary font-semibold active:scale-95 duration-200 py-1 md:py-2.5">
+                  Cancel
+                </button>
+                <button className="form-button font-bold active:scale-95 duration-200 bg-[#FB7A1A] text-white py-1 md:py-2.5">
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 }
 
