@@ -12,8 +12,10 @@ import HorizontalLine from "pages/home/HorizontalLine";
 import CollapseCustom from "components/Collapse";
 import SvgRightArrow from "icons/SvgRightArrow";
 import clsx from "clsx";
+import { useRouter } from "next/router";
 
 function Index() {
+  const router = useRouter();
   const windowSize = useWindowSize();
   const container = useRef(false);
   const [containerWidth, setContainerWidth] = useState(0);
@@ -610,7 +612,10 @@ function Index() {
               News:
             </h3>
 
-            <button className="inline-flex items-center | space-x-4 group">
+            <button
+              onClick={() => router.push(`/news`)}
+              className="inline-flex items-center | space-x-4 group"
+            >
               <p className="text-[#FF9A00]">Show all news</p>
 
               <svg

@@ -7,13 +7,10 @@ import RangeInputTest from "pages/products/RangeInputTest";
 import CollapseCustom from "components/Collapse";
 
 import { useState } from "react";
-import Logo from "components/Logo";
-import SvgAddUser from "icons/SvgAddUser";
 import { useRouter } from "next/router";
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import useWindowSize from "hooks/useWindowSize";
-import { Cross as Hamburger } from "hamburger-react";
 import RequestForm from "components/RequestForm";
 
 const style = {
@@ -722,7 +719,7 @@ function Product() {
                     title: `Valve cover 23397716`,
                   },
                 ].map((product, index) => (
-                  <Link href={`/products/inshaAllah`} key={index}>
+                  <Link href={`/products/inshaAllah`} key={index} scroll={true}>
                     <div className="product | rounded-md overflow-hidden | border border-gray-100 shadow-p | cursor-pointer">
                       <div className="w-full h-32 md:h-64 overflow-hidden | relative">
                         <img

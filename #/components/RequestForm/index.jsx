@@ -1,6 +1,6 @@
 function ReuqestForm(props) {
   return (
-    <section className="bg-black | py-10 md:py-14 | relative | overflow-hidden">
+    <section className="bg-[#000000] | py-10 md:py-14 | relative | overflow-hidden">
       <div className="relative | container mx-auto z-50 | space-y-5 md:space-y-7">
         <h3 className="relative | text-3xl md:text-5xl font-bold text-white font-gm | text-center">
           Leave us a message <span className="py-2 block"></span> to recieve a
