@@ -648,7 +648,7 @@ function Product({ brands, categories, products }) {
               <div className='grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-5 | pt-5 md:pt-10'>
                 {products.data.map((product, index) => (
                   <Link
-                    href={`/products/${product.id}`}
+                    href={`/products/${product.slug}`}
                     key={index}
                     scroll={true}
                   >
