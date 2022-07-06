@@ -38,16 +38,16 @@ function News(props) {
         </div>
       </section>
 
-      <section className="news container mx-auto py-20">
+      <section className="news container mx-auto px-5 py-5 md:py-20">
         <>
           <div className="space-y-2">
             <div className="flex justify-between">
-              <h4 className="w-full font-bold text-3xl font-inter text-[#353437] group-hover:text-orange-primary duration-200">
+              <h4 className="w-full font-bold text-lg md:text-3xl font-inter text-[#353437] group-hover:text-orange-primary duration-200">
                 Veteran Russian diplomat resigns in protest of Moscow's
                 "aggressive war" in Ukraine
               </h4>
             </div>
-            <div className="fcb  pt-1 pb-2">
+            <div className="fcb pt-1 pb-2">
               <div className="fcc">
                 <SvgCalendar className="h-5" />
 
@@ -55,7 +55,7 @@ function News(props) {
               </div>
             </div>
 
-            <div className="img flex | h-[700px] w-full flex-shrink-0 | overflow-hidden">
+            <div className="img flex | h-56 md:h-[700px] w-full flex-shrink-0 | overflow-hidden">
               <img
                 src={`/business_center.png`}
                 alt="new_image"

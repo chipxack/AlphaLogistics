@@ -45,7 +45,7 @@ function News(props) {
         </div>
       </section>
 
-      <section className="news container mx-auto | py-20">
+      <section className="news container mx-auto | px-5 py-5 md:py-20">
         <div className="news | flex flex-col md:flex-row">
           {[
             {
@@ -66,8 +66,8 @@ function News(props) {
               <Link href={`/news/12`}>
                 <div
                   className={clsx({
-                    "flex w-full md:w-1/3 | py-7 px-3 group cursor-pointer border-b": true,
-                    "border-x": index === 1,
+                    "flex w-full md:w-1/3 | py-7 px-3 group cursor-pointer md:border-b": true,
+                    "md:border-x": index === 1,
                   })}
                   key={index}
                 >
@@ -130,8 +130,8 @@ of Russia's diplomatic service announced his resignation...`}
               <Link href={`/news/12`}>
                 <div
                   className={clsx({
-                    "flex w-full md:w-1/3 | py-7 px-3 group cursor-pointer border-b": true,
-                    "border-x": index === 1,
+                    "flex w-full md:w-1/3 | py-7 px-3 group cursor-pointer md:border-b": true,
+                    "md:border-x": index === 1,
                   })}
                   key={index}
                 >
