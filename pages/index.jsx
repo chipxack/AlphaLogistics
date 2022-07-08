@@ -37,7 +37,6 @@ export async function getStaticProps() {
 }
 
 function Index({ products, news }) {
-  console.log(news)
   const router = useRouter()
   const windowSize = useWindowSize()
   const container = useRef(false)
@@ -543,7 +542,7 @@ function Index({ products, news }) {
 
           <div className='grid md:grid-cols-3 gap-5 | pt-10 | relative'>
             {products.map((product, idx) => (
-              <Link href={`/products/${product.slug}`}>
+              <Link key={idx} href={`/products/${product.slug}`}>
                 <div
                   className='relative product | rounded-md overflow-hidden | shadow-p | cursor-pointer'
                   key={idx}
@@ -646,7 +645,7 @@ function Index({ products, news }) {
 
           <div className='news | flex flex-col md:flex-row'>
             {news.map((n, idx) => (
-              <Link href={`/news/${n.slug}`}>
+              <Link key={idx} href={`/news/${n.slug}`}>
                 <div
                   className={clsx({
                     'flex w-full md:w-1/3 | border-t border-[#353437] py-7 px-3 group cursor-pointer': true,

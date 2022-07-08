@@ -42,8 +42,6 @@ function Product(props) {
   const router = useRouter()
 
   const closeLoginOrRegister = (e) => {
-    console.log(loginOrRegisterRef.current)
-
     if (
       loginOrRegisterRef.current &&
       !loginOrRegisterRef.current.contains(e.target)
