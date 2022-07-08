@@ -7,12 +7,12 @@ import RangeInputTest from 'pages/products/RangeInputTest'
 import CollapseCustom from 'components/Collapse'
 import axios from 'axios'
 
-import { useState } from 'react'
-import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import useWindowSize from 'hooks/useWindowSize'
 import RequestForm from 'components/RequestForm'
+import Logo from 'components/Logo'
 
 const style = {
   inActiveMenu: `text-xs opacity-80 md:text-sm`,
@@ -21,7 +21,7 @@ const style = {
   inActiveFilterCategoryMenu: `text-[11px] md:text-xs text-[#16171E] hover:text-[#FB421A] opacity-60 cursor-pointer duration-100`,
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   try {
     const brandRes = await axios.get(
       `https://test.418347-co47083.tmweb.ru/api/product-brands`
@@ -47,12 +47,8 @@ export async function getServerSideProps(context) {
   }
 }
 
-function Product({ brands, categories, products }) {
-  console.log(products)
-
-  const router = useRouter()
-  const windowSize = useWindowSize()
-  const [isOpen, setOpen] = useState(false)
+function Product({ brands, categories, products: propsProducts }) {
+  const [products, setProducts] = useState(propsProducts)
 
   return (
     <App>
@@ -654,17 +650,25 @@ function Product({ brands, categories, products }) {
                   >
                     <div className='product | rounded-md overflow-hidden | border border-gray-100 shadow-p | cursor-pointer'>
                       <div className='w-full h-32 md:h-64 overflow-hidden | relative'>
-                        <img
-                          src={
-                            `${process.env.NEXT_PUBLIC_URL}/` +
-                              product?.images[0]?.image || ''
-                          }
-                          alt='prodcut_1'
-                          className='h-full w-full object-contain object-center'
-                        />
+                        {!product?.images[0]?.image && (
+                          <div className='h-full | flex items-center justify-center'>
+                            <Logo className='h-7 opacity-50' dark={true} />
+                          </div>
+                        )}
 
-                        <div className='p-1.5 md:p-3 top-0 left-0 ml-3 mt-3 | text-[8px] md:text-xs | absolute | bg-gray-200 | rounded-md'>
-                          {product.id}
+                        {product?.images[0]?.image && (
+                          <img
+                            src={
+                              `${process.env.NEXT_PUBLIC_URL}/` +
+                                product?.images[0]?.image || ''
+                            }
+                            alt='prodcut_1'
+                            className='h-full w-full object-contain object-center'
+                          />
+                        )}
+
+                        <div className='p-1.5 md:p-2 top-0 left-0 ml-2 mt-2 | text-[8px] md:text-xs | absolute | bg-gray-200/60 | rounded-md'>
+                          #{product.categories[0].title.en}
                         </div>
                       </div>
 
