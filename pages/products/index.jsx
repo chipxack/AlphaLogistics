@@ -13,6 +13,8 @@ import { Fragment } from 'react'
 import useWindowSize from 'hooks/useWindowSize'
 import RequestForm from 'components/RequestForm'
 import Logo from 'components/Logo'
+import { API } from 'config'
+import { TEN_MINUTES_IN_SECONDS } from 'config'
 
 const style = {
   inActiveMenu: `text-xs opacity-80 md:text-sm`,
@@ -23,17 +25,11 @@ const style = {
 
 export async function getStaticProps(context) {
   try {
-    const brandRes = await axios.get(
-      `https://test.418347-co47083.tmweb.ru/api/product-brands`
-    )
+    const brandRes = await axios.get(`${API}/api/product-brands`)
 
-    const categoryRes = await axios.get(
-      `https://test.418347-co47083.tmweb.ru/api/product-categories`
-    )
+    const categoryRes = await axios.get(`${API}/api/product-categories`)
 
-    const productsRes = await axios.get(
-      `https://test.418347-co47083.tmweb.ru/api/products`
-    )
+    const productsRes = await axios.get(`${API}/api/products`)
 
     return {
       props: {
@@ -41,9 +37,21 @@ export async function getStaticProps(context) {
         categories: categoryRes.data.data,
         products: productsRes.data.data,
       },
+
+      revalidate: TEN_MINUTES_IN_SECONDS,
     }
   } catch (error) {
-    //
+    console.log(error, '=========')
+
+    return {
+      props: {
+        brands: [],
+        categories: [],
+        products: { data: [] },
+      },
+
+      revalidate: 1,
+    }
   }
 }
 

@@ -15,24 +15,37 @@ import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import Link from 'next/link'
+import { HOUR_IN_SECONDS } from 'config'
+import { API } from 'config'
 
 export async function getStaticProps() {
-  try {
-    const productsRes = await axios.get(
-      `https://test.418347-co47083.tmweb.ru/api/products/best-offers`
-    )
-    const newsRes = await axios.get(
-      `https://test.418347-co47083.tmweb.ru/api/posts/latest`
-    )
+  const productsRes = await axios(
+    `https://test.418347-co47083.tmweb.ru/api/products/best-offers`,
+    {
+      timeout: 1000 * 20,
+    }
+  )
+  const newsRes = await axios(
+    `https://test.418347-co47083.tmweb.ru/api/posts/latest`
+  )
 
+  try {
     return {
       props: {
         products: productsRes.data.data,
         news: newsRes.data.data,
       },
+      revalidate: HOUR_IN_SECONDS,
     }
   } catch (error) {
-    console.log(error)
+    console.log(error.message)
+    return {
+      props: {
+        products: [],
+        news: [],
+      },
+      revalidate: 1,
+    }
   }
 }
 

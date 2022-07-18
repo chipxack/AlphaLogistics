@@ -7,23 +7,37 @@ import { Fragment, useRef } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import { TEN_MINUTES_IN_SECONDS } from 'config'
+import { API } from 'config'
 
-export async function getServerSideProps(context) {
+export async function getStaticPaths(params) {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  }
+}
+
+export async function getStaticProps(context) {
   try {
     const { slug } = context.params
 
-    const productRes = await axios.get(
-      `https://test.418347-co47083.tmweb.ru/api/products/${slug}`
-    )
+    const productRes = await axios.get(`${API}/api/products/${slug}`, {
+      timeout: 1000 * 20,
+    })
 
     return {
       props: {
         product: productRes.data.data,
       },
+
+      revalidate: TEN_MINUTES_IN_SECONDS,
     }
   } catch (error) {
+    console.error(error)
     return {
-      props: {},
+      props: {
+        product: [],
+      },
     }
   }
 }
@@ -35,8 +49,8 @@ const style = {
   inActiveFilterCategoryMenu: `text-[11px] md:text-xs text-[#16171E] hover:text-[#FB421A] opacity-60 cursor-pointer duration-100`,
 }
 
-function Product(props) {
-  const { product } = props
+function Product({ product }) {
+  console.log(product)
   const [order, setOrder] = useState(false)
   const loginOrRegisterRef = useRef()
   const router = useRouter()
