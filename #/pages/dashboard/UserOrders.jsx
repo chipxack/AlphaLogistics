@@ -4,6 +4,7 @@ import SvgSearch from "icons/SvgSearch";
 import Link from "next/link";
 
 function UserOrders(props) {
+
   const columns = [
     {
       title: `Tracking ID`,
@@ -25,120 +26,6 @@ function UserOrders(props) {
     {
       title: `Status`,
       filter_by: `status`,
-    },
-  ];
-
-  const rows = [
-    {
-      id: `20462`,
-      product: `Hat`,
-      date: `13/05/2022`,
-      amount: `$4.95`,
-      payment_mode: `Transfer Bank`,
-      status: {
-        title: `Delivered`,
-        code: `success`,
-      },
-    },
-    {
-      id: `20462`,
-      product: `Keyboard`,
-      date: `13/05/2022`,
-      amount: `$4.95`,
-      payment_mode: `Transfer Bank`,
-      status: {
-        title: `Canceled`,
-        code: `error`,
-      },
-    },
-    {
-      id: `20462`,
-      product: `Monitor`,
-      date: `13/05/2022`,
-      amount: `$41.95`,
-      payment_mode: `Transfer Bank`,
-      status: {
-        title: `Delivered`,
-        code: `success`,
-      },
-    },
-    {
-      id: `20462`,
-      product: `Mouse`,
-      date: `13/05/2022`,
-      amount: `$14.95`,
-      payment_mode: `Transfer Bank`,
-      status: {
-        title: `Process`,
-        code: `warn`,
-      },
-    },
-    {
-      id: `20462`,
-      product: `Hat`,
-      date: `13/05/2022`,
-      amount: `$4.95`,
-      payment_mode: `Transfer Bank`,
-      status: {
-        title: `Delivered`,
-        code: `success`,
-      },
-    },
-    {
-      id: `20462`,
-      product: `Hat`,
-      date: `13/05/2022`,
-      amount: `$4.95`,
-      payment_mode: `Transfer Bank`,
-      status: {
-        title: `Process`,
-        code: `warn`,
-      },
-    },
-    {
-      id: `20462`,
-      product: `Hat`,
-      date: `13/05/2022`,
-      amount: `$4.95`,
-      payment_mode: `Transfer Bank`,
-      status: {
-        title: `Process`,
-        code: `warn`,
-      },
-    },
-    {
-      id: `20462`,
-      product: `Hat`,
-      date: `13/05/2022`,
-      amount: `$4.95`,
-      payment_mode: `Transfer Bank`,
-      status: {
-        title: `Process`,
-        code: `warn`,
-      },
-    },
-    {
-      id: `20462`,
-      product: `Hat`,
-      date: `13/05/2022`,
-      amount: `$4.95`,
-      payment_mode: `Transfer Bank`,
-      status: {
-        title: `Process`,
-        code: `warn`,
-      },
-    },
-
-    {
-      id: `20462`,
-      product: `Hat`,
-      date: `13/05/2022`,
-      amount: `$4.95`,
-      payment_mode: `Transfer Bank`,
-      status: {
-        title: `Delivered`,
-        code: `success`,
-      },
     },
   ];
 
@@ -185,36 +72,36 @@ function UserOrders(props) {
                 </thead>
 
                 <tbody className="bg-white">
-                  {rows.map((r, index) => (
-                    <Link href={`/dashboard/orders/${r.id}`} key={index}>
+                  {props?.data?.map((r, index) => (
+                    <Link href={`/dashboard/orders/${r.uid}`} key={index}>
                       <tr
                         key={index}
                         className="oddds rounded-xl hover:bg-orange-primary/20 border-l border-r border-transparent hover:border-orange-500 cursor-pointer duration-200"
                       >
                         <td className="px-5 text-sm font-medium font-inter text-[#16171E]">
-                          #{r.id}
+                          #{r.uid}
                         </td>
-                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap dark:text-white">
+                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap">
                           {r.product}
                         </td>
-                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap dark:text-white">
-                          {r.date}
+                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap">
+                          {r.load_time}
                         </td>
-                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap dark:text-white">
-                          {r.amount}
+                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap">
+                          {r.products_price}
                         </td>
-                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap dark:text-white">
+                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap">
                           {r.payment_mode}
                         </td>
                         <td
                           className={clsx({
                             "px-5 py-5 text-sm font-medium text-left whitespace-nowrap": true,
-                            "text-[#1F9254]": r.status.code === `success`,
-                            "text-[#9D0208]": r.status.code === `error`,
-                            "text-[#FAA307]": r.status.code === `warn`,
+                            // "text-[#1F9254]": r.status.code === `success`,
+                            // "text-[#9D0208]": r.status.code === `error`,
+                            // "text-[#FAA307]": r.status.code === `warn`,
                           })}
                         >
-                          {r.status.title}
+                          {/*{r.status.title}*/}
                         </td>
                       </tr>
                     </Link>

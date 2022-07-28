@@ -4,11 +4,9 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { Transition } from '@headlessui/react'
 import { Fragment, useRef } from 'react'
-import { useEffect } from 'react'
-import axios from 'axios'
 import { useRouter } from 'next/router'
 import { TEN_MINUTES_IN_SECONDS } from 'config'
-import { API } from 'config'
+import products from "../../services/products";
 
 export async function getStaticPaths(params) {
   return {
@@ -21,9 +19,7 @@ export async function getStaticProps(context) {
   try {
     const { slug } = context.params
 
-    const productRes = await axios.get(`${API}/api/products/${slug}`, {
-      timeout: 1000 * 20,
-    })
+    const productRes = await products.getProduct(slug)
 
     return {
       props: {
@@ -50,7 +46,7 @@ const style = {
 }
 
 function Product({ product }) {
-  console.log(product)
+
   const [order, setOrder] = useState(false)
   const loginOrRegisterRef = useRef()
   const router = useRouter()
@@ -105,10 +101,10 @@ function Product({ product }) {
             <span className='text-xs md:text-sm px-2'>/</span>
 
             <a href='#' className={style.activeMenu}>
-              {product.title.en}
+              {product?.title?.en}
             </a>
 
-            <h2 className='text-2xl font-bold pt-3'>{product.title.en}</h2>
+            <h2 className='text-2xl font-bold pt-3'>{product?.title?.en}</h2>
           </div>
 
           <div className='bounce w-[30rem] h-[30rem] opacity-[70%] absolute right-0 | blur-3xl duration-150 rounded-[50%] bg-[#FB7A1A]'></div>
@@ -120,7 +116,7 @@ function Product({ product }) {
           <div className='flex-[1] bg-[#F5F5F7] | mr-3 fcc mb-5 md:mb-0'>
             <div className='product__image__wrapper h-64 md:h-96 | fcc | overflow-hidden'>
               <img
-                src={`${process.env.NEXT_PUBLIC_URL}/${product?.images[0]?.image}`}
+                src={`${process.env.NEXT_PUBLIC_URL}/${product?.images ? product?.images[0]?.image : ''}`}
                 alt='product'
                 className='product__image | h-full object-contain opacity-95'
               />
@@ -129,9 +125,9 @@ function Product({ product }) {
 
           <div className='product__details | mr-2 md:mx-3 | flex-[1] space-y-7'>
             <div className='product__description | space-y-3'>
-              <h3 className='text-2xl font-bold'>{product.title.en}</h3>
+              <h3 className='text-2xl font-bold'>{product?.title?.en}</h3>
               <p className='opacity-70 text-[#16171E] font-inter'>
-                {product.description.en || ''}
+                {product?.description?.en || ''}
               </p>
             </div>
 
@@ -139,7 +135,7 @@ function Product({ product }) {
               <h3 className='font-bold border-b border-black pb-3 mb-7'>
                 Details
               </h3>
-              {product.properties.map((property, idx) => (
+              {product.properties?.map((property, idx) => (
                 <div className='flex justify-between items-center' key={idx}>
                   <div className='title text-sm'>
                     {property.property.title.en}

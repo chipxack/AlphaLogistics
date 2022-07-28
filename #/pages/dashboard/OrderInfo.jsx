@@ -4,8 +4,9 @@ import OrderProgress from "./OrderProgress";
 import { Collapse } from "react-collapse";
 import { useState } from "react";
 import clsx from "clsx";
+import Moment from "react-moment";
 
-function OrderInfo() {
+function OrderInfo(props) {
   const [detailsMenu, setDetailsMenu] = useState(false);
   const [progressMenu, setProgressMenu] = useState(false);
 
@@ -24,7 +25,6 @@ function OrderInfo() {
       time: `19:31 Local Time`,
       time2: `19:31 Local Time`,
     },
-
     delivered: {
       yes: false,
       week: `Saturday`,
@@ -39,7 +39,7 @@ function OrderInfo() {
 
       <div className="bg-white | p-5 | space-y-14">
         <div className="fcb">
-          <p className="font-medium">Tracking Code: 5020440305</p>
+          <p className="font-medium">Tracking Code: {props.orderUuid}</p>
 
           <button className="fcc px-10 py-3 rounded-md | form-button border border-orange-primary text-orange-primary font-bold active:scale-95 duration-200">
             Print <SvgPrint className="ml-3 h-4" />
@@ -65,57 +65,58 @@ function OrderInfo() {
             <div className="order__details__content | space-y-3 | py-5">
               <div className="fcb">
                 <p className="font-semibold">Tracking ID</p>
-                <p className="text-sm">5020440305</p>
+                <p className="text-sm">{props.orderUuid}</p>
               </div>
 
-              <div className="product__details space-y-7">
-                <div className="product__description | space-y-3">
-                  <h3 className="py-2">Valve cover 23397716</h3>
-                  <p className="opacity-70 text-[#16171E] w-2/3 text-sm">
-                    Unfortunately there is delivery time available for your
-                    country, please contact us for more information. there is
-                    delivery time available for your country, please contact us
-                    for more information.
-                  </p>
-                </div>
-
-                <div className="product__details | space-y-5 | pt-3">
-                  <h3 className="font-bold border-b border-opacity-30 border-black"></h3>
-                  {[
-                    {
-                      title: `Reference no.`,
-                      value: `BP0743287_UP`,
-                    },
-                    {
-                      title: `Brand`,
-                      value: `Volvo`,
-                    },
-                    {
-                      title: `Reference no.`,
-                      value: `BP0743287_UP`,
-                    },
-                    {
-                      title: `Brand`,
-                      value: `Volvo`,
-                    },
-                  ].map((detail, index) => (
-                    <div
-                      className="flex justify-between items-center"
-                      key={index}
-                    >
-                      <div className="title text-sm">{detail.title}</div>
-
-                      <div className="border-b border-dashed border-gray-300 flex-grow text-white mx-3 -mt-4">
-                        12
+              {
+                props.orderData?.products.map((item, ind) =>
+                    <div key={ind} className="product__details space-y-7">
+                      <div className="product__description | space-y-3">
+                        <h3 className="py-2">{item.title.en}</h3>
+                        <p className="opacity-70 text-[#16171E] w-2/3 text-sm">{item.description.en}</p>
                       </div>
 
-                      <div className="value text-[#30C5FF] text-sm">
-                        {detail.value}
+                      <div className="product__details | space-y-5 | pt-3">
+                        <h3 className="font-bold border-b border-opacity-30 border-black"></h3>
+                        {[
+                          {
+                            title: `Reference no.`,
+                            value: `BP0743287_UP`,
+                          },
+                          {
+                            title: `Brand`,
+                            value: `Volvo`,
+                          },
+                          {
+                            title: `Reference no.`,
+                            value: `BP0743287_UP`,
+                          },
+                          {
+                            title: `Brand`,
+                            value: `Volvo`,
+                          },
+                        ].map((detail, index) => (
+                            <div
+                                className="flex justify-between items-center"
+                                key={index}
+                            >
+                              <div className="title text-sm">{detail.title}</div>
+
+                              <div className="border-b border-dashed border-gray-300 flex-grow text-white mx-3 -mt-4">
+                                12
+                              </div>
+
+                              <div className="value text-[#30C5FF] text-sm">
+                                {detail.value}
+                              </div>
+                            </div>
+                        ))}
                       </div>
                     </div>
-                  ))}
-                </div>
-              </div>
+                )
+              }
+
+
             </div>
           </Collapse>
         </div>
@@ -183,20 +184,7 @@ function OrderInfo() {
                   Places
                 </h3>
               </div>
-              {[
-                {
-                  title: `IN/AT MAILBOX`,
-                },
-                {
-                  title: `OUT FOR DELIVERY`,
-                },
-                {
-                  title: `IN/AT ARRIVED USPS SORT FACILITY`,
-                },
-                {
-                  title: `DEPARTURED ORIGIN ECOMMERCE FACILITY`,
-                },
-              ].map((d, index) => (
+              {props.orderData?.routes?.map((d, index) => (
                 <div
                   key={index}
                   className="flex justify-between | border-b border-[#E0E0E0] border-opacity-60 py-5"
@@ -205,15 +193,19 @@ function OrderInfo() {
                     <p className="text-sm text-[#353437] opacity-70">
                       Thursday
                     </p>
-                    <h3 className="font-bold text-[#16171E]">27.01.2022</h3>
+                    <h3 className="font-bold text-[#16171E]">
+                      <Moment format="DD.MM.YYYY">
+                        {d.updated_at}
+                      </Moment>
+                    </h3>
                     <p className="text-sm text-[#353437] opacity-70">
-                      22:00 Local Time
+                      <Moment format="hh.mm">{d.updated_at}</Moment> Local Time
                     </p>
                   </div>
 
                   <div className="ordere | space-y-2 w-1/2">
                     <h3 className="font-bold text-[#16171E] hover:text-orange-primary duration-150 text-left w-full">
-                      {d.title}
+                      {d.title.en}
                     </h3>
                     <p className="text-sm text-[#353437] opacity-70">
                       Paris, France

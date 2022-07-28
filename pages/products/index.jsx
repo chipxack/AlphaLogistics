@@ -15,6 +15,7 @@ import RequestForm from 'components/RequestForm'
 import Logo from 'components/Logo'
 import { API } from 'config'
 import { TEN_MINUTES_IN_SECONDS } from 'config'
+import products from "../../services/products";
 
 const style = {
   inActiveMenu: `text-xs opacity-80 md:text-sm`,
@@ -25,11 +26,11 @@ const style = {
 
 export async function getStaticProps(context) {
   try {
-    const brandRes = await axios.get(`${API}/api/product-brands`)
+    const brandRes = await products.getProductBrands()
 
-    const categoryRes = await axios.get(`${API}/api/product-categories`)
+    const categoryRes = await products.getProductCategories()
 
-    const productsRes = await axios.get(`${API}/api/products`)
+    const productsRes = await products.getProducts()
 
     return {
       props: {

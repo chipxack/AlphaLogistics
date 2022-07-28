@@ -10,7 +10,8 @@ import { Fragment } from "react";
 import useWindowSize from "hooks/useWindowSize";
 import { Cross as Hamburger } from "hamburger-react";
 import { Menu } from "@headlessui/react";
-import { useEffect } from "react";
+import Cookies from 'js-cookie';
+import profile from "../../../services/profile";
 
 const style = {
   menu: `text-white text-sm font-medium cursor-pointer duration-200 hover:text-orange-primary`,
@@ -23,6 +24,8 @@ function Header(props) {
   const windowSize = useWindowSize();
   const [isOpen, setOpen] = useState(false);
   const [step, setStep] = useState(1);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loginOrRegister, setLoginOrRegister] = useState(``);
   const loginOrRegisterRef = useRef(``);
 
@@ -37,6 +40,20 @@ function Header(props) {
       return;
     }
   };
+
+  const authClient = () => {
+    const data = {
+      email,
+      password
+    }
+    profile.auth(data)
+      .then(response => {
+        Cookies.set('token', response.data?.success?.access_token);
+        Cookies.set('refresh-token', response.data?.success?.refresh_token);
+        router.push(`/dashboard/profile`)
+      })
+      .catch(error => console.error(error.response))
+  }
 
   return (
     <header
@@ -216,7 +233,12 @@ function Header(props) {
             {({ open }) => (
               <>
                 <Popover.Button as="button" className={style.registerBtn}>
-                  <p>{windowSize.width > 640 ? `Login to Account` : `Login`}</p>
+                  <p>
+                    {
+                      props.profile ? props.profile.name :
+                      windowSize.width > 640 ? `Login to Account` : `Login`
+                    }
+                  </p>
                   <SvgAddUser className="h-4 md:h-5" />
                 </Popover.Button>
 
@@ -237,39 +259,57 @@ function Header(props) {
                             Welcome to ALST
                           </h3>
 
-                          <div className="fc | space-x-2 md:space-x-3">
-                            <button
-                              onClick={() => {
-                                setLoginOrRegister(`register`);
-                                close();
-                              }}
-                              className="text-white bg-[#FB7A1A] w-1/2 py-2 text-xs md:text-sm font-bold font-poppins click:scale"
-                            >
-                              Registration
-                            </button>
+                          {
+                            props.profile ?
+                                <div className="fc | space-x-2 md:space-x-3">
+                                  <button
+                                      onClick={() => {
+                                        setLoginOrRegister(`login`);
+                                        close();
+                                      }}
+                                      className="bg-white border border-orange-primary text-[#FB7A1A] w-1/2 py-2 text-xs md:text-sm font-bold font-poppins click:scale"
+                                  >
+                                    Log Out
+                                  </button>
+                                </div> :
+                                <div className="fc | space-x-2 md:space-x-3">
+                                  <button
+                                      onClick={() => {
+                                        setLoginOrRegister(`register`);
+                                        close();
+                                      }}
+                                      className="text-white bg-[#FB7A1A] w-1/2 py-2 text-xs md:text-sm font-bold font-poppins click:scale"
+                                  >
+                                    Registration
+                                  </button>
 
-                            <button
-                              onClick={() => {
-                                setLoginOrRegister(`login`);
-                                close();
-                              }}
-                              className="bg-white border border-orange-primary text-[#FB7A1A] w-1/2 py-2 text-xs md:text-sm font-bold font-poppins click:scale"
-                            >
-                              Log In
-                            </button>
-                          </div>
+                                  <button
+                                      onClick={() => {
+                                        setLoginOrRegister(`login`);
+                                        close();
+                                      }}
+                                      className="bg-white border border-orange-primary text-[#FB7A1A] w-1/2 py-2 text-xs md:text-sm font-bold font-poppins click:scale"
+                                  >
+                                    Log In
+                                  </button>
+                                </div>
+                          }
+                          {
+                            props.profile &&
+                              <>
+                                <hr />
+                                <h3 className="text-sm font-inter font-bold text-[#000000]">
+                                  My Orders
+                                </h3>
 
-                          <hr />
-                          <h3 className="text-sm font-inter font-bold text-[#000000]">
-                            My Orders
-                          </h3>
-
-                          <h3 className="text-sm font-inter font-bold text-[#000000]">
-                            My Desires
-                          </h3>
-                          <h3 className="text-sm font-inter font-bold text-[#000000]">
-                            Favorite Stores
-                          </h3>
+                                <h3 className="text-sm font-inter font-bold text-[#000000]">
+                                  My Desires
+                                </h3>
+                                <h3 className="text-sm font-inter font-bold text-[#000000]">
+                                  Favorite Stores
+                                </h3>
+                              </>
+                          }
                         </div>
                       </div>
                     )}
@@ -308,21 +348,23 @@ function Header(props) {
 
                   <div className="form fb_vertically space-y-5 md:space-y-5">
                     <input
-                      type="text"
+                      onChange={(e) => setEmail(e.target.value)}
+                      type="email"
                       name="email"
                       placeholder="Email:"
                       className="placeholder:opacity-30 placeholder:text-black | px-2 py-2 md:px-3 md:py-4 | border border-indigo-500 border-opacity-0 focus:border-opacity-100 duration-200 bg-[#F5F5F7]"
                     />
 
                     <input
-                      type="text"
-                      name="email"
-                      placeholder="Email:"
+                      onChange={(e) => setPassword(e.target.value)}
+                      type="password"
+                      name="password"
+                      placeholder="Password:"
                       className="placeholder:opacity-30 placeholder:text-black | px-2 py-2 md:px-3 md:py-4 | border border-indigo-500 border-opacity-0 focus:border-opacity-100 duration-200 bg-[#F5F5F7]"
                     />
 
                     <button
-                      onClick={() => router.push(`/dashboard/profile`)}
+                      onClick={authClient}
                       className="border text-sm border-orange-primary bg-white text-black px-10 py-2 md:px-10 md:py-2.5 md:text-lg font-bold font-poppins active:scale-95 duration-200"
                     >
                       Login

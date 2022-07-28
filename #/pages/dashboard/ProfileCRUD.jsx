@@ -1,6 +1,7 @@
 import SvgPen from "icons/SvgPen";
 
 function ProfileCRUD(props) {
+
   return (
     <div className="bg-[#F6F8FC] px-7 py-5 | space-y-10">
       <div className="user__info | px-5 py-5 | rounded-xl | bg-white">
@@ -18,8 +19,8 @@ function ProfileCRUD(props) {
           </div>
 
           <div className="pl-5 space-y-2">
-            <h4 className="font-exo text-[#353437]">George Adamson Jackson</h4>
-            <p className="text-[#020105] font-inter">+44 20 7423 000</p>
+            <h4 className="font-exo text-[#353437]">{props.profile?.name}</h4>
+            <p className="text-[#020105] font-inter">{props.profile?.phone}</p>
           </div>
         </div>
       </div>
@@ -34,6 +35,7 @@ function ProfileCRUD(props) {
                 </p>
 
                 <input
+                    value={props.profile?.name}
                   type="text"
                   name="full_name"
                   id="full_name"
@@ -48,6 +50,7 @@ function ProfileCRUD(props) {
                 </p>
 
                 <input
+                    value={props.profile?.phone}
                   type="text"
                   name="phone"
                   id="phone"
@@ -62,6 +65,7 @@ function ProfileCRUD(props) {
                 </p>
 
                 <input
+                    value={props.profile?.email}
                   type="text"
                   name="email"
                   id="email"

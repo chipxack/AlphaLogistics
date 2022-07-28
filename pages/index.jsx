@@ -17,17 +17,12 @@ import axios from 'axios'
 import Link from 'next/link'
 import { HOUR_IN_SECONDS } from 'config'
 import { API } from 'config'
+import products from "../services/products";
+import posts from "../services/posts";
 
 export async function getStaticProps() {
-  const productsRes = await axios(
-    `https://test.418347-co47083.tmweb.ru/api/products/best-offers`,
-    {
-      timeout: 1000 * 20,
-    }
-  )
-  const newsRes = await axios(
-    `https://test.418347-co47083.tmweb.ru/api/posts/latest`
-  )
+  const productsRes = await products.getProductsBestOffers()
+  const newsRes = await posts.getPostsLatest()
 
   try {
     return {
