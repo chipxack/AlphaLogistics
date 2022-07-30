@@ -24,6 +24,10 @@
   @apply bg-[#F7F6FE];
 }
 
+* {
+  @apply scroll-smooth;
+}
+
 html {
   font-family: 'Nunito', monospace;
   @apply select-none scroll-smooth;

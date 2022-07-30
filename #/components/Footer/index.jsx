@@ -154,7 +154,7 @@ function Footer(props) {
         <div className='py-5 md:py-0 w-full md:w-auto flex justify-start'>
           <div className='flex items-center justify-center | space-x-2 | cursor-pointer'>
             <h4 className='text-xs'>English</h4>
-            <SvgArrow className='h-4' />
+            {/* <SvgArrow className='h-4' /> */}
           </div>
         </div>
       </div>

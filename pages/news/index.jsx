@@ -59,7 +59,7 @@ function News({ news }) {
             <h2 className='text-2xl font-bold pt-3'>News</h2>
           </div>
 
-          <div className='bounce w-[30rem] h-[30rem] opacity-[70%] absolute right-0 | blur-3xl duration-150 rounded-[50%] bg-[#FB7A1A]'></div>
+          <div className='bounce w-[30rem] h-[30rem] opacity-[70%] absolute right-0 | blur-3xl duration-150 rounded-[50%] bg-orange-primary'></div>
         </div>
       </section>
 
@@ -116,7 +116,7 @@ of Russia's diplomatic service announced his resignation...`}
         </div>
 
         <div className='fcc | pt-5 md:pt-10'>
-          <button className='text-white bg-[#FB7A1A] px-12 py-3 text-sm md:text-lg md:px-16 md:py-3 font-bold font-poppins click:scale'>
+          <button className='text-white bg-orange-primary px-12 py-3 text-sm md:text-lg md:px-16 md:py-3 font-bold font-poppins click:scale'>
             Load More
           </button>
         </div>

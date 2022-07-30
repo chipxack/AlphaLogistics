@@ -6,7 +6,7 @@ import { Transition } from '@headlessui/react'
 import { Fragment, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { TEN_MINUTES_IN_SECONDS } from 'config'
-import products from "../../services/products";
+import products from '../../services/products'
 
 export async function getStaticPaths(params) {
   return {
@@ -46,7 +46,6 @@ const style = {
 }
 
 function Product({ product }) {
-
   const [order, setOrder] = useState(false)
   const loginOrRegisterRef = useRef()
   const router = useRouter()
@@ -107,7 +106,7 @@ function Product({ product }) {
             <h2 className='text-2xl font-bold pt-3'>{product?.title?.en}</h2>
           </div>
 
-          <div className='bounce w-[30rem] h-[30rem] opacity-[70%] absolute right-0 | blur-3xl duration-150 rounded-[50%] bg-[#FB7A1A]'></div>
+          <div className='bounce w-[30rem] h-[30rem] opacity-[70%] absolute right-0 | blur-3xl duration-150 rounded-[50%] bg-orange-primary'></div>
         </div>
       </section>
 
@@ -116,7 +115,9 @@ function Product({ product }) {
           <div className='flex-[1] bg-[#F5F5F7] | mr-3 fcc mb-5 md:mb-0'>
             <div className='product__image__wrapper h-64 md:h-96 | fcc | overflow-hidden'>
               <img
-                src={`${process.env.NEXT_PUBLIC_URL}/${product?.images ? product?.images[0]?.image : ''}`}
+                src={`${process.env.NEXT_PUBLIC_URL}/${
+                  product?.images ? product?.images[0]?.image : ''
+                }`}
                 alt='product'
                 className='product__image | h-full object-contain opacity-95'
               />
@@ -155,7 +156,7 @@ function Product({ product }) {
             <div className='product__order__btn'>
               <button
                 onClick={() => setOrder(true)}
-                className='w-full | text-white bg-[#FB7A1A] py-2 text-lg font-bold font-poppins click:scale'
+                className='w-full | text-white bg-orange-primary py-2 text-lg font-bold font-poppins click:scale'
               >
                 Order now
               </button>
@@ -222,7 +223,7 @@ function Product({ product }) {
                   </h4>
 
                   <button className='inline-flex items-center | space-x-2 md:space-x-4 group'>
-                    <p className='text-[#FF9A00] text-xs md:text-base'>
+                    <p className='text-[#FFCC00] text-xs md:text-base'>
                       Details
                     </p>
 
@@ -234,7 +235,7 @@ function Product({ product }) {
                     >
                       <path
                         d='M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z'
-                        stroke='#FF9A00'
+                        stroke='#FFCC00'
                         strokeWidth='1.5'
                         strokeMiterlimit='10'
                         strokeLinecap='round'
@@ -345,7 +346,7 @@ function ProductOrder(props) {
                 <button className='form-button border border-orange-primary text-orange-primary font-semibold active:scale-95 duration-200 py-1 md:py-2.5'>
                   Cancel
                 </button>
-                <button className='form-button font-bold active:scale-95 duration-200 bg-[#FB7A1A] text-white py-1 md:py-2.5'>
+                <button className='form-button font-bold active:scale-95 duration-200 bg-orange-primary text-white py-1 md:py-2.5'>
                   Save Changes
                 </button>
               </div>

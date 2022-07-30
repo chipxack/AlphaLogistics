@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./#/**/*.{js,ts,jsx,tsx}"],
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './#/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -8,7 +8,7 @@ module.exports = {
         },
 
         orange: {
-          primary: `#FF8B00`,
+          primary: `#FFCC00`,
         },
         black: `#16171E`,
       },
@@ -28,8 +28,8 @@ module.exports = {
     },
   },
   plugins: [
-    require("@tailwindcss/forms")({
-      strategy: "class",
+    require('@tailwindcss/forms')({
+      strategy: 'class',
     }),
   ],
-};
+}

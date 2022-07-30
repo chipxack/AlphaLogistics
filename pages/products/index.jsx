@@ -15,7 +15,7 @@ import RequestForm from 'components/RequestForm'
 import Logo from 'components/Logo'
 import { API } from 'config'
 import { TEN_MINUTES_IN_SECONDS } from 'config'
-import products from "../../services/products";
+import products from '../../services/products'
 
 const style = {
   inActiveMenu: `text-xs opacity-80 md:text-sm`,
@@ -217,7 +217,7 @@ function Product({ brands, categories, products: propsProducts }) {
 
                   {/* --- FILTER APPLY --- */}
                   <div className='filter__apply'>
-                    <button className='w-full | text-white bg-[#FB7A1A] mt-3 py-2 text-lg font-bold font-poppins click:scale'>
+                    <button className='w-full | text-white bg-orange-primary mt-3 py-2 text-lg font-bold font-poppins click:scale'>
                       Apply
                     </button>
                   </div>
@@ -570,7 +570,7 @@ function Product({ brands, categories, products: propsProducts }) {
 
                                     {/* --- FILTER APPLY --- */}
                                     <div className='filter__apply'>
-                                      <button className='w-full | text-white bg-[#FB7A1A] mt-3 py-1 md:py-2 text-base md:text-lg font-bold font-poppins click:scale'>
+                                      <button className='w-full | text-white bg-orange-primary mt-3 py-1 md:py-2 text-base md:text-lg font-bold font-poppins click:scale'>
                                         Apply
                                       </button>
                                     </div>
@@ -687,7 +687,7 @@ function Product({ brands, categories, products: propsProducts }) {
                         </h4>
 
                         <button className='inline-flex items-center | space-x-2 md:space-x-4 group'>
-                          <p className='text-[#FF9A00] text-xs md:text-base'>
+                          <p className='text-[#FFCC00] text-xs md:text-base'>
                             Details
                           </p>
 
@@ -699,7 +699,7 @@ function Product({ brands, categories, products: propsProducts }) {
                           >
                             <path
                               d='M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z'
-                              stroke='#FF9A00'
+                              stroke='#FFCC00'
                               strokeWidth='1.5'
                               strokeMiterlimit='10'
                               strokeLinecap='round'

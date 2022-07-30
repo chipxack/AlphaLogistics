@@ -70,7 +70,7 @@ function News({ post }) {
             <h2 className='text-2xl font-bold pt-3'>News</h2>
           </div>
 
-          <div className='bounce w-[30rem] h-[30rem] opacity-[70%] absolute right-0 | blur-3xl duration-150 rounded-[50%] bg-[#FB7A1A]'></div>
+          <div className='bounce w-[30rem] h-[30rem] opacity-[70%] absolute right-0 | blur-3xl duration-150 rounded-[50%] bg-orange-primary'></div>
         </div>
       </section>
 
