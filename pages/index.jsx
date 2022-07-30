@@ -69,7 +69,7 @@ function Index({ products, news }) {
           ref={container}
           className='px-5 py-7 | bg-[#000000] relative container mx-auto w-full | overflow-hidden overflow-y-hidden'
         >
-          <div className='w-full | py-5 md:py-10 flex flex-col | space-y-3 md:space-y-5'>
+          <div className='w-full | py-3 md:py-10 flex flex-col | space-y-3 md:space-y-5'>
             <h1 className='font-gm font-bold text-white text-xl md:text-4xl uppercase'>
               Need <span className='text-orange-primary'>to ship</span> a
               package?
@@ -81,12 +81,16 @@ function Index({ products, news }) {
           </div>
         </div>
 
-        <div className='fcc box-border pb-7 md:px-5 md:pr-10'>
-          <div className='w-full lg:max-w-[1600px] mx-auto fcc h-44 md:h-[500px] overflow-hidden relative z-10'>
-            <img src='/traffic.png' alt='alpha__logistics' className='w-full' />
-            <div className='w-2/5 | absolute left-5 bottom-5 md:left-32 md:bottom-16'>
+        <div className='fcc box-border pb-5 md:px-5 md:pr-10'>
+          <div className='w-full lg:max-w-[1600px] mx-auto fcc h-64 md:h-[500px] overflow-hidden relative z-10'>
+            <img
+              src='/traffic.png'
+              alt='alpha__logistics'
+              className='w-full h-full object-cover'
+            />
+            <div className='w-2/5 | absolute left-5 bottom-10 md:left-32 md:bottom-16'>
               <Link href={`/support`}>
-                <a className='z-50 block text-[8px] md:text-base w-16 h-16 md:w-32 md:h-32 fcc rounded-full font-exo font-semibold | bg-orange-primary text-white | click:scale'>
+                <a className='z-50 block text-sm md:text-base w-24 h-24 md:w-32 md:h-32 fcc rounded-full font-exo font-semibold | bg-orange-primary text-white | click:scale'>
                   Order now
                 </a>
               </Link>
