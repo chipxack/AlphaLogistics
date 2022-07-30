@@ -156,7 +156,7 @@ function Index({ products, news }) {
             <div className='space-y-3'>
               <p className='opacity-50 text-base'>About company</p>
 
-              <Logo className='h-8' />
+              <Logo className='w-28' />
             </div>
 
             <button className='inline-flex items-center | space-x-4 group'>
