@@ -13,7 +13,7 @@ function Support(props) {
   return (
     <App>
       <App.Header dark={true} />
-      <section className='bg-[#16171E] py-5 md:py-10 relative overflow-hidden'>
+      <section className='bg-[#16171E] py-5 md:py-7 relative overflow-hidden'>
         <div className='flex items-center text-white | container mx-auto px-5'>
           <div className='relative z-10'>
             <a href='#' className={style.inActiveMenu}>

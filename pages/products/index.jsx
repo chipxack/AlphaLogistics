@@ -16,6 +16,7 @@ import Logo from 'components/Logo'
 import { API } from 'config'
 import { TEN_MINUTES_IN_SECONDS } from 'config'
 import products from '../../services/products'
+import ProductsFilterSidebar from 'pages/products/ProductsFilterSidebar'
 
 const style = {
   inActiveMenu: `text-xs opacity-80 md:text-sm`,
@@ -58,21 +59,28 @@ export async function getStaticProps(context) {
 
 function Product({ brands, categories, products: propsProducts }) {
   const [products, setProducts] = useState(propsProducts)
+  const [category, setCategory] = useState('All')
 
   return (
     <App>
       <App.Header dark={true} />
-      <section className='bg-[#16171E] py-2 md:py-3 relative overflow-hidden'>
-        <div className='flex items-center text-white | px-5 container mx-auto'>
+      <section className='bg-[#16171E] py-5 md:py-7 relative overflow-hidden'>
+        <div className='flex items-center text-white | container mx-auto px-5'>
           <div className='relative z-10'>
+            <Link href='/'>
+              <span className={style.inActiveMenu}>Home</span>
+            </Link>
+
+            <span className='text-xs md:text-sm px-2'>/</span>
+
             <a href='#' className={style.inActiveMenu}>
-              Home
+              Products
             </a>
 
             <span className='text-xs md:text-sm px-2'>/</span>
 
             <a href='#' className={style.activeMenu}>
-              Products
+              {category}
             </a>
 
             <h2 className='text-lg md:text-2xl font-bold pt-1 md:pt-3'>
@@ -80,8 +88,7 @@ function Product({ brands, categories, products: propsProducts }) {
             </h2>
           </div>
 
-          <div className='bounce w-[25rem] h-[25rem] md:w-[25rem] md:h-[25rem] opacity-[40%] absolute right-0 | blur-3xl duration-150 rounded-[50%] bg-[#40BFF4]'></div>
-          <div className='bounce w-[25rem] h-[25rem] opacity-[40%] absolute right-[20rem] | blur-3xl duration-150 rounded-[50%] bg-[#FF0000]'></div>
+          <div className='bounce w-[30rem] h-[30rem] opacity-[70%] absolute right-0 | blur-3xl duration-150 rounded-[50%] bg-orange-primary'></div>
         </div>
       </section>
 
@@ -93,135 +100,10 @@ function Product({ brands, categories, products: propsProducts }) {
               <div className='bg-[#F6FBFC] px-4 py-4'>
                 <h3 className='text-xl font-gm font-bold'>Filter</h3>
 
-                <div className='filter'>
-                  {/* --- FILTER CATEGORIES --- */}
-                  {categories.map((category, idx) => (
-                    <CollapseCustom openByDefault={true} key={idx}>
-                      <div className='filter__categories | pt-5'>
-                        {/* --- FILTER CATEGORIES BTN  --- */}
-                        <CollapseCustom.Button>
-                          {({ isActive, toggle }) => (
-                            <div
-                              className='filter__categories__btn | fcb cursor-pointer'
-                              onClick={() => toggle()}
-                            >
-                              <p className='font-bold text-base text-black'>
-                                {category.title.en}
-                              </p>
-                              <SvgDropdown
-                                className={clsx({
-                                  'h-2 text-[#FB421A] duration-200': true,
-                                  '-rotate-90': !isActive,
-                                  '-rotate-0': isActive,
-                                })}
-                              />
-                            </div>
-                          )}
-                        </CollapseCustom.Button>
-
-                        {/* FILTER CATEGORIES BODY */}
-                        <CollapseCustom.Content>
-                          <div className='filter__categories__content | pt-5'>
-                            <ul className='space-y-4'>
-                              {category.child_categories.map(
-                                (category, index) => (
-                                  <li
-                                    className={clsx({
-                                      [style.activeFilterCategoryMenu]:
-                                        category.is_active,
-                                      [style.inActiveFilterCategoryMenu]:
-                                        !category.is_active,
-                                    })}
-                                    key={index}
-                                  >
-                                    {category.title.en}
-                                  </li>
-                                )
-                              )}
-                            </ul>
-                          </div>
-                        </CollapseCustom.Content>
-                      </div>
-                    </CollapseCustom>
-                  ))}
-
-                  {/* --- FILTER BRANDS --- */}
-                  <div className='filter__brands | py-5 pb-12'>
-                    <CollapseCustom openByDefault={true}>
-                      {/* --- FILTER BRANDS BTN  --- */}
-                      <CollapseCustom.Button>
-                        {({ isActive, toggle }) => (
-                          <div
-                            className='filter__categories__btn | fcb cursor-pointer'
-                            onClick={() => toggle()}
-                          >
-                            <p className='font-bold text-base text-black'>
-                              Brands
-                            </p>
-                            <SvgDropdown
-                              className={clsx({
-                                'h-2 text-[#FB421A] duration-200': true,
-                                '-rotate-90': !isActive,
-                                '-rotate-0': isActive,
-                              })}
-                            />
-                          </div>
-                        )}
-                      </CollapseCustom.Button>
-
-                      {/* FILTER BRANDS BODY */}
-                      <CollapseCustom.Content>
-                        <div className='filter__brands__content | pt-5'>
-                          <ul className='space-y-5'>
-                            {brands.map((brand) => (
-                              <label
-                                htmlFor={brand.title.en}
-                                className='flex items-center | space-x-2'
-                                key={brand.title.en}
-                              >
-                                <input
-                                  type='checkbox'
-                                  name={brand.title.en}
-                                  id={brand.title.en}
-                                  className={`form-checkbox rounded text-orange-primary border-gray-200 p-2 | shadow-sm focus:border-orange-300 focus:ring focus:ring-offset-0 focus:ring-orange-200 focus:ring-opacity-50`}
-                                  defaultChecked={brand.is_active}
-                                />
-
-                                <li
-                                  className={clsx({
-                                    [style.activeFilterCategoryMenu]:
-                                      brand.is_active,
-                                    [style.inActiveFilterCategoryMenu]:
-                                      !brand.is_active,
-                                  })}
-                                >
-                                  {brand.title.en}
-                                </li>
-                              </label>
-                            ))}
-                          </ul>
-                        </div>
-                      </CollapseCustom.Content>
-                    </CollapseCustom>
-                  </div>
-
-                  {/* --- FILTER PRICE --- */}
-                  <div className='filter__price'>
-                    <RangeInputTest
-                      max={450000}
-                      min={120000}
-                      move={1000}
-                      onChange={(e) => console.log(e)}
-                    />
-                  </div>
-
-                  {/* --- FILTER APPLY --- */}
-                  <div className='filter__apply'>
-                    <button className='w-full | text-white bg-orange-primary mt-3 py-2 text-lg font-bold font-poppins click:scale'>
-                      Apply
-                    </button>
-                  </div>
-                </div>
+                <ProductsFilterSidebar
+                  categories={categories}
+                  brands={brands}
+                />
               </div>
             </div>
 
@@ -229,21 +111,9 @@ function Product({ brands, categories, products: propsProducts }) {
             <div className='w-full md:w-3/4 | md:pl-4 space-y-2'>
               <div className='flex items-center justify-between md:flex-row flex-col'>
                 <div className='w-full'>
-                  <div className='relative'>
-                    <a href='#' className={style.inActiveMenu}>
-                      Home
-                    </a>
-
-                    <span className='text-xs md:text-sm px-2'>/</span>
-
-                    <a href='#' className={style.activeMenu}>
-                      Products
-                    </a>
-                  </div>
-
                   <div className='space-y-2'>
                     <h3 className='text-lg md:text-3xl font-bold font-gm'>
-                      Laundry Washer
+                      {category}
                     </h3>
 
                     <p className='text-xs md:text-sm'>
@@ -253,7 +123,7 @@ function Product({ brands, categories, products: propsProducts }) {
                 </div>
 
                 <div className='mt-5 md:mt-0 | w-full md:w-1/2 | relative'>
-                  <div className='relative w-full'>
+                  {/* <div className='relative w-full'>
                     <input
                       type='text'
                       name='search'
@@ -262,7 +132,7 @@ function Product({ brands, categories, products: propsProducts }) {
                     />
 
                     <SvgSearch className='absolute right-2 top-[20%] h-4 md:h-5 | text-orange-primary' />
-                  </div>
+                  </div> */}
 
                   <div className='hidden md:flex justify-end'>
                     <Popover className='relative w-1/2 text-end'>
@@ -556,16 +426,6 @@ function Product({ brands, categories, products: propsProducts }) {
                                           </div>
                                         </CollapseCustom.Content>
                                       </CollapseCustom>
-                                    </div>
-
-                                    {/* --- FILTER PRICE --- */}
-                                    <div className='filter__price'>
-                                      <RangeInputTest
-                                        max={450000}
-                                        min={120000}
-                                        move={1000}
-                                        onChange={(e) => console.log(e)}
-                                      />
                                     </div>
 
                                     {/* --- FILTER APPLY --- */}

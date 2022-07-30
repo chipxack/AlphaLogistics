@@ -5,8 +5,12 @@ import { useState } from 'react'
 import { Transition } from '@headlessui/react'
 import { Fragment, useRef } from 'react'
 import { useRouter } from 'next/router'
-import { TEN_MINUTES_IN_SECONDS } from 'config'
 import products from '../../services/products'
+import country from '../../services/country'
+import { useForm } from 'react-hook-form'
+import axios from 'axios'
+import { API } from 'config'
+import cogoToast from 'cogo-toast'
 
 export async function getStaticPaths(params) {
   return {
@@ -20,18 +24,22 @@ export async function getStaticProps(context) {
     const { slug } = context.params
 
     const productRes = await products.getProduct(slug)
+    const countryRes = await country.all()
 
     return {
       props: {
         product: productRes.data.data,
+        countries: countryRes.data.data,
       },
 
       revalidate: 1,
     }
   } catch (error) {
+    console.log(error)
     return {
       props: {
         product: [],
+        countries: [],
       },
 
       revalidate: 1,
@@ -46,7 +54,7 @@ const style = {
   inActiveFilterCategoryMenu: `text-[11px] md:text-xs text-[#16171E] hover:text-[#FB421A] opacity-60 cursor-pointer duration-100`,
 }
 
-function Product({ product }) {
+function Product({ product, countries }) {
   const [order, setOrder] = useState(false)
   const loginOrRegisterRef = useRef()
   const router = useRouter()
@@ -59,6 +67,36 @@ function Product({ product }) {
       setOrder(false)
       return
     }
+  }
+
+  function productOrderHandler(order) {
+    setOrder(false)
+
+    var data = new FormData()
+    data.append('name', order.full__name)
+    data.append('email', order.email)
+    data.append('phone', order.phone)
+    data.append('country_id', order.country)
+    data.append('product_id', product.id)
+    data.append('user_id', 1)
+
+    const config = {
+      method: 'post',
+      url: 'http://test.418347-co47083.tmweb.ru/api/order/store',
+      headers: {
+        Accept: 'application/json',
+      },
+      data: data,
+    }
+
+    axios
+      .post(`${API}/api/order/store`, data)
+      .then(function (response) {
+        cogoToast.error('Successfully requested!')
+      })
+      .catch(function (error) {
+        cogoToast.error('You are not authorized!')
+      })
   }
 
   return (
@@ -80,7 +118,11 @@ function Product({ product }) {
           onClick={(e) => closeLoginOrRegister(e)}
         >
           <div className='container mx-auto w-5/6 md:w-2/3'>
-            <ProductOrder refs={loginOrRegisterRef} />
+            <ProductOrder
+              onRequest={productOrderHandler}
+              countries={countries}
+              refs={loginOrRegisterRef}
+            />
           </div>
         </section>
       </Transition>
@@ -166,90 +208,12 @@ function Product({ product }) {
         </div>
       </section>
 
-      <section className='container mx-auto px-5 | py-5 md:pb-20'>
+      {/* <section className='container mx-auto px-5 | py-5 md:pb-20'>
         <h3 className='text-2xl md:text-3xl font-gm font-bold text-black'>
           Similar Products
         </h3>
-        <div className='grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-5 | pt-5 md:pt-10'>
-          {[
-            {
-              id: `#forcars`,
-              img: `/p1.png`,
-              title: `Valve cover 23397716`,
-            },
-            {
-              id: `#fortracks`,
-              img: `/p2.png`,
-              title: `Valve cover 23397716`,
-            },
-
-            {
-              id: `#forcars`,
-              img: `/p3.png`,
-              title: `Valve cover 23397716`,
-            },
-            {
-              id: `#forcars`,
-              img: `/p4.png`,
-              title: `Valve cover 23397716`,
-            },
-            {
-              id: `#forcars`,
-              img: `/p5.png`,
-              title: `Valve cover 23397716`,
-            },
-            {
-              id: `#fortracks`,
-              img: `/p6.png`,
-              title: `Valve cover 23397716`,
-            },
-          ].map((product, index) => (
-            <Link href={`/products/inshaAllah`} key={index}>
-              <div className='product | rounded-md overflow-hidden | border border-gray-100 shadow-p | cursor-pointer'>
-                <div className='w-full h-32 md:h-64 overflow-hidden | relative'>
-                  <img
-                    src={product.img}
-                    alt='prodcut_1'
-                    className='h-full w-full object-contain object-center'
-                  />
-
-                  <div className='p-1.5 md:p-3 top-0 left-0 ml-3 mt-3 | text-[8px] md:text-xs | absolute | bg-gray-200 | rounded-md'>
-                    {product.id}
-                  </div>
-                </div>
-
-                <div className='product__info | px-2 py-2 md:py-5 md:px-5 space-y-3 | bg-[#F5F5F7]'>
-                  <h4 className='font-inter text-[#020105] font-semibold text-sm md:text-lg'>
-                    {product.title}
-                  </h4>
-
-                  <button className='inline-flex items-center | space-x-2 md:space-x-4 group'>
-                    <p className='text-[#FFCC00] text-xs md:text-base'>
-                      Details
-                    </p>
-
-                    <svg
-                      viewBox='0 0 32 32'
-                      fill='none'
-                      xmlns='http://www.w3.org/2000/svg'
-                      className='group-hover:translate-x-1 duration-200 h-4 md:h-7'
-                    >
-                      <path
-                        d='M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z'
-                        stroke='#FFCC00'
-                        strokeWidth='1.5'
-                        strokeMiterlimit='10'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+        <SimilarProducts />
+      </section> */}
 
       <ReuqestForm />
       <App.Footer />
@@ -258,6 +222,22 @@ function Product({ product }) {
 }
 
 function ProductOrder(props) {
+  const { countries } = props
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data) => {
+    props.onRequest(data)
+  }
+
+  function onSelect(countryId) {
+    console.log(countryId.target.value)
+  }
+
   return (
     <div
       className='space-y-3 md:space-y-10 h-full overflow-auto'
@@ -265,7 +245,10 @@ function ProductOrder(props) {
     >
       <div className='user__info__forms'>
         <div className='user__info | px-7 py-8 | rounded-xl | bg-white'>
-          <form className='space-y-5 md:space-y-10'>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className='space-y-5 md:space-y-10'
+          >
             <div className='grid md:grid-cols-2 gap-2 md:gap-7'>
               <label htmlFor='full_name' className='flex flex-col | space-y-2'>
                 <p className='text-[#002856] text-xs font-inter pb-0.5'>
@@ -278,6 +261,7 @@ function ProductOrder(props) {
                   id='full_name'
                   placeholder='Full Name'
                   className='px-4 py-2.5 text-sm placeholder:text-sm | font-inter | border focus:border-[#024B80] duration-100 rounded-md focus:shadow-100'
+                  {...register('full_name', { required: true })}
                 />
               </label>
 
@@ -292,6 +276,7 @@ function ProductOrder(props) {
                   id='phone'
                   placeholder='Phone Number'
                   className='px-4 py-2.5 text-sm placeholder:text-sm | font-inter | border focus:border-[#024B80] duration-100 rounded-md focus:shadow-100'
+                  {...register('phone', { required: true })}
                 />
               </label>
 
@@ -306,6 +291,7 @@ function ProductOrder(props) {
                   id='email'
                   placeholder='Email Address'
                   className='px-4 py-2.5 text-sm placeholder:text-sm | font-inter | border focus:border-[#024B80] duration-100 rounded-md focus:shadow-100'
+                  {...register('email', { required: true })}
                 />
               </label>
 
@@ -318,16 +304,18 @@ function ProductOrder(props) {
                   name='country'
                   id='country'
                   className='form-select block w-full rounded-md border-gray-300 focus:shadow-100 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'
+                  {...register('country', { required: true })}
                 >
-                  <option>United Kingdom</option>
-                  <option>Germany</option>
-                  <option>Italy</option>
-                  <option>Uzbekistan</option>
+                  {countries.map((country) => (
+                    <>
+                      <option value={country.id}>{country?.title?.en}</option>
+                    </>
+                  ))}
                 </select>
               </label>
             </div>
 
-            <label htmlFor='message' className='flex flex-col | space-y-2'>
+            {/* <label htmlFor='message' className='flex flex-col | space-y-2'>
               <p className='text-[#002856] text-xs font-inter pb-0.5'>
                 Message <sup className='text-[#EB5757] text-xs'>*</sup>
               </p>
@@ -338,23 +326,106 @@ function ProductOrder(props) {
                 rows='5'
                 placeholder='Type your message..'
                 className='w-full px-4 py-2.5 text-sm placeholder:text-sm | font-inter | border focus:border-[#024B80] duration-100 rounded-md focus:shadow-100'
+                {...register('message')}
               ></textarea>
-            </label>
+            </label> */}
 
             <div className='grid md:grid-cols-2 md:gap-7'>
               <div></div>
-              <div className='grid grid-cols-2 gap-2'>
-                <button className='form-button border border-orange-primary text-orange-primary font-semibold active:scale-95 duration-200 py-1 md:py-2.5'>
+              <div className='grid grid-cols-1 gap-2'>
+                {/* <div className='fcc form-button border border-orange-primary text-orange-primary font-semibold active:scale-95 duration-200 py-1 md:py-2.5'>
                   Cancel
-                </button>
-                <button className='form-button font-bold active:scale-95 duration-200 bg-orange-primary text-white py-1 md:py-2.5'>
-                  Save Changes
+                </div> */}
+                <button className='form-button font-bold active:scale-95 duration-200 bg-orange-primary text-white py-2 rounded-md md:py-2.5'>
+                  Request
                 </button>
               </div>
             </div>
           </form>
         </div>
       </div>
+    </div>
+  )
+}
+
+function SimilarProducts() {
+  return (
+    <div className='grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-5 | pt-5 md:pt-10'>
+      {[
+        {
+          id: `#forcars`,
+          img: `/p1.png`,
+          title: `Valve cover 23397716`,
+        },
+        {
+          id: `#fortracks`,
+          img: `/p2.png`,
+          title: `Valve cover 23397716`,
+        },
+
+        {
+          id: `#forcars`,
+          img: `/p3.png`,
+          title: `Valve cover 23397716`,
+        },
+        {
+          id: `#forcars`,
+          img: `/p4.png`,
+          title: `Valve cover 23397716`,
+        },
+        {
+          id: `#forcars`,
+          img: `/p5.png`,
+          title: `Valve cover 23397716`,
+        },
+        {
+          id: `#fortracks`,
+          img: `/p6.png`,
+          title: `Valve cover 23397716`,
+        },
+      ].map((product, index) => (
+        <Link href={`/products/inshaAllah`} key={index}>
+          <div className='product | rounded-md overflow-hidden | border border-gray-100 shadow-p | cursor-pointer'>
+            <div className='w-full h-32 md:h-64 overflow-hidden | relative'>
+              <img
+                src={product.img}
+                alt='prodcut_1'
+                className='h-full w-full object-contain object-center'
+              />
+
+              <div className='p-1.5 md:p-3 top-0 left-0 ml-3 mt-3 | text-[8px] md:text-xs | absolute | bg-gray-200 | rounded-md'>
+                {product.id}
+              </div>
+            </div>
+
+            <div className='product__info | px-2 py-2 md:py-5 md:px-5 space-y-3 | bg-[#F5F5F7]'>
+              <h4 className='font-inter text-[#020105] font-semibold text-sm md:text-lg'>
+                {product.title}
+              </h4>
+
+              <button className='inline-flex items-center | space-x-2 md:space-x-4 group'>
+                <p className='text-[#FFCC00] text-xs md:text-base'>Details</p>
+
+                <svg
+                  viewBox='0 0 32 32'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                  className='group-hover:translate-x-1 duration-200 h-4 md:h-7'
+                >
+                  <path
+                    d='M16.8851 10.7373L22.1478 16L16.8851 21.2627M9.88376 16H22.1318M28.4451 16C28.4451 22.8741 22.8725 28.4467 15.9984 28.4467C9.12432 28.4467 3.55176 22.8741 3.55176 16C3.55176 9.12591 9.12432 3.55334 15.9984 3.55334C22.8725 3.55334 28.4451 9.12591 28.4451 16Z'
+                    stroke='#FFCC00'
+                    strokeWidth='1.5'
+                    strokeMiterlimit='10'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </Link>
+      ))}
     </div>
   )
 }
