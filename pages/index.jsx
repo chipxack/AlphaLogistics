@@ -13,12 +13,11 @@ import CollapseCustom from 'components/Collapse'
 import SvgRightArrow from 'icons/SvgRightArrow'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
-import axios from 'axios'
 import Link from 'next/link'
 import { HOUR_IN_SECONDS } from 'config'
-import { API } from 'config'
 import products from '../services/products'
 import posts from '../services/posts'
+import Image from 'next/image'
 
 export async function getStaticProps() {
   const productsRes = await products.getProductsBestOffers()
@@ -83,11 +82,7 @@ function Index({ products, news }) {
 
         <div className='fcc box-border pb-5 md:px-5 md:pr-10'>
           <div className='w-full lg:max-w-[1600px] mx-auto fcc h-64 md:h-[500px] overflow-hidden relative z-10'>
-            <img
-              src='/traffic.png'
-              alt='alpha__logistics'
-              className='w-full h-full object-cover'
-            />
+            <Image src='/traffic.png' alt='alpha__logistics' layout='fill' />
             <div className='w-2/5 | absolute left-5 bottom-10 md:left-32 md:bottom-16'>
               <Link href={`/support`}>
                 <a className='z-50 block text-sm md:text-base w-24 h-24 md:w-32 md:h-32 fcc rounded-full font-exo font-semibold | bg-orange-primary text-white | click:scale'>
@@ -269,6 +264,7 @@ function Index({ products, news }) {
                 src='/service1.png'
                 alt='service__img'
                 className='service__img w-full h-full object-cover'
+                loading='lazy'
               />
             </div>
 
@@ -380,36 +376,10 @@ function Index({ products, news }) {
           }}
         >
           <div className='absolute h-full w-full overflow-hidden'>
-            <img
-              src='/trucks.png'
-              alt='trucks'
-              className='w-full overflow-hidden'
-            />
+            <Image src='/trucks.png' alt='trucks' layout='fill' />
           </div>
         </div>
       </section>
-
-      {/* <section className="bg-black | py-20 | relative | overflow-hidden">
-				<div className="relative | container mx-auto z-50 | space-y-7">
-					<h3 className="relative | h2 text-white font-gm | text-center">
-						Leave a request for a <span className="py-2 block"></span>{" "}
-						consultation
-					</h3>
-
-					<p className="font-exo text-white opacity-60 text-sm text-center">
-						Finding the exact product or a very similar one <br /> on the market
-						from our partner manufacturers
-					</p>
-
-					<div className="fcc">
-						<button className="bg-white text-orange-primary px-10 py-4 text-lg font-bold font-poppins click:scale">
-							Order now
-						</button>
-					</div>
-				</div>
-
-				<div className="bounce w-[35rem] h-[30rem] opacity-[72%] absolute -top-48 -right-20 | blur-2xl duration-150 rounded-[50%] bg-orange-primary"></div>
-			</section> */}
 
       <section className='py-5 md:py-20 | relative | overflow-y-hidden'>
         <VerticalLine opacity={10} />
