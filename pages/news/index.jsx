@@ -25,7 +25,7 @@ export async function getStaticProps(props) {
         news: newsRes.data.data.data,
         success: true,
       },
-      revalidate: HOUR_IN_SECONDS,
+      revalidate: 0,
     }
   } catch (error) {
     return {
@@ -115,11 +115,11 @@ of Russia's diplomatic service announced his resignation...`}
           ))}
         </div>
 
-        <div className='fcc | pt-5 md:pt-10'>
+        {/* <div className='fcc | pt-5 md:pt-10'>
           <button className='text-white bg-orange-primary px-12 py-3 text-sm md:text-lg md:px-16 md:py-3 font-bold font-poppins click:scale'>
             Load More
           </button>
-        </div>
+        </div> */}
       </section>
 
       <ReuqestForm />

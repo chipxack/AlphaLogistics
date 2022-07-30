@@ -29,7 +29,7 @@ export async function getStaticProps() {
         products: productsRes.data.data,
         news: newsRes.data.data,
       },
-      revalidate: HOUR_IN_SECONDS,
+      revalidate: 1,
     }
   } catch (error) {
     console.log(error.message)

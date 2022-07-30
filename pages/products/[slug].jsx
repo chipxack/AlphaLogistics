@@ -26,14 +26,15 @@ export async function getStaticProps(context) {
         product: productRes.data.data,
       },
 
-      revalidate: TEN_MINUTES_IN_SECONDS,
+      revalidate: 1,
     }
   } catch (error) {
-    console.error(error)
     return {
       props: {
         product: [],
       },
+
+      revalidate: 1,
     }
   }
 }

@@ -39,7 +39,7 @@ export async function getStaticProps(context) {
         products: productsRes.data.data,
       },
 
-      revalidate: TEN_MINUTES_IN_SECONDS,
+      revalidate: 1,
     }
   } catch (error) {
     console.log(error, '=========')
