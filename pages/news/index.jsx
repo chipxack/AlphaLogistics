@@ -25,7 +25,7 @@ export async function getStaticProps(props) {
         news: newsRes.data.data.data,
         success: true,
       },
-      revalidate: 0,
+      revalidate: 1,
     }
   } catch (error) {
     return {
