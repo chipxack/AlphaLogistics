@@ -122,9 +122,8 @@ function Index({ products, news }) {
                   href: `#touch`,
                 },
               ].map((link, index) => (
-                <Link href={link.href}>
+                <Link href={link.href} key={`menu__link__${index}`}>
                   <li
-                    key={`menu__link__${index}`}
                     id={
                       windowSize.width < 640
                         ? `menu__link__mobile__${++index}`
