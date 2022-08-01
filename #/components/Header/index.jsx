@@ -93,20 +93,8 @@ function Header(props) {
               </li>
             </Link>
 
-            {auth ? (
-              <Link href={`/tracking`}>
-                <li
-                  className={clsx({
-                    [style.menuActive]: router.pathname === `/tracking`,
-                    [style.menu]: router.pathname !== `/tracking`,
-                  })}
-                >
-                  Tracking
-                </li>
-              </Link>
-            ) : (
+            <Link href={`/tracking`}>
               <li
-                onClick={() => setLoginOrRegister(`register`)}
                 className={clsx({
                   [style.menuActive]: router.pathname === `/tracking`,
                   [style.menu]: router.pathname !== `/tracking`,
@@ -114,7 +102,8 @@ function Header(props) {
               >
                 Tracking
               </li>
-            )}
+            </Link>
+
             <Link href={`/support`}>
               <li
                 className={clsx({
@@ -181,22 +170,8 @@ function Header(props) {
                               </li>
                             </Link>
 
-                            {auth ? (
-                              <Link href={`/tracking`}>
-                                <li
-                                  className={clsx({
-                                    [style.menuActive]:
-                                      router.pathname === `/tracking`,
-                                    [style.menu]:
-                                      router.pathname !== `/tracking`,
-                                  })}
-                                >
-                                  Tracking
-                                </li>
-                              </Link>
-                            ) : (
+                            <Link href={`/tracking`}>
                               <li
-                                onClick={() => setLoginOrRegister(`register`)}
                                 className={clsx({
                                   [style.menuActive]:
                                     router.pathname === `/tracking`,
@@ -205,7 +180,8 @@ function Header(props) {
                               >
                                 Tracking
                               </li>
-                            )}
+                            </Link>
+
                             <Link href={`/support`}>
                               <li
                                 className={clsx({
