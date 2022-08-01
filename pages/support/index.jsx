@@ -78,8 +78,11 @@ function Support(props) {
             <div className='md:space-y-5 space-y-3'>
               <h3 className='font-bold font-inter text-lg'>Email</h3>
 
-              <a className='text-[#020105] opacity-70 cursor-pointer block'>
-                alphalogistics@gmail.com
+              <a
+                href='mailto:alphalogisticsandtradecompany@gmail.com'
+                className='text-[#020105] opacity-70 cursor-pointer block'
+              >
+                alphalogisticsandtradecompany@gmail.com
               </a>
             </div>
 
@@ -87,11 +90,17 @@ function Support(props) {
               <h3 className='font-bold font-inter text-lg'>Phone Number</h3>
 
               <div>
-                <a className='text-[#020105] opacity-70 cursor-pointer block'>
+                <a
+                  href='tel:+442074230000'
+                  className='text-[#020105] opacity-70 cursor-pointer block'
+                >
                   +44 20 7423 0000
                 </a>
 
-                <a className='text-[#020105] opacity-70 cursor-pointer block'>
+                <a
+                  tel='tel:+449935056740'
+                  className='text-[#020105] opacity-70 cursor-pointer block'
+                >
                   +44 99 3505 6740
                 </a>
               </div>
@@ -106,9 +115,8 @@ function Support(props) {
             </div>
           </div>
         </div>
-
         <iframe
-          src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.518981858102!2d69.29635861494789!3d41.319326808175376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b7d761732dd%3A0x7b7e5180fa504771!2sIT%20Unity%20Academy!5e0!3m2!1sru!2s!4v1653645193294!5m2!1sru!2s'
+          src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2480.905539164854!2d-0.1106899!3d51.5516311!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b714cf5d5bd%3A0x5c1c0cd62cece6dc!2sMetropolitan%20University%2C%20166-220%20Holloway%20Rd%2C%20London%20N7%208DB%2C%20UK!5e0!3m2!1sen!2s!4v1659377194542!5m2!1sen!2s'
           width='100%'
           height={windowH < 640 ? `300` : `600`}
           loading='lazy'
