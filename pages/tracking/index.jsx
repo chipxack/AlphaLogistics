@@ -1,8 +1,4 @@
-import SvgDropdown from 'icons/SvgDropdown'
-import SvgPrint from 'icons/SvgPrint'
-import { Collapse } from 'react-collapse'
 import { useState } from 'react'
-import clsx from 'clsx'
 import Moment from 'react-moment'
 import OrderProgress from 'pages/dashboard/OrderProgress'
 import App from 'layouts/App'
@@ -15,32 +11,6 @@ const style = {
 }
 
 function Tracking(props) {
-  const [detailsMenu, setDetailsMenu] = useState(false)
-  const [progressMenu, setProgressMenu] = useState(false)
-
-  const orderProgress = {
-    order: {
-      yes: true,
-      week: `Thursday`,
-      date: `27.01.2022`,
-      time: `22:00 Local Time`,
-    },
-
-    shipped: {
-      yes: true,
-      week: `Friday`,
-      date: `28.01.2022`,
-      time: `19:31 Local Time`,
-      time2: `19:31 Local Time`,
-    },
-    delivered: {
-      yes: false,
-      week: `Saturday`,
-      date: `29.01.2022`,
-      time: `15:43 Local Time`,
-    },
-  }
-
   return (
     <App className='relative bg-[#F6F8FC]'>
       <App.Header dark={true} />

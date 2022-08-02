@@ -11,6 +11,7 @@ import { Cross as Hamburger } from 'hamburger-react'
 import { Menu } from '@headlessui/react'
 import Cookies from 'js-cookie'
 import profile from '../../../services/profile'
+import { useForm } from 'react-hook-form'
 
 const style = {
   menu: `text-white text-sm font-medium cursor-pointer duration-200 hover:text-orange-primary`,
@@ -29,6 +30,17 @@ function Header(props) {
   const loginOrRegisterRef = useRef(``)
 
   const auth = false
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data) => {
+    // notify
+  }
 
   const closeLoginOrRegister = (e) => {
     if (
@@ -320,13 +332,23 @@ function Header(props) {
                     Login or create a personal account
                   </h3>
 
-                  <div className='form fb_vertically space-y-5 md:space-y-5'>
+                  <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className='form fb_vertically space-y-5 md:space-y-5'
+                  >
                     <input
                       onChange={(e) => setEmail(e.target.value)}
                       type='email'
                       name='email'
                       placeholder='Email:'
                       className='placeholder:opacity-30 placeholder:text-black | px-2 py-2 md:px-3 md:py-4 | border border-indigo-500 border-opacity-0 focus:border-opacity-100 duration-200 bg-[#F5F5F7]'
+                      {...register('email', {
+                        required: true,
+                        min: 3,
+                        max: 99,
+                        pattern:
+                          /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i,
+                      })}
                     />
 
                     <input
@@ -335,6 +357,10 @@ function Header(props) {
                       name='password'
                       placeholder='Password:'
                       className='placeholder:opacity-30 placeholder:text-black | px-2 py-2 md:px-3 md:py-4 | border border-indigo-500 border-opacity-0 focus:border-opacity-100 duration-200 bg-[#F5F5F7]'
+                      {...register('password', {
+                        required: true,
+                        max: 99,
+                      })}
                     />
 
                     <button
@@ -343,7 +369,7 @@ function Header(props) {
                     >
                       Login
                     </button>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
