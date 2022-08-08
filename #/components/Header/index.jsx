@@ -50,18 +50,26 @@ function Header(props) {
   }
 
   const onSubmit = ({ email, password }) => {
-    const data = {
-      email,
-      password,
-    }
+    const formData = new FormData()
+
+    formData.append('email', email)
+    formData.append('password', password)
+
     profile
-      .auth(data)
+      .auth(formData)
       .then((response) => {
         Cookies.set('token', response.data?.success?.access_token)
         Cookies.set('refresh-token', response.data?.success?.refresh_token)
         router.push(`/dashboard/profile`)
       })
-      .catch((error) => cogoToast.error(error.response.data.error))
+      .catch((error) => {
+        console.log(error.response)
+        cogoToast.error(
+          error.response.data.error ||
+            error.response.data.message ||
+            error.response.statusText
+        )
+      })
   }
 
   return (
@@ -349,14 +357,12 @@ function Header(props) {
                     />
 
                     <input
-                      onChange={(e) => setPassword(e.target.value)}
                       type='password'
                       name='password'
                       placeholder='Password:'
                       className='placeholder:opacity-30 placeholder:text-black | px-2 py-2 md:px-3 md:py-4 | border border-indigo-500 border-opacity-0 focus:border-opacity-100 duration-200 bg-[#F5F5F7]'
                       {...register('password', {
                         required: true,
-                        max: 99,
                       })}
                     />
 
