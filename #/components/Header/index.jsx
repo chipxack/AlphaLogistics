@@ -12,6 +12,7 @@ import { Menu } from '@headlessui/react'
 import Cookies from 'js-cookie'
 import profile from '../../../services/profile'
 import { useForm } from 'react-hook-form'
+import cogoToast from 'cogo-toast'
 
 const style = {
   menu: `text-white text-sm font-medium cursor-pointer duration-200 hover:text-orange-primary`,
@@ -38,10 +39,6 @@ function Header(props) {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = (data) => {
-    // notify
-  }
-
   const closeLoginOrRegister = (e) => {
     if (
       !loginOrRegisterRef.current ||
@@ -52,7 +49,7 @@ function Header(props) {
     }
   }
 
-  const authClient = () => {
+  const onSubmit = ({ email, password }) => {
     const data = {
       email,
       password,
@@ -64,7 +61,7 @@ function Header(props) {
         Cookies.set('refresh-token', response.data?.success?.refresh_token)
         router.push(`/dashboard/profile`)
       })
-      .catch((error) => console.error(error.response))
+      .catch((error) => cogoToast.error(error.response.data.error))
   }
 
   return (
@@ -363,10 +360,7 @@ function Header(props) {
                       })}
                     />
 
-                    <button
-                      onClick={authClient}
-                      className='border text-sm border-orange-primary bg-white text-black px-10 py-2 md:px-10 md:py-2.5 md:text-lg font-bold font-poppins active:scale-95 duration-200'
-                    >
+                    <button className='border text-sm border-orange-primary bg-white text-black px-10 py-2 md:px-10 md:py-2.5 md:text-lg font-bold font-poppins active:scale-95 duration-200'>
                       Login
                     </button>
                   </form>
