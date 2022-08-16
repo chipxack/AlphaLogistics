@@ -255,8 +255,9 @@ function Header(props) {
                             <div className='fc | space-x-2 md:space-x-3'>
                               <button
                                 onClick={() => {
-                                  setLoginOrRegister(`login`)
+                                  setLoginOrRegister(``)
                                   close()
+                                  router.push(`/`)
                                 }}
                                 className='bg-white border border-orange-primary text-orange-primary w-1/2 py-2 text-xs md:text-sm font-bold font-poppins click:scale'
                               >

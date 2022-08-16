@@ -2,6 +2,7 @@ import clsx from "clsx";
 import SvgFilter from "icons/SvgFilter";
 import SvgSearch from "icons/SvgSearch";
 import Link from "next/link";
+import OrderProgress from "./OrderProgress";
 
 function UserOrders(props) {
 
@@ -73,38 +74,49 @@ function UserOrders(props) {
 
                 <tbody className="bg-white">
                   {props?.data?.map((r, index) => (
-                    <Link href={`/dashboard/orders/${r.uid}`} key={index}>
-                      <tr
-                        key={index}
-                        className="oddds rounded-xl hover:bg-orange-primary/20 border-l border-r border-transparent hover:border-orange-500 cursor-pointer duration-200"
-                      >
-                        <td className="px-5 text-sm font-medium font-inter text-[#16171E]">
-                          #{r.uid}
-                        </td>
-                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap">
-                          {r.product}
-                        </td>
-                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap">
-                          {r.load_time}
-                        </td>
-                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap">
-                          {r.products_price}
-                        </td>
-                        <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap">
-                          {r.payment_mode}
-                        </td>
-                        <td
-                          className={clsx({
-                            "px-5 py-5 text-sm font-medium text-left whitespace-nowrap": true,
-                            // "text-[#1F9254]": r.status.code === `success`,
-                            // "text-[#9D0208]": r.status.code === `error`,
-                            // "text-[#FAA307]": r.status.code === `warn`,
-                          })}
+                    <>
+                      <Link href={`/dashboard/orders/${r.uid}`} key={index}>
+                          <tr
+                            className="oddds rounded-xl hover:bg-orange-primary/20 border-l border-r border-transparent hover:border-orange-500 cursor-pointer duration-200"
+                          >
+                            <td className="px-5 text-sm font-medium font-inter text-[#16171E]">
+                              #{r.uid}
+                            </td>
+                            <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap">
+                              {r.product}
+                            </td>
+                            <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap">
+                              {r.load_time}
+                            </td>
+                            <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap">
+                              {r.products_price}
+                            </td>
+                            <td className="px-5 py-5 text-sm font-medium text-[#16171E] whitespace-nowrap">
+                              {r.payment_mode}
+                            </td>
+                            <td
+                              className={clsx({
+                                "px-5 py-5 text-sm font-medium text-left whitespace-nowrap": true,
+                                // "text-[#1F9254]": r.status.code === `success`,
+                                // "text-[#9D0208]": r.status.code === `error`,
+                                // "text-[#FAA307]": r.status.code === `warn`,
+                              })}
+                            >
+                              {/*{r.status.title}*/}
+                            </td>
+                          </tr>
+                      </Link>
+                      <Link href={`/dashboard/orders/${r.uid}`} key={index}>
+                        <tr
+                          className="oddds rounded-xl hover:bg-orange-primary/20 border-l border-r border-transparent hover:border-orange-500 cursor-pointer duration-200"
                         >
-                          {/*{r.status.title}*/}
-                        </td>
-                      </tr>
-                    </Link>
+                          <td colSpan='6'>
+                            <OrderProgress status={r.status} />
+                          </td>
+                        </tr>
+                      </Link>
+                    </>
+                   
                   ))}
                 </tbody>
               </table>

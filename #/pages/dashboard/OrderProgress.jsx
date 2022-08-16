@@ -5,9 +5,9 @@ function OrderProgress(props) {
 
   return (
     <>
-      <div className='w-full'>
+      <div className='w-full px-5 py-5'>
         <div className='bg-[#F0F1F4] flex items-center rounded-full overflow-hidden'>
-          {step === 1 && (
+          {props.status === 'new' && (
             <div
               className={clsx({
                 'bg-orange-primary flex items-center pr-0.5 overflow-hidden': true,
@@ -36,15 +36,15 @@ function OrderProgress(props) {
             </div>
           )}
 
-          {step === 2 && (
+          {props.status === 'in_process' && (
             <div
               className={clsx({
                 'bg-orange-primary flex items-center flex-col pr-0.5 overflow-hidden': true,
                 'w-1/2 rounded-r-full': true,
               })}
             >
-              <div className='bg-orange-primary h-7 w-full rounded-full flex items-center justify-end'>
-                <div className='bg-white h-6 w-6 rounded-full flex items-center justify-center'>
+              <div className='bg-orange-primary h-4 w-full rounded-full flex items-center justify-end'>
+                <div className='bg-white h-3 w-3 rounded-full flex items-center justify-center'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     className='text-orange-primary'
@@ -65,7 +65,7 @@ function OrderProgress(props) {
             </div>
           )}
 
-          {step === 3 && (
+          {props.status === 'completed' && (
             <>
               <div
                 className={clsx({
@@ -95,6 +95,17 @@ function OrderProgress(props) {
               </div>
             </>
           )}
+        </div>
+        <div className='flex items-center justify-between'>
+          <span>
+            Ordered
+          </span>
+          <span>
+            Shipped
+          </span>
+          <span>
+            Delivering
+          </span>
         </div>
       </div>
     </>

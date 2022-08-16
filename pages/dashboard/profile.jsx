@@ -10,7 +10,7 @@ function Profile(props) {
       <App.Header profile={props.profile} dark={true} />
       <Dashboard>
         <Dashboard.Aside>
-          <DashboardMenu />
+          <DashboardMenu profile={props.profile} />
         </Dashboard.Aside>
 
         <Dashboard.Content>

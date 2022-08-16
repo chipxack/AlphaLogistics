@@ -10,10 +10,10 @@ function Orders(props) {
 
     return (
         <App>
-            <App.Header dark={true}/>
+            <App.Header profile={props.profile} dark={true}/>
             <Dashboard>
                 <Dashboard.Aside>
-                    <DashboardMenu/>
+                    <DashboardMenu profile={props.profile}/>
                 </Dashboard.Aside>
 
                 <Dashboard.Content>
@@ -35,17 +35,21 @@ export async function getServerSideProps(context) {
             }
         }
         const orders = await profile.getUserOrders(data)
+        const profileData = await profile.getUserProfile(data)
+
 
         return {
             props: {
-                orders: orders.data?.data
+                orders: orders.data?.data,
+                profile: profileData.data
             }
         }
 
     }catch(error) {
         return {
             props: {
-                orders: []
+                orders: [],
+                profile: null
             }
         }
     }

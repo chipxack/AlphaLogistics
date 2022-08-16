@@ -136,8 +136,8 @@ function DashboardMenu(props) {
           />
         </div>
 
-        <h4 className='font-exo text-[#353437]'>George Adamson Jackson</h4>
-        <p className='text-[#020105] font-inter'>+44 20 7423 000</p>
+        <h4 className='font-exo text-[#353437]'>{props.profile?.name}</h4>
+        <p className='text-[#020105] font-inter'>{props.profile?.phone}</p>
       </div>
 
       <div className='sidebar__menu | font-inter | space-y-3'>
