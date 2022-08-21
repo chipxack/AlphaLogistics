@@ -3,6 +3,7 @@ import Dashboard from "layouts/Dashboard";
 import DashboardMenu from "pages/dashboard/DashboardMenu";
 import ProfileCRUD from "pages/dashboard/ProfileCRUD";
 import profile from "../../services/profile";
+import settings from "../../services/settings";
 
 function Profile(props) {
   return (
@@ -14,7 +15,7 @@ function Profile(props) {
         </Dashboard.Aside>
 
         <Dashboard.Content>
-          <ProfileCRUD profile={props.profile} />
+          <ProfileCRUD countryList={props.countryList} profile={props.profile} />
         </Dashboard.Content>
       </Dashboard>
       <App.Footer />
@@ -24,7 +25,7 @@ function Profile(props) {
 
 export async function getServerSideProps(context) {
     const token = context.req.cookies.token
-    // console.log('context', context.req.cookies)
+
     try {
         if (token) {
             const data = {
@@ -33,16 +34,19 @@ export async function getServerSideProps(context) {
                 }
             }
             const profileData = await profile.getUserProfile(data)
+            const countryRes = await settings.getAllCountries()
 
             return {
                 props: {
-                    profile: profileData.data
+                    profile: profileData.data,
+                    countryList: countryRes.data.data,
                 }
             }
         } else {
             return {
                 props: {
-                    profile: null
+                    profile: null,
+                    countryList: null
                 }
             }
         }
@@ -51,7 +55,8 @@ export async function getServerSideProps(context) {
     }catch(error) {
         return {
             props: {
-                profile: null
+                profile: null,
+                countryList: null
             }
         }
     }

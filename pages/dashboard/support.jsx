@@ -2,14 +2,15 @@ import App from "layouts/App";
 import Dashboard from "layouts/Dashboard";
 import DashboardMenu from "pages/dashboard/DashboardMenu";
 import ClientSupport from "pages/dashboard/Support";
+import profile from "../../services/profile";
 
-function Support(params) {
+function Support(props) {
   return (
     <App>
-      <App.Header dark={true} />
+      <App.Header profile={props.profile} dark={true} />
       <Dashboard>
         <Dashboard.Aside>
-          <DashboardMenu />
+          <DashboardMenu profile={props.profile} />
         </Dashboard.Aside>
 
         <Dashboard.Content>
@@ -19,6 +20,40 @@ function Support(params) {
       <App.Footer />
     </App>
   );
+}
+
+export async function getServerSideProps(context) {
+  const token = context.req.cookies.token
+
+    try {
+        if (token) {
+            const data = {
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            }
+            const profileData = await profile.getUserProfile(data)
+            return {
+                props: {
+                    profile: profileData.data,
+                }
+            }
+        } else {
+            return {
+                props: {
+                    profile: null,
+                }
+            }
+        }
+
+
+    }catch(error) {
+        return {
+            props: {
+                profile: null,
+            }
+        }
+    }
 }
 
 export default Support;

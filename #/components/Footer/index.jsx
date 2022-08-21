@@ -131,10 +131,10 @@ function Footer(props) {
           <ul className='space-y-3 py-3'>
             <li className={style.title}>New Customer</li>
             <li className={style.menu}>Open an Account</li>
-            <li className={style.menu}>Create a Login</li>
+            {/* <li className={style.menu}>Create a Login</li> */}
             <li className={style.menu}>Privacy Policy</li>
             <li className={style.menu}>Terms of use</li>
-            <li className={style.menu}>Partners</li>
+            {/* <li className={style.menu}>Partners</li> */}
           </ul>
         </div>
       </div>

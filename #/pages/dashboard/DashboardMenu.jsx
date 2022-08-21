@@ -130,7 +130,7 @@ function DashboardMenu(props) {
       <div className='sidebar__user__info | flex-col fcc | space-y-3'>
         <div className='user__info__img | h-32 w-32 overflow-hidden'>
           <img
-            src='/mans.png'
+            src={`${process.env.NEXT_PUBLIC_URL}/${props.profile?.image}` || '/mans.png'}
             alt='profile__img'
             className='h-full object-cover'
           />

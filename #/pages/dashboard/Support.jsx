@@ -11,6 +11,7 @@ function ProfileCRUD(props) {
             </p>
 
             <input
+              required
               type='text'
               name='full_name'
               id='full_name'
@@ -25,6 +26,7 @@ function ProfileCRUD(props) {
             </p>
 
             <input
+              required
               type='text'
               name='email'
               id='email'
@@ -39,6 +41,7 @@ function ProfileCRUD(props) {
             </p>
 
             <textarea
+              required
               name='message'
               id='message'
               cols='30'

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import clsx from 'clsx'
 import SvgDropdown from 'icons/SvgDropdown'
 import CollapseCustom from 'components/Collapse'
@@ -10,11 +11,23 @@ const style = {
 }
 
 function ProductsFilterSidebar({ categories, brands }) {
+  const [checkBoxGroup, setCheckBoxGroup] = useState([]);
+
+  const changeCheckBox = (e) => {
+    if (checkBoxGroup[e.target.name]) {
+      console.log(e.target.name)
+    } else{
+      setCheckBoxGroup([...checkBoxGroup, e.target.name])
+    }
+  }
+  // console.log(checkBoxGroup)
+
+
   return (
     <>
       <div className='filter'>
         {/* --- FILTER CATEGORIES --- */}
-        {categories.map((category, idx) => (
+        {categories?.map((category, idx) => (
           <CollapseCustom openByDefault={true} key={idx}>
             <div className='filter__categories | pt-5'>
               {/* --- FILTER CATEGORIES BTN  --- */}
@@ -87,15 +100,17 @@ function ProductsFilterSidebar({ categories, brands }) {
             <CollapseCustom.Content>
               <div className='filter__brands__content | pt-5'>
                 <ul className='space-y-5'>
-                  {brands.map((brand) => (
+                  {brands?.map((brand) => (
                     <label
                       htmlFor={brand.title.en}
                       className='flex items-center | space-x-2'
                       key={brand.title.en}
                     >
                       <input
+                        checked={checkBoxGroup[brand.slug]}
+                        onChange={changeCheckBox}
                         type='checkbox'
-                        name={brand.title.en}
+                        name={brand.slug}
                         id={brand.title.en}
                         className={`form-checkbox rounded text-orange-primary border-gray-200 p-2 | shadow-sm focus:border-orange-300 focus:ring focus:ring-offset-0 focus:ring-orange-200 focus:ring-opacity-50`}
                         defaultChecked={brand.is_active}

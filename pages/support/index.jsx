@@ -1,5 +1,9 @@
+import { useState } from 'react';
 import useWindowSize from 'hooks/useWindowSize'
 import App from 'layouts/App'
+import feedback from '../../services/feedback';
+import cogoToast from 'cogo-toast'
+import profile from '../../services/profile'
 
 const style = {
   inActiveMenu: `opacity-80 text-sm`,
@@ -9,10 +13,41 @@ const style = {
 }
 
 function Support(props) {
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const sendFeedback = () => {
+    setLoading(true)
+    const data = {
+      name,
+      phone
+    }
+    feedback.callback(data)
+      .then(res => {
+        setLoading(false)
+        setName('')
+        setPhone('')
+        cogoToast.success(
+          res.data.error ||
+            res.data.message ||
+            res.statusText
+        )
+      })
+      .catch(error => {
+        setLoading(false)
+        cogoToast.error(
+          error.response.data.error ||
+            error.response.data.message ||
+            error.response.statusText
+        )
+      })
+  }
+
   const { width: windowH } = useWindowSize()
   return (
     <App>
-      <App.Header dark={true} />
+      <App.Header profile={props.profile} dark={true} />
       <section className='bg-[#16171E] py-5 md:py-7 relative overflow-hidden'>
         <div className='flex items-center text-white | container mx-auto px-5'>
           <div className='relative z-10'>
@@ -50,21 +85,25 @@ function Support(props) {
 
                 <div className='flex flex-col space-y-5'>
                   <input
+                    disabled={loading}
+                    value={name}
                     type='text'
                     name='name'
-                    id='name'
+                    onChange={(e) => setName(e.target.value)}
                     placeholder='Name:'
                     className='bg-[#020105] text-sm md:text-base text-white py-2 md:py-3 px-3 placeholder:text-white placeholder:opacity-80'
                   />
                   <input
+                    disabled={loading}
+                    value={phone}
                     type='text'
-                    name='name'
-                    id='name'
-                    placeholder='+998 __'
+                    name='phone'
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder='Phone number:'
                     className='bg-[#020105] text-sm md:text-base text-white py-2 md:py-3 px-3 placeholder:text-white placeholder:opacity-80'
                   />
 
-                  <button className='bg-white text-black py-1 md:py-3 px-3 text-base md:text-lg font-bold font-poppins click:scale'>
+                  <button disabled={loading} onClick={sendFeedback} className='bg-white text-black py-1 md:py-3 px-3 text-base md:text-lg font-bold font-poppins click:scale'>
                     Order now
                   </button>
                 </div>
@@ -127,6 +166,33 @@ function Support(props) {
       <App.Footer />
     </App>
   )
+}
+
+export async function getServerSideProps(context) {
+  const token = context.req.cookies.token
+  // console.log('context', context.req.cookies)
+  try {
+      const data = {
+          headers: {
+              'Authorization': 'Bearer ' + token
+          }
+      }
+      const profileData = await profile.getUserProfile(data)
+
+
+      return {
+          props: {
+              profile: profileData.data
+          }
+      }
+
+  }catch(error) {
+      return {
+          props: {
+              profile: null
+          }
+      }
+  }
 }
 
 export default Support

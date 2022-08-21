@@ -1,22 +1,18 @@
+import { useEffect } from 'react'
 import clsx from 'clsx'
 import App from 'layouts/App'
 import SvgDropdown from 'icons/SvgDropdown'
-import SvgSearch from 'icons/SvgSearch'
 import Link from 'next/link'
-import RangeInputTest from 'pages/products/RangeInputTest'
 import CollapseCustom from 'components/Collapse'
-import axios from 'axios'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-import useWindowSize from 'hooks/useWindowSize'
 import RequestForm from 'components/RequestForm'
 import Logo from 'components/Logo'
-import { API } from 'config'
-import { TEN_MINUTES_IN_SECONDS } from 'config'
 import products from '../../services/products'
 import ProductsFilterSidebar from 'pages/products/ProductsFilterSidebar'
+import profile from "../../services/profile";
 
 const style = {
   inActiveMenu: `text-xs opacity-80 md:text-sm`,
@@ -25,7 +21,22 @@ const style = {
   inActiveFilterCategoryMenu: `text-[11px] md:text-xs text-[#16171E] hover:text-[#FB421A] opacity-60 cursor-pointer duration-100`,
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
+  const token = context.req.cookies.token;
+  let profileData;
+
+  if (token) {
+    const data = {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    };
+    profileData = await profile.getUserProfile(data);
+  } else{
+    profileData = null
+  }
+
+
   try {
     const brandRes = await products.getProductBrands()
 
@@ -38,9 +49,8 @@ export async function getStaticProps(context) {
         brands: brandRes.data.data,
         categories: categoryRes.data.data,
         products: productsRes.data.data,
+        profile: profileData?.data || null
       },
-
-      revalidate: 1,
     }
   } catch (error) {
     console.log(error, '=========')
@@ -50,20 +60,26 @@ export async function getStaticProps(context) {
         brands: [],
         categories: [],
         products: { data: [] },
-      },
-
-      revalidate: 1,
+        profile: null
+      }
     }
   }
 }
 
-function Product({ brands, categories, products: propsProducts }) {
+function Product({ brands, categories, products: propsProducts, profile }) {
   const [products, setProducts] = useState(propsProducts)
   const [category, setCategory] = useState('All')
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+  }, []);
+
   return (
     <App>
-      <App.Header dark={true} />
+      <App.Header profile={profile} dark={true} />
       <section className='bg-[#16171E] py-5 md:py-7 relative overflow-hidden'>
         <div className='flex items-center text-white | container mx-auto px-5'>
           <div className='relative z-10'>

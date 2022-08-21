@@ -6,45 +6,56 @@ import { Transition } from '@headlessui/react'
 import { Fragment, useRef } from 'react'
 import { useRouter } from 'next/router'
 import products from '../../services/products'
-import country from '../../services/country'
+import settings from '../../services/settings'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { API } from 'config'
 import cogoToast from 'cogo-toast'
+import profile from "../../services/profile";
 
-export async function getStaticPaths(params) {
+// export async function getStaticPaths(params) {
+//   return {
+//     paths: [],
+//     fallback: 'blocking',
+//   }
+// }
+
+export async function getServerSideProps(context) {
+  const token = context.req.cookies.token;
+  let profileData;
+
+  if (token) {
+    const data = {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    };
+    profileData = await profile.getUserProfile(data);
+  }
+  const { slug } = context.params
+
+  const productRes = await products.getProduct(slug)
+  const countryRes = await settings.getAllCountries()
+
   return {
-    paths: [],
-    fallback: 'blocking',
+    props: {
+      product: productRes.data.data || [],
+      countries: countryRes.data.data || [],
+      profile: profileData?.data || null
+    },
   }
-}
 
-export async function getStaticProps(context) {
-  try {
-    const { slug } = context.params
-
-    const productRes = await products.getProduct(slug)
-    const countryRes = await country.all()
-
-    return {
-      props: {
-        product: productRes.data.data,
-        countries: countryRes.data.data,
-      },
-
-      revalidate: 1,
-    }
-  } catch (error) {
-    console.log(error)
-    return {
-      props: {
-        product: [],
-        countries: [],
-      },
-
-      revalidate: 1,
-    }
-  }
+  // try {
+  // } catch (error) {
+  //   console.log(error)
+  //   return {
+  //     props: {
+  //       product: [],
+  //       countries: [],
+  //       profile: null
+  //     },
+  //   }
+  // }
 }
 
 const style = {
@@ -54,7 +65,7 @@ const style = {
   inActiveFilterCategoryMenu: `text-[11px] md:text-xs text-[#16171E] hover:text-[#FB421A] opacity-60 cursor-pointer duration-100`,
 }
 
-function Product({ product, countries }) {
+function Product({ product, countries, profile }) {
   const [order, setOrder] = useState(false)
   const loginOrRegisterRef = useRef()
   const router = useRouter()
@@ -101,7 +112,7 @@ function Product({ product, countries }) {
 
   return (
     <App>
-      <App.Header dark={true} />
+      <App.Header profile={profile} dark={true} />
 
       <Transition
         as={Fragment}
@@ -170,9 +181,12 @@ function Product({ product, countries }) {
           <div className='product__details | mr-2 md:mx-3 | flex-[1] space-y-7'>
             <div className='product__description | space-y-3'>
               <h3 className='text-2xl font-bold'>{product?.title?.en}</h3>
-              <p className='opacity-70 text-[#16171E] font-inter'>
-                {product?.description?.en || ''}
-              </p>
+              <div 
+                className='opacity-70 text-[#16171E] font-inter' 
+                dangerouslySetInnerHTML={{
+                  __html: product?.description?.en || ''
+                }}
+              />
             </div>
 
             <div className='product__details | space-y-5 | pt-3'>
@@ -286,7 +300,7 @@ function ProductOrder(props) {
                 </p>
 
                 <input
-                  type='text'
+                  type='email'
                   name='email'
                   id='email'
                   placeholder='Email Address'

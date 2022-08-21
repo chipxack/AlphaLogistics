@@ -5,6 +5,7 @@ import SvgRightArrow from 'icons/SvgRightArrow'
 import SvgCalendar from 'icons/SvgCalendar'
 import ReuqestForm from 'components/RequestForm'
 import axios from 'axios'
+import Moment from "react-moment";
 import { API } from 'config'
 import { TEN_MINUTES_IN_SECONDS } from 'config'
 
@@ -86,7 +87,13 @@ function News({ post }) {
               <div className='fcc'>
                 <SvgCalendar className='h-5' />
 
-                <p className='text-xs text-[#9A999B] pl-2'>{post.created_at}</p>
+                <p className='text-xs text-[#9A999B] pl-2'>
+                  <Moment 
+                    format="DD.MM.YYYY hh:mm"
+                  >
+                      {post.created_at}
+                  </Moment>
+                </p>
               </div>
             </div>
 

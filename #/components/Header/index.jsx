@@ -63,7 +63,6 @@ function Header(props) {
         router.push(`/dashboard/profile`)
       })
       .catch((error) => {
-        console.log(error.response)
         cogoToast.error(
           error.response.data.error ||
             error.response.data.message ||
@@ -255,6 +254,8 @@ function Header(props) {
                             <div className='fc | space-x-2 md:space-x-3'>
                               <button
                                 onClick={() => {
+                                  Cookies.remove('refresh_token')
+                                  Cookies.remove('token')
                                   setLoginOrRegister(``)
                                   close()
                                   router.push(`/`)
