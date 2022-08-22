@@ -20,7 +20,7 @@ function ReuqestForm(props) {
 
     const newData = {
       name: data.name,
-      phone: data.phone,
+      phone: data.phone.toString(),
     };
     feedback
       .callback(newData)

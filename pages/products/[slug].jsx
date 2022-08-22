@@ -103,7 +103,7 @@ function Product({ product, countries, profile }) {
     axios
       .post(`${API}/api/order/store`, data)
       .then(function (response) {
-        cogoToast.error('Successfully requested!')
+        cogoToast.success('Successfully requested!')
       })
       .catch(function (error) {
         cogoToast.error('You are not authorized!')
