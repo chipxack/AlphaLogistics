@@ -64,9 +64,9 @@ function Header(props) {
       })
       .catch((error) => {
         cogoToast.error(
-          error.response.data.error ||
-            error.response.data.message ||
-            error.response.statusText
+          error?.response?.data?.error ||
+            error?.response?.data?.message ||
+            error?.response?.statusText
         )
       })
   }

@@ -37,8 +37,6 @@ export async function getServerSideProps(context) {
     profileData = null
   }
 
-  console.log('profileData', profileData)
-
   try {
     return {
       props: {
