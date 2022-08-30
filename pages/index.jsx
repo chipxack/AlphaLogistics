@@ -8,21 +8,20 @@ import SvgHowWeWork from "pages/home/SvgHowWeWork";
 import SvgMap from "pages/home/SvgMap";
 import SvgPointer from "icons/SvgPointer";
 import App from "layouts/App";
-import VerticalLine from "pages/home/VerticalLine";
 import HorizontalLine from "pages/home/HorizontalLine";
 import CollapseCustom from "components/Collapse";
 import SvgRightArrow from "icons/SvgRightArrow";
 import clsx from "clsx";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { HOUR_IN_SECONDS } from "config";
 import products from "../services/products";
 import posts from "../services/posts";
-import Image from "next/image";
+import partners from "../services/partners";
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies.token;
   let profileData;
+  let partnersData;
   const productsRes = await products.getProductsBestOffers();
   const newsRes = await posts.getPostsLatest();
 
@@ -33,8 +32,10 @@ export async function getServerSideProps(context) {
       },
     };
     profileData = await profile.getUserProfile(data);
+    partnersData = await partners.getPartners(data);
   } else {
     profileData = null
+    partnersData = null
   }
 
   try {
@@ -43,6 +44,7 @@ export async function getServerSideProps(context) {
         products: productsRes.data.data,
         news: newsRes.data.data,
         profile: profileData?.data || null,
+        partners: partnersData?.data?.data || null
       },
     };
   } catch (error) {
@@ -52,12 +54,13 @@ export async function getServerSideProps(context) {
         products: [],
         news: [],
         profile: null,
+        partners: null
       },
     };
   }
 }
 
-function Index({ products, news, profile }) {
+function Index({ products, news, profile, partners }) {
   const router = useRouter();
   const windowSize = useWindowSize();
   const container = useRef(false);
@@ -100,7 +103,7 @@ function Index({ products, news, profile }) {
             <video style={{width: '100%'}} src="/video-back.mp4" autoPlay={true} controls={false} />
             {/* <Image src="/traffic.png" alt="alpha__logistics" layout="fill" /> */}
             <div className="w-2/5 | absolute left-5 bottom-10 md:left-32 md:bottom-16">
-              <Link href={`/support`}>
+              <Link href='/products'>
                 <a className="z-50 block text-sm md:text-base w-24 h-24 md:w-32 md:h-32 fcc rounded-full font-exo font-semibold | bg-orange-primary text-white | click:scale">
                   Order now
                 </a>
@@ -787,11 +790,11 @@ function Index({ products, news, profile }) {
           </h3>
 
           <div className="grid grid-cols-3 md:grid-cols-4 gap-0 md:gap-7">
-            {[0, 1, 2, 3].map((index) => (
-              <div key={index}>
+            {partners?.map((partner) => (
+              <div key={partner.id}>
                 <div className="partner shadow-p | fcc | p-3 md:p-12 aspect-square duration-300">
                   <img
-                    src={`/partner${index}.png`}
+                    src={`${process.env.NEXT_PUBLIC_URL}/${partner.image}`}
                     alt="partner"
                     className="h-full object-contain"
                   />

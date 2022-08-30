@@ -1,7 +1,7 @@
 import ReuqestForm from 'components/RequestForm'
 import App from 'layouts/App'
 import Link from 'next/link'
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 import { Transition } from '@headlessui/react'
 import { Fragment, useRef } from 'react'
 import { useRouter } from 'next/router'
@@ -69,6 +69,14 @@ function Product({ product, countries, profile }) {
   const [order, setOrder] = useState(false)
   const loginOrRegisterRef = useRef()
   const router = useRouter()
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+  }, [])
+
 
   const closeLoginOrRegister = (e) => {
     if (

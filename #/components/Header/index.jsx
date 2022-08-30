@@ -94,7 +94,7 @@ function Header(props) {
                   [style.menu]: router.pathname !== `/`,
                 })}
               >
-                About us
+                Home
               </li>
             </Link>
 
@@ -292,14 +292,26 @@ function Header(props) {
                             <>
                               <hr />
                               <h3 className='text-sm font-inter font-bold text-[#000000]'>
-                                My Orders
+                                <Link href="/dashboard/profile">
+                                  <a>
+                                    My profile
+                                  </a>
+                                </Link>
+                              </h3>
+                              <h3 className='text-sm font-inter font-bold text-[#000000]'>
+                                <Link href="/dashboard/orders">
+                                  <a>
+                                    My Orders
+                                  </a>
+                                </Link>
                               </h3>
 
                               <h3 className='text-sm font-inter font-bold text-[#000000]'>
-                                My Desires
-                              </h3>
-                              <h3 className='text-sm font-inter font-bold text-[#000000]'>
-                                Favorite Stores
+                                <Link href="/dashboard/support">
+                                  <a>
+                                    Client Support
+                                  </a>
+                                </Link>
                               </h3>
                             </>
                           )}
