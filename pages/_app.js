@@ -52,7 +52,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta property="twitter:image" content="/favicon.png" />
       </Head>
-      <div className="h-screen w-screen | relative">
+      <div className="w-screen | relative">
         <Component {...pageProps} />
       </div>
     </>
