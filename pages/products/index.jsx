@@ -13,6 +13,7 @@ import Logo from 'components/Logo'
 import products from '../../services/products'
 import ProductsFilterSidebar from 'pages/products/ProductsFilterSidebar'
 import profile from "../../services/profile";
+import {useRouter} from "next/router";
 
 const style = {
   inActiveMenu: `text-xs opacity-80 md:text-sm`,
@@ -23,6 +24,7 @@ const style = {
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies.token;
+  console.log('context', context.query)
   let profileData;
 
   if (token) {
@@ -42,7 +44,9 @@ export async function getServerSideProps(context) {
 
     const categoryRes = await products.getProductCategories()
 
-    const productsRes = await products.getProducts()
+    const params = context.query
+
+    const productsRes = await products.getProducts(params)
 
     return {
       props: {
@@ -67,9 +71,11 @@ export async function getServerSideProps(context) {
 }
 
 function Product({ brands, categories, products: propsProducts, profile }) {
+  const router = useRouter()
+  const { query } = router
   const [products, setProducts] = useState(propsProducts)
   const [category, setCategory] = useState('All')
-
+console.log('propsProducts', propsProducts)
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -197,15 +203,39 @@ function Product({ brands, categories, products: propsProducts, profile }) {
                                 <div className='overflow-hidden shadow-xl py-2'>
                                   <div className='bg-gray-50 p-4 md:p-5 space-y-5'>
                                     <h3 className='text-sm md:text-sm md:font-inter text-[#16171E]'>
-                                      Newest
+                                      <Link
+                                        href={{
+                                          pathname: '/products',
+                                          query: {
+                                            ...query,
+                                            sort: 'asc'
+                                          }
+                                        }}
+                                      >
+                                        <a>
+                                          Newest
+                                        </a>
+                                      </Link>
                                     </h3>
 
                                     <h3 className='text-sm md:text-sm md:font-inter text-[#16171E]'>
-                                      Oldest
+                                      <Link
+                                        href={{
+                                          pathname: '/products',
+                                          query: {
+                                            ...query,
+                                            sort: 'desc'
+                                          }
+                                        }}
+                                      >
+                                        <a>
+                                          Oldest
+                                        </a>
+                                      </Link>
                                     </h3>
-                                    <h3 className='text-sm md:text-sm md:font-inter text-[#16171E]'>
-                                      Famous
-                                    </h3>
+                                    {/*<h3 className='text-sm md:text-sm md:font-inter text-[#16171E]'>*/}
+                                    {/*  Famous*/}
+                                    {/*</h3>*/}
                                   </div>
                                 </div>
                               )}
@@ -527,7 +557,7 @@ function Product({ brands, categories, products: propsProducts, profile }) {
               </div>
 
               <div className='grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-5 | pt-5 md:pt-10'>
-                {products.data.map((product, index) => (
+                {propsProducts.data.map((product, index) => (
                   <Link
                     href={`/products/${product.slug}`}
                     key={index}
@@ -588,6 +618,38 @@ function Product({ brands, categories, products: propsProducts, profile }) {
                   </Link>
                 ))}
               </div>
+              <nav aria-label="Page navigation example">
+                <ul className="inline-flex -space-x-px">
+                  <li>
+                    <a href="#"
+                       className="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                  </li>
+                  <li>
+                    <a href="#"
+                       className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+                  </li>
+                  <li>
+                    <a href="#"
+                       className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+                  </li>
+                  <li>
+                    <a href="#" aria-current="page"
+                       className="py-2 px-3 text-blue-600 bg-blue-50 border border-gray-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+                  </li>
+                  <li>
+                    <a href="#"
+                       className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+                  </li>
+                  <li>
+                    <a href="#"
+                       className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+                  </li>
+                  <li>
+                    <a href="#"
+                       className="py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
         </div>

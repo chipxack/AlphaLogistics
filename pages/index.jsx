@@ -22,7 +22,10 @@ export async function getServerSideProps(context) {
   const token = context.req.cookies.token;
   let profileData;
   let partnersData;
-  const productsRes = await products.getProducts();
+  const params = {
+    limit: 6
+  }
+  const productsRes = await products.getProducts(params);
   const newsRes = await posts.getPostsLatest();
 
   if (token) {
@@ -41,7 +44,7 @@ export async function getServerSideProps(context) {
   try {
     return {
       props: {
-        products: productsRes.data.data.data,
+        products: productsRes.data.data,
         news: newsRes.data.data,
         profile: profileData?.data || null,
         partners: partnersData?.data?.data || null
