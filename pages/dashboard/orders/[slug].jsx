@@ -6,21 +6,21 @@ import profile from "../../../services/profile";
 
 function Orders(props) {
 
-  return (
-    <App>
-      <App.Header dark={true} />
-      <Dashboard>
-        <Dashboard.Aside>
-          <DashboardMenu />
-        </Dashboard.Aside>
+    return (
+        <App>
+            <App.Header profile={props.profile} dark={true}/>
+            <Dashboard>
+                <Dashboard.Aside>
+                    <DashboardMenu profile={props.profile}/>
+                </Dashboard.Aside>
 
-        <Dashboard.Content>
-          <OrderInfo orderUuid={props.productUuid} orderData={props.order}/>
-        </Dashboard.Content>
-      </Dashboard>
-      <App.Footer />
-    </App>
-  );
+                <Dashboard.Content>
+                    <OrderInfo orderUuid={props.productUuid} orderData={props.order}/>
+                </Dashboard.Content>
+            </Dashboard>
+            <App.Footer/>
+        </App>
+    );
 }
 
 export async function getServerSideProps(context) {
@@ -48,7 +48,7 @@ export async function getServerSideProps(context) {
         }
 
 
-    }catch(error) {
+    } catch (error) {
         console.log('error: ', error)
         return {
             props: {
