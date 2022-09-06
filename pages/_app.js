@@ -1,5 +1,5 @@
 import "styles/tailwind.css";
-import "styles/custom.css";
+import "styles/custom.scss";
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {

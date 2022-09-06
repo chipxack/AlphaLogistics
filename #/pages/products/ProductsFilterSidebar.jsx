@@ -38,7 +38,7 @@ function ProductsFilterSidebar({ categories, brands }) {
       pathname: '/products',
       query: {
         ...query,
-        brands: checkBoxGroup.toString()
+        brand_id: 'apple'
       }
     })
   }

@@ -24,7 +24,6 @@ const style = {
 
 export async function getServerSideProps(context) {
   const token = context.req.cookies.token;
-  console.log('context', context.query)
   let profileData;
 
   if (token) {
@@ -47,6 +46,8 @@ export async function getServerSideProps(context) {
     const params = context.query
 
     const productsRes = await products.getProducts(params)
+
+    console.log(productsRes)
 
     return {
       props: {
@@ -75,12 +76,25 @@ function Product({ brands, categories, products: propsProducts, profile }) {
   const { query } = router
   const [products, setProducts] = useState(propsProducts)
   const [category, setCategory] = useState('All')
-console.log('propsProducts', propsProducts)
+  const [pagination, setPagination] = useState()
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     })
+    const pageCount = propsProducts.total / propsProducts.per_page
+    const currentPage = propsProducts.current_page || 1
+    const paginationData = []
+    // const data = []
+    for (let i = currentPage <= 3 ? 1 : currentPage - 2; i < pageCount && i < (currentPage <= 3 ? 6 : currentPage + 3); i++){
+      // data.push(i)
+      paginationData.push({
+        value: i,
+      })
+    }
+
+    setPagination(paginationData)
   }, []);
 
   return (
@@ -619,34 +633,36 @@ console.log('propsProducts', propsProducts)
                 ))}
               </div>
               <nav aria-label="Page navigation example">
-                <ul className="inline-flex -space-x-px">
+                <ul className="inline-flex -space-x-px pagination">
                   <li>
-                    <a href="#"
-                       className="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                    <Link href={{pathname: 'products', query: {...query, page: Number(query.page) < 2 ? 1 : Number(query.page) - 1}}}>
+                      <a
+                         className="pagination-control">Previous</a>
+                    </Link>
+
                   </li>
+                  {
+                    pagination?.map(item =>
+                        <li>
+                          <Link href={{
+                            pathname: '/products',
+                            query: {
+                              ...query,
+                              page: item.value
+                            }
+                          }}>
+                            <a
+                               className={`pagination-button ${item.value === Number(query.page) && 'active'}`}
+                            >
+                              {item.value}
+                            </a>
+                          </Link>
+                        </li>
+                    )
+                  }
                   <li>
-                    <a href="#"
-                       className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                  </li>
-                  <li>
-                    <a href="#"
-                       className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                  </li>
-                  <li>
-                    <a href="#" aria-current="page"
-                       className="py-2 px-3 text-blue-600 bg-blue-50 border border-gray-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-                  </li>
-                  <li>
-                    <a href="#"
-                       className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-                  </li>
-                  <li>
-                    <a href="#"
-                       className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-                  </li>
-                  <li>
-                    <a href="#"
-                       className="py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                    <a href={{pathname: 'products', query: {...query, page: Number(query.page) + 1}}}
+                       className="pagination-control">Next</a>
                   </li>
                 </ul>
               </nav>

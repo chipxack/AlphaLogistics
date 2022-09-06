@@ -3,7 +3,7 @@ function ProfileCRUD(props) {
     <div className='bg-[#F6F8FC] px-7 py-10 | space-y-5'>
       <h3 className='text-3xl font-gm'>Client Support</h3>
 
-      <div className='user__info | px-5 py-5 | grid grid-cols-2 gap-10 | rounded-xl | bg-white'>
+      <div className='user__info | px-5 py-5 | grid grid-cols-2 gap-10 | rounded-xl | bg-white mobile-column'>
         <form className='space-y-10' action='#'>
           <label htmlFor='full_name' className='flex flex-col | space-y-2'>
             <p className='text-[#002856] text-xs font-inter pb-0.5'>

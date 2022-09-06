@@ -109,7 +109,7 @@ function ProfileCRUD(props) {
       <div className="user__info__forms">
         <div className="user__info | px-7 py-8 | rounded-xl | bg-white">
           <form onSubmit={updateProfile} className="space-y-10">
-            <div className="grid grid-cols-2 gap-7">
+            <div className="grid grid-cols-2 gap-7 mobile-column">
               <label htmlFor="full_name" className="flex flex-col | space-y-2">
                 <p className="text-[#002856] text-xs font-inter pb-0.5">
                   Full Name <sup className="text-[#EB5757] text-xs">*</sup>
@@ -239,7 +239,7 @@ function ProfileCRUD(props) {
               />
             </label>
 
-            <div className="grid grid-cols-2 gap-7">
+            <div className="grid grid-cols-2 gap-7 mobile-column">
               <label htmlFor="password" className="flex flex-col | space-y-2">
                 <p className="text-[#002856] text-xs font-inter pb-0.5">
                   Password <sup className="text-[#EB5757] text-xs">*</sup>
@@ -277,7 +277,7 @@ function ProfileCRUD(props) {
               </label>
             </div>
 
-            <div className="grid grid-cols-2 gap-7">
+            <div className="grid grid-cols-2 gap-7 mobile-column">
               <div></div>
               <div className="grid grid-cols-2 gap-2">
                 <button className="form-button border border-orange-primary text-orange-primary font-semibold active:scale-95 duration-200 py-2.5">
