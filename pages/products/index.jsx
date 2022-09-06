@@ -652,7 +652,7 @@ function Product({ brands, categories, products: propsProducts, profile }) {
                             }
                           }}>
                             <a
-                               className={`pagination-button ${item.value === Number(query.page) && 'active'}`}
+                               className={`pagination-button ${item.value === (Number(query.page) || 1) && 'active'}`}
                             >
                               {item.value}
                             </a>

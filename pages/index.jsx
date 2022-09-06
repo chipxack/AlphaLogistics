@@ -103,7 +103,7 @@ function Index({ products, news, profile, partners }) {
 
         <div className="fcc box-border pb-5 md:px-5 md:pr-10">
           <div className="w-full lg:max-w-[1600px] mx-auto fcc h-64 md:h-[500px] overflow-hidden relative z-10">
-            <video style={{width: '100%'}} src="/video-back.mp4" autoPlay={true} controls={false} />
+            <video muted={true} style={{width: '100%'}} src="/video-back.mp4" autoPlay={true} controls={false} loop={true} />
             {/* <Image src="/traffic.png" alt="alpha__logistics" layout="fill" /> */}
             <div className="w-2/5 | absolute left-5 bottom-10 md:left-32 md:bottom-16">
               <Link href='/products'>
