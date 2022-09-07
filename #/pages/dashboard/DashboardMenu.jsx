@@ -126,7 +126,7 @@ function DashboardMenu(props) {
     },
   ]
   return (
-    <div className='py-12 pr-10 space-y-7'>
+    <div className='py-12 pr-10 space-y-7 mobile-hidden'>
       <div className='sidebar__user__info | flex-col fcc | space-y-3'>
         <div className='user__info__img | h-32 w-32 overflow-hidden'>
           <img

@@ -32,7 +32,7 @@ function UserOrders(props) {
 
   return (
     <div className="py-10 px-7 | bg-[#F6F8FC]">
-      <div className="fcb">
+      <div className="fcb order-mobile">
         <h3 className="text-3xl font-gm">Products</h3>
 
         <label htmlFor="search" className="relative">

@@ -137,3 +137,30 @@ html, body {
     align-items: center;
   }
 }
+
+
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+  .order-mobile {
+    display: flex;
+    flex-direction: column;
+
+    .text-3xl.font-gm{
+      text-align: center;
+      width: 100%;
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+    label{
+      &.relative{
+        width: 100%;
+        & > input{
+          width: 100%;
+        }
+      }
+    }
+  }
+}
