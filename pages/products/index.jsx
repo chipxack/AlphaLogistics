@@ -47,8 +47,6 @@ export async function getServerSideProps(context) {
 
     const productsRes = await products.getProducts(params)
 
-    console.log(productsRes)
-
     return {
       props: {
         brands: brandRes.data.data,
