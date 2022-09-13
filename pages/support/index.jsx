@@ -61,11 +61,11 @@ function Support(props) {
                         <span className='text-xs md:text-sm px-2'>/</span>
 
                         <a href='#' className={style.activeMenu}>
-                            Suport
+                            Support
                         </a>
 
                         <h2 className='text-lg md:text-2xl font-bold pt-1 md:pt-3'>
-                            Suport
+                            Support
                         </h2>
                     </div>
 
@@ -86,7 +86,8 @@ function Support(props) {
                             <div
                                 className='relative p-4 md:py-16 md:px-14 border border-gray-100/20 | z-[7] | space-y-7'>
                                 <h3 className='relative | text-2xl md:text-3xl text-white font-gm | '>
-                                    Leave us to recieve a callback
+                                    {/*Leave us to recieve a callback*/}
+                                    Leave your details for a call back
                                 </h3>
 
                                 <div className='flex flex-col space-y-5'>

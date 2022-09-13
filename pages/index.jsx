@@ -450,13 +450,17 @@ function Index({products, news, profile, partners}) {
                             className="md:col-span-1 | fb_vertically | p-4 space-y-5 | border border-gray-100 | cursor-pointer | group hover:bg-orange-primary duration-200">
                             <div>
                                 <h3 className="text-[#353437] group-hover:text-white duration-200 text-lg font-bold | font-gm">
-                                    Monitor the location
+                                    {/*Monitor the location*/}
+                                    Inbound transportation
                                 </h3>
 
                                 <p className="py-5 md:py-0 text-sm md:text-base text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
-                                    Finding the exact product or a very similar one on the market
-                                    from our partner manufacturers Finding the exact product or a
-                                    very similar one on the market from our partner manufacturers
+                                    {/*Finding the exact product or a very similar one on the market*/}
+                                    {/*from our partner manufacturers Finding the exact product or a*/}
+                                    {/*very similar one on the market from our partner manufacturers*/}
+                                    Transporting products and materials from a supplier to your business is known as inbound transportation. It covers tasks including the transportation, storage, and distribution of components or raw materials utilised in manufacturing. Additionally, it can entail keeping track of inventories, finding the supplies, and streamlining the flow of products from the supplier to your warehouse, shop, or production facility.
+                                    Outbound transportation
+                                    The movement of finished goods from your business to your clients or end users is known as outbound transportation. The majority of these tasks have to do with distribution networks and customer service.
                                 </p>
                             </div>
 
@@ -479,18 +483,20 @@ function Index({products, news, profile, partners}) {
                             className="md:col-span-2 | flex md:flex-row flex-col | p-4 | border border-gray-100 | cursor-pointer | group hover:bg-orange-primary duration-200">
                             <div className="md:w-1/2 | md:px-3">
                                 <h3 className="text-[#353437] group-hover:text-white duration-200 text-lg font-bold | font-gm">
-                                    Monitor the location
+                                    {/*Monitor the location*/}
+                                    Order fulfillment
                                 </h3>
 
                                 <p className="py-5 | text-sm md:text-base text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
-                                    Finding the exact product or a very similar one on the market
-                                    from our partner manufacturers Finding the exact product or a
-                                    very similar one on the market from our partner
-                                    manufacturersFinding the exact product or a very similar one
-                                    on the market from our partner manufacturers Finding the exact
-                                    product or a very similar one on the market from our partner
-                                    manufacturersFinding the exact product or a very similar one
-                                    on the market from our partner manufacturers
+                                    {/*Finding the exact product or a very similar one on the market*/}
+                                    {/*from our partner manufacturers Finding the exact product or a*/}
+                                    {/*very similar one on the market from our partner*/}
+                                    {/*manufacturersFinding the exact product or a very similar one*/}
+                                    {/*on the market from our partner manufacturers Finding the exact*/}
+                                    {/*product or a very similar one on the market from our partner*/}
+                                    {/*manufacturersFinding the exact product or a very similar one*/}
+                                    {/*on the market from our partner manufacturers*/}
+                                    The act of storing items, packaging orders, and delivering things to clients is known as order fulfilment. Order fulfilment, broadly speaking, refers to processes that take place from the time a client placed an order until they get it. Companies can either conduct order fulfilment internally or contract out to outside fulfilment providers.
                                 </p>
 
                                 <div className="py-3 md:pt-7">
@@ -512,13 +518,15 @@ function Index({products, news, profile, partners}) {
                             className="md:col-span-1 | fb_vertically | p-4 space-y-5 | border border-gray-100 | cursor-pointer | group hover:bg-orange-primary duration-200">
                             <div>
                                 <h3 className="text-[#353437] group-hover:text-white duration-200 text-lg font-bold | font-gm">
-                                    Use catalog to order
+                                    {/*Use catalog to order*/}
+                                    Materials handling
                                 </h3>
 
                                 <p className="py-5 md:py-0 text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
-                                    Finding the exact product or a very similar one on the market
-                                    from our partner manufacturers Finding the exact product or a
-                                    very similar one on the market from our partner manufacturers
+                                    {/*Finding the exact product or a very similar one on the market*/}
+                                    {/*from our partner manufacturers Finding the exact product or a*/}
+                                    {/*very similar one on the market from our partner manufacturers*/}
+                                    The act of storing items, packaging orders, and delivering things to clients is known as order fulfilment. Order fulfilment, broadly speaking, refers to processes that take place from the time a client placed an order until they get it. Companies can either conduct order fulfilment internally or contract out to outside fulfilment providers.
                                 </p>
                             </div>
 
