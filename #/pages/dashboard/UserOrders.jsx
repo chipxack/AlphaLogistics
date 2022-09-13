@@ -53,7 +53,6 @@ function UserOrders(props) {
           <div className="mobile-shadow-none overflow-x-auto shadow-md rounded-xl">
             <div className="inline-block min-w-full align-middle overflow-hidden">
               <div className='pc-hide'>
-                {console.log(props.data)}
                 {
                   props?.data?.map(item =>
                     <div className='mobile-tracking_block' key={item.id}>

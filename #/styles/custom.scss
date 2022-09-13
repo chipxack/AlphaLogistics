@@ -63,7 +63,15 @@ html, body {
   padding: 0;
 }
 
+
+.pc-hide {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  .pc-hide {
+    display: flex;
+  }
   .mobile-aside {
     width: 100%;
     position: absolute;
@@ -177,8 +185,8 @@ html, body {
 
 @media(max-width: 768px) {
   .mobile {
-    &-shadow{
-      &-none{
+    &-shadow {
+      &-none {
         overflow: auto;
         box-shadow: none;
       }
@@ -240,10 +248,12 @@ html, body {
       &-products {
         &_block {
           display: flex;
-          .steps{
+
+          .steps {
             overflow: hidden;
           }
-          .ordere-content{
+
+          .ordere-content {
             padding: 0;
             font-size: 10px;
             margin-bottom: 0;
@@ -256,6 +266,7 @@ html, body {
         &-status_block {
           flex: 1;
         }
+
         &_block {
           flex: 1;
           flex-direction: column;
