@@ -454,7 +454,7 @@ function Index({products, news, profile, partners}) {
                                     Inbound transportation
                                 </h3>
 
-                                <p className="py-5 md:py-0 text-sm md:text-base text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
+                                <p className="text-wrap py-5 md:py-0 text-sm md:text-base text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
                                     {/*Finding the exact product or a very similar one on the market*/}
                                     {/*from our partner manufacturers Finding the exact product or a*/}
                                     {/*very similar one on the market from our partner manufacturers*/}
@@ -487,7 +487,7 @@ function Index({products, news, profile, partners}) {
                                     Order fulfillment
                                 </h3>
 
-                                <p className="py-5 | text-sm md:text-base text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
+                                <p className="text-wrap py-5 | text-sm md:text-base text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
                                     {/*Finding the exact product or a very similar one on the market*/}
                                     {/*from our partner manufacturers Finding the exact product or a*/}
                                     {/*very similar one on the market from our partner*/}
@@ -522,7 +522,7 @@ function Index({products, news, profile, partners}) {
                                     Materials handling
                                 </h3>
 
-                                <p className="py-5 md:py-0 text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
+                                <p className="text-wrap py-5 md:py-0 text-[#020105] group-hover:text-white duration-200 opacity-80 font-inter">
                                     {/*Finding the exact product or a very similar one on the market*/}
                                     {/*from our partner manufacturers Finding the exact product or a*/}
                                     {/*very similar one on the market from our partner manufacturers*/}
