@@ -147,17 +147,19 @@ html, body {
     display: flex;
     flex-direction: column;
 
-    .text-3xl.font-gm{
+    .text-3xl.font-gm {
       text-align: center;
       width: 100%;
       font-weight: 700;
       font-size: 18px;
       margin-bottom: 25px;
     }
-    label{
-      &.relative{
+
+    label {
+      &.relative {
         width: 100%;
-        & > input{
+
+        & > input {
           width: 100%;
         }
       }
@@ -165,10 +167,122 @@ html, body {
   }
 }
 
-.text-wrap{
+.text-wrap {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 10;
   -webkit-box-orient: vertical;
+}
+
+@media(max-width: 768px) {
+  .mobile {
+    &-shadow{
+      &-none{
+        overflow: auto;
+        box-shadow: none;
+      }
+    }
+
+    &-padding {
+      padding: 0;
+
+      .sidebar__user__info {
+        flex-direction: column;
+      }
+
+      .mobile-text-center {
+        padding: 0;
+        text-align: center;
+      }
+    }
+
+    &-main {
+      .user__info {
+        background: transparent;
+      }
+
+      .order {
+        &-mobile {
+          padding: 24px;
+          background: #fff;
+        }
+
+        &__content {
+          background: #F6F8FC;
+          padding: 24px;
+        }
+      }
+    }
+
+    &-hide {
+      display: none;
+    }
+
+    &-tracking {
+      &_title {
+        color: #16171E;
+        font-size: 14px;
+
+        span {
+          font-weight: normal;
+          color: #16171E;
+          font-size: 12px;
+          margin-left: 3px;
+        }
+      }
+
+      &_block {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-products {
+        &_block {
+          display: flex;
+          .steps{
+            overflow: hidden;
+          }
+          .ordere-content{
+            padding: 0;
+            font-size: 10px;
+            margin-bottom: 0;
+          }
+        }
+      }
+
+
+      &-product {
+        &-status_block {
+          flex: 1;
+        }
+        &_block {
+          flex: 1;
+          flex-direction: column;
+          border: 1px solid #EBEBEB;
+          margin-top: 14px;
+        }
+
+        &-item_block {
+          border-bottom: 1px solid #EBEBEB;
+          padding: 10px 5px;
+
+          span {
+            color: #9A999B;
+            font-size: 10px;
+
+            &:last-child {
+              color: #020105;
+              margin-left: 3px;
+            }
+          }
+
+          &:last-child {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+
 }

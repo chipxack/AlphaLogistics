@@ -82,7 +82,7 @@ function ProfileCRUD(props) {
   }, [props?.profile]);
 
   return (
-    <div className="bg-[#F6F8FC] px-7 py-5 | space-y-10">
+    <div className="mobile-padding bg-[#F6F8FC] px-7 py-5 | space-y-10">
       <div className="user__info | px-5 py-5 | rounded-xl | bg-white">
         <div className="sidebar__user__info | flex items-center | space-y-3">
           <label className="user__info__img | h-28 w-28 | relative">
@@ -99,7 +99,7 @@ function ProfileCRUD(props) {
           </label>
 
 
-          <div className="pl-5 space-y-2">
+          <div className="pl-5 space-y-2 mobile-text-center">
             <h4 className="font-exo text-[#353437]">{props.profile?.name}</h4>
             <p className="text-[#020105] font-inter">{props.profile?.phone}</p>
           </div>

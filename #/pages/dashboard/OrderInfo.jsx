@@ -138,9 +138,9 @@ function OrderInfo(props) {
                   Places
                 </h3>
               </div> */}
-              <ul class="steps steps-vertical">
+              <ul className="steps steps-vertical">
                 {props.orderData?.routes?.map((d) => (
-                  <li class={`step ${d.pivot?.arrived ? "step-primary" : ""}`}>
+                  <li className={`step ${d.pivot?.arrived ? "step-primary" : ""}`}>
                     <div className="ordere-content">
                       <div className="flex justify-between items-center">
                         <span>

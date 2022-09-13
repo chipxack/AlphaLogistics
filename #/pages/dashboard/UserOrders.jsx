@@ -3,6 +3,7 @@ import SvgFilter from "icons/SvgFilter";
 import SvgSearch from "icons/SvgSearch";
 import Link from "next/link";
 import OrderProgress from "./OrderProgress";
+import Moment from "react-moment";
 
 function UserOrders(props) {
 
@@ -31,7 +32,7 @@ function UserOrders(props) {
   ];
 
   return (
-    <div className="py-10 px-7 | bg-[#F6F8FC]">
+    <div className="mobile-padding py-10 px-7 | bg-[#F6F8FC]">
       <div className="fcb order-mobile">
         <h3 className="text-3xl font-gm">Products</h3>
 
@@ -49,9 +50,80 @@ function UserOrders(props) {
 
       <div className="order__content | py-10">
         <div className="flex flex-col">
-          <div className="overflow-x-auto shadow-md rounded-xl">
+          <div className="mobile-shadow-none overflow-x-auto shadow-md rounded-xl">
             <div className="inline-block min-w-full align-middle overflow-hidden">
-              <table className="min-w-full table-fixed">
+              <div className='pc-hide'>
+                {console.log(props.data)}
+                {
+                  props?.data?.map(item =>
+                    <div className='mobile-tracking_block' key={item.id}>
+                      <h3 className='mobile-tracking_title'>
+                        <b>Product:</b>
+                        <span>
+                            {item.uid}
+                        </span>
+                      </h3>
+                      <div className='mobile-tracking-products_block'>
+                        <div className='mobile-tracking-product_block'>
+                          {/*<div>*/}
+                          {/*  <span>Tracking ID:</span>*/}
+                          {/*  <span>{item.uid}</span>*/}
+                          {/*</div>*/}
+                          <div className='mobile-tracking-product-item_block'>
+                            <span>Date:</span>
+                            <span>{item.load_time}</span>
+                          </div>
+                          <div className='mobile-tracking-product-item_block'>
+                            <span>Amount:</span>
+                            <span>{item.products_price}</span>
+                          </div>
+                          <div className='mobile-tracking-product-item_block'>
+                            <span>Payment Mode:</span>
+                            <span>{item.payment_mode}</span>
+                          </div>
+                          <div className='mobile-tracking-product-item_block'>
+                            <span>Status:</span>
+                            <span>{item.status}</span>
+                          </div>
+                        </div>
+                        <div className='mobile-tracking-product-status_block'>
+                          <ul className="steps steps-vertical">
+                            <li className={`step ${item.status === 'new' ? "step-primary" : ""}`}>
+                              <div className="ordere-content">
+                                <div className="flex justify-between items-center">
+                                  <span>
+                                    Ordered
+                                  </span>
+                                </div>
+                              </div>
+                            </li>
+                            <li className={`step ${item.status === 'in_process' ? "step-primary" : ""}`}>
+                              <div className="ordere-content">
+                                <div className="flex justify-between items-center">
+                                  <span>
+                                    Shipped
+                                  </span>
+                                </div>
+                              </div>
+                            </li>
+                            <li className={`step ${item.status === 'completed' ? "step-primary" : ""}`}>
+                              <div className="ordere-content">
+                                <div className="flex justify-between items-center">
+                                  <span>
+                                    Delivering
+                                  </span>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                    </div>
+                  )
+                }
+              </div>
+              <table className="min-w-full table-fixed mobile-hide">
                 <thead className="bg-white">
                   <tr>
                     {columns.map((d, index) => (
@@ -116,7 +188,7 @@ function UserOrders(props) {
                         </tr>
                       </Link>
                     </>
-                   
+
                   ))}
                 </tbody>
               </table>
