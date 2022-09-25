@@ -16,8 +16,6 @@ function ReuqestForm(props) {
   });
 
   const onSubmit = (data) => {
-    console.log("data", data);
-
     const newData = {
       name: data.name,
       phone: data.phone.toString(),
@@ -66,6 +64,7 @@ function ReuqestForm(props) {
             name="phone"
             id="phone"
             placeholder="+"
+            defaultValue='+'
             className="w-4/5 md:w-1/5 text-sm md:text-base | bg-black border border-white text-white py-2 md:py-3 px-3 placeholder:text-white placeholder:opacity-80"
             {...register("phone", {
               required: true,

@@ -27,13 +27,19 @@ import partners from "../services/partners";
 export async function getServerSideProps(context) {
     const token = context.req.cookies.token;
     let profileData;
-    let partnersData;
     const params = {
         limit: 6
     }
     const productsRes = await products.getProducts(params);
     const newsRes = await posts.getPostsLatest();
 
+    const partnersData = await partners.getPartners()
+        .then(response => {
+            return response.data?.data
+        })
+        .catch(error => {
+            return null
+        })
     if (token) {
         const data = {
             headers: {
@@ -41,10 +47,8 @@ export async function getServerSideProps(context) {
             },
         };
         profileData = await profile.getUserProfile(data);
-        partnersData = await partners.getPartners(data);
     } else {
         profileData = null
-        partnersData = null
     }
 
     try {
@@ -53,7 +57,7 @@ export async function getServerSideProps(context) {
                 products: productsRes.data.data,
                 news: newsRes.data.data,
                 profile: profileData?.data || null,
-                partners: partnersData?.data?.data || null
+                partners: partnersData || null
             },
         };
     } catch (error) {

@@ -149,15 +149,20 @@ function Product({ product, countries, profile }) {
       <section className='bg-[#16171E] py-5 md:py-10 relative overflow-hidden'>
         <div className='flex items-center text-white | px-5 container mx-auto'>
           <div className='relative z-10'>
-            <a href='#' className={style.inActiveMenu}>
-              Home
-            </a>
+            <Link href='/'>
+              <a className={style.inActiveMenu}>
+                Home
+              </a>
+            </Link>
 
             <span className='text-xs md:text-sm px-2'>/</span>
 
-            <a href='#' className={style.activeMenu}>
-              Products
-            </a>
+            <Link href='/products'>
+              <a className={style.activeMenu}>
+                Products
+              </a>
+            </Link>
+
 
             <span className='text-xs md:text-sm px-2'>/</span>
 

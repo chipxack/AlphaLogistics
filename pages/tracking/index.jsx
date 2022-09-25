@@ -76,7 +76,6 @@ function Tracking(props) {
             <div key={item.id}>
               <div className="order__progress__indicactor duration-200">
                 <OrderProgress step={1} />
-
                 <div className="w-full flex justify-between">
                   {item.routes?.map((route) => (
                     <div key={route.id} className="ordere | space-y-2 pt-3 pl-1">

@@ -107,14 +107,16 @@ function Product({ brands, categories, products: propsProducts, profile }) {
 
             <span className='text-xs md:text-sm px-2'>/</span>
 
-            <a href='#' className={style.inActiveMenu}>
-              Products
-            </a>
+            <Link href='/products'>
+              <a href='#' className={style.inActiveMenu}>
+                Products
+              </a>
+            </Link>
 
             <span className='text-xs md:text-sm px-2'>/</span>
 
             <a href='#' className={style.activeMenu}>
-              {category}
+              {categories?.find(item => item.id === Number(query.category_id))?.title?.en || 'All'}
             </a>
 
             <h2 className='text-lg md:text-2xl font-bold pt-1 md:pt-3'>
@@ -659,8 +661,10 @@ function Product({ brands, categories, products: propsProducts, profile }) {
                     )
                   }
                   <li>
-                    <a href={{pathname: 'products', query: {...query, page: Number(query.page) + 1}}}
-                       className="pagination-control">Next</a>
+                    <Link href={{pathname: 'products', query: {...query, page: Number(query.page || 0) + 1}}}>
+                      <a className="pagination-control">Next</a>
+                    </Link>
+
                   </li>
                 </ul>
               </nav>
