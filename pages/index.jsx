@@ -299,7 +299,7 @@ function Index({products, news, profile, partners}) {
                     <div className="flex flex-col md:flex-row">
                         <div className="service__img__wrapper | w-full md:w-1/2 h-40 md:h-80">
                             <img
-                                src="/service1.png"
+                                src="/reactanle.png"
                                 alt="service__img"
                                 className="service__img w-full h-full object-cover"
                                 loading="lazy"
