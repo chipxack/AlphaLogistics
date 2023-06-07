@@ -54,10 +54,10 @@ export async function getServerSideProps(context) {
     try {
         return {
             props: {
-                products: productsRes.data.data,
-                news: newsRes.data.data,
-                profile: profileData?.data || null,
-                partners: partnersData || null
+                products: productsRes.data.data ?? null,
+                news: newsRes.data.data ?? null,
+                profile: profileData?.data ?? null,
+                partners: partnersData ?? null
             },
         };
     } catch (error) {
@@ -592,7 +592,7 @@ function Index({products, news, profile, partners}) {
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-5 | pt-10 | relative">
-                        {products.map((product, idx) => (
+                        {products?.map((product, idx) => (
                             <Link key={idx} href={`/products/${product.slug}`}>
                                 <div
                                     className="relative product | rounded-md overflow-hidden | shadow-p | cursor-pointer"
@@ -699,7 +699,7 @@ function Index({products, news, profile, partners}) {
                     </div>
 
                     <div className="news | flex flex-col md:flex-row">
-                        {news.map((n, idx) => (
+                        {news?.map((n, idx) => (
                             <Link key={idx} href={`/news/${n.slug}`}>
                                 <div
                                     className={clsx({
