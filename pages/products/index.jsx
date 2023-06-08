@@ -49,10 +49,10 @@ export async function getServerSideProps(context) {
 
     return {
       props: {
-        brands: brandRes.data.data,
-        categories: categoryRes.data.data,
-        products: productsRes.data.data,
-        profile: profileData?.data || null
+        brands: brandRes.data.data ?? null,
+        categories: categoryRes.data.data ?? null,
+        products: productsRes.data.data ?? null,
+        profile: profileData?.data ?? null
       },
     }
   } catch (error) {
@@ -81,8 +81,8 @@ function Product({ brands, categories, products: propsProducts, profile }) {
       top: 0,
       behavior: "smooth"
     })
-    const pageCount = propsProducts.total / propsProducts.per_page
-    const currentPage = propsProducts.current_page || 1
+    const pageCount = (propsProducts?.total ?? 0) / (propsProducts?.per_page ?? 0)
+    const currentPage = propsProducts?.current_page ?? 1
     const paginationData = []
     // const data = []
     for (let i = currentPage <= 3 ? 1 : currentPage - 2; i < pageCount && i < (currentPage <= 3 ? 6 : currentPage + 3); i++){
@@ -153,7 +153,7 @@ function Product({ brands, categories, products: propsProducts, profile }) {
                     </h3>
 
                     <p className='text-xs md:text-sm'>
-                      {products.data.length} Products
+                      {products?.data.length} Products
                     </p>
                   </div>
                 </div>
@@ -571,7 +571,7 @@ function Product({ brands, categories, products: propsProducts, profile }) {
               </div>
 
               <div className='grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-5 | pt-5 md:pt-10'>
-                {propsProducts.data.map((product, index) => (
+                {propsProducts?.data.map((product, index) => (
                   <Link
                     href={`/products/${product.slug}`}
                     key={index}
